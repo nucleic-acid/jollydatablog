@@ -1,7 +1,7 @@
 name: "blog"
 title: "jolly data"
 description: |
-  jolly
+  A blog on my personal exploration of open datasets, rstats, python and some more.
 base_url: https://jollydata.blog
 output_dir: "_site"
 navbar:
