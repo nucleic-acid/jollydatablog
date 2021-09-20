@@ -4,7 +4,7 @@
     <title>jolly data</title>
     <link>https://jollydata.blog</link>
     <atom:link href="https://jollydata.blog/index.xml" rel="self" type="application/rss+xml"/>
-    <description>jolly
+    <description>A blog on my personal exploration of open datasets, rstats, python and some more.
 </description>
     <image>
       <title>jolly data</title>
@@ -29,7 +29,7 @@
       <title>Leaving known waters</title>
       <dc:creator>Christian A. Gebhard</dc:creator>
       <link>https://jollydata.blog/posts/2021-08-14-new-additions</link>
-      <description>Over the last weeks and months I have collected three features for the blog itself that I want to implement. None are built into the {distill} package, so there's some manual work needed. I'll go through the changes here.</description>
+      <description>Over the last weeks and months I have collected three features for the blog itself that I want to implement. Covers: A custom parallax scrolling landing page, Utterances comments and a custom 404 error page. None are built into the {distill} package, so there's some manual work needed. I'll go through the changes here.</description>
       <category>meta</category>
       <category>html</category>
       <category>css</category>
