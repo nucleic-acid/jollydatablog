@@ -1,0 +1,9 @@
+---
+title: "Cookies Policy"
+output: distill::distill_article
+---
+
+
+The only cookies being set by the *jolly data* blog, are those related to the cookie consent to store the users preference. No tracking or analytic cookies are used.
+
+A Twitter-Button may be used on some and possibly all blog posts to provide easy means of sharing the blog articles. For the possible storage of cookies by Twitter please refer to the [Privacy Section](datenschutz.html) of this blog and the [applicable data protection provisions of Twitter](https://twitter.com/privacy?lang=en).

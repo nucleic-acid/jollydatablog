@@ -1,0 +1,53 @@
+---
+title: "Christian A. Gebhard"
+image: "resources/pixelart2.png"
+links:
+  - label: Mastodon
+    url: "https://scicomm.xyz/\\@basepair"
+  - label: Twitter
+    url: "https://twitter.com/c_gebhard"
+output:
+  postcards::trestles
+---
+
+```{r load_packages, message=FALSE, warning=FALSE, include=FALSE}
+library("fontawesome")
+```
+
+## `r fa("book")`  About
+I'm a medical doctor specializing in human genetics. Apart from that, I'm interested in open and reproducible research, data analysis and data visualization. This is my personal blog, where I like to share my views on topics, I'm excited about: statistics, exploring open data and the intersection of science communication, data visualization and informative illustrations. I enjoy using Rmarkdown to create documents or reports, R and Python and dealing with layout and typography.
+
+When I'm not counseling or diving into datasets, I love taking photos, reading popular scientific astronomy books, listening to science podcasts and music.
+
+<div class = "about-block">
+
+## `r fa("heart")`  Interests
+
+- Human Genetics  
+- Data Analysis / Statistics / Data-Visualization
+- Typography / Photography
+- Astronomy
+
+</div>
+
+<div class = "about-block">
+
+## `r fa("graduation-cap")`  Education
+
+- **Specializing in Human Genetics / Genetic Counseling**, since 2019
+- **Clinical Rotation**, 2018 - 2019  
+  *Paediatrics*
+- **Medical Doctorate**, 2018  
+  *Ludwig-Maximilians-University Munich*
+- **MD Degree / State Examination**, 2017  
+  *Technical University Munich*
+  
+</div>
+
+<!-- <div class="distill-site-nav distill-site-footer"> -->
+
+<!-- ```{r, echo=FALSE} -->
+<!-- htmltools::includeHTML("_footer.html") -->
+<!-- ``` -->
+
+<!-- </div> -->

@@ -1,0 +1,33 @@
+name: "blog"
+title: "jolly data"
+description: |
+  jolly
+base_url: https://jollydata.blog
+output_dir: "_site"
+navbar:
+  logo: resources/logo_favicon.png
+  right:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+    - text: "Privacy"
+      href: datenschutz.html
+    - text: "Impressum"
+      href: impressum.html
+    - icon: fa fa-rss
+      href: index.xml
+output:
+  distill::distill_article:
+    includes:
+      in_header: utterances.html
+theme: humble_canvas.css
+cookie_consent:
+  style: simple
+  type: express
+  palette: light
+  lang: en
+  cookies_policy: https://jollydata.blog/cookies.hmtl
+rss:
+  full_content: false
+favicon: resources/logo_favicon.png

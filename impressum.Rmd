@@ -1,0 +1,54 @@
+---
+title: "Impressum"
+output: distill::distill_article
+---
+
+## Verantwortlicher nach §5 TMG
+Christian Alexander Gebhard  
+Welfenstraße 16 B  
+81541 München
+
+## Kontakt
+Telefon: +49 (0) 1522 3084545  
+E-Mail: cg_hosting@posteo.de
+
+## Verantwortlicher im Sinne von § 18 Abs. 2 MStV
+Christian Alexander Gebhard  
+Welfenstraße 16 B  
+81541 München
+
+### Haftung für Inhalte
+Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. 
+
+Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
+
+### Haftung für Links
+Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar.
+
+Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.
+
+### Urheberrecht
+Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.
+
+Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.
+
+Quelle:
+[eRecht24](https://www.e-recht24.de)
+
+## Kammerzugehörigkeit und berufsspezifische Informationen
+
+Christian Alexander Gebhard führt die Berufsbezeichnung Arzt, verliehen in der Bundesrepublik Deutschland. Er ist Mitglieder der Bayerischen Landesärztekammer und untersteht für Gesundheitsdienstleistungen somit deren Aufsicht.  
+
+### Bayerischen Landesärztekammer
+Mühlbaurstraße 16  
+81677 München  
+E-Mail: info@blaek.de  
+[www.blaek.de](http://www.blaek.de)
+
+### Berufsrechtliche Regelungen
+Das Berufsrecht und das Heilberufe-Kammergesetz ist über die [Homepage der Bayerischen Landesärztekammer > Arzt und Recht > Rechtliche Grundlagen](https://www.blaek.de/arzt-und-recht/rechtliche-grundlagen) erreichbar. Dort findet sich auch die Berufsordnung der Landesärztekammer Bayern.
+
+## Wichtig
+Im Rahmen dieses Blogs werden explizit keine Gesundheitsdienstleistungen (bspw. Diagnosestellungen, Therapieempfehlungen, etc.) erbracht. Sollten blog-Artikel medizinische Angaben enthalten, so sind diese rein akademischer Natur und als allgemeine Information zu verstehen. Sie ersetzen in keiner Weise die klinsiche Einschätzung durch einen Arztbesuch und gelten explizit nicht als konkrete Therapieempfehlung des Autors.  
+Für medizinische Fragen unter anderem zu gesundheitlichen Beschwerden oder Symptomen sowie deren Behandlung wird auf die betreuende Hausärztin / den betreuenden Hausarzt oder die lokalen medizinischen Notdienste der kassenärztlichen Vereingungen verwiesen, in akuten Notfällen ist der Rettungsdienst unter Telefon 112 zu informieren.
