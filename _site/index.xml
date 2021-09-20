@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <title>jolly data</title>
+    <link>https://jollydata.blog</link>
+    <atom:link href="https://jollydata.blog/index.xml" rel="self" type="application/rss+xml"/>
+    <description>jolly
+</description>
+    <image>
+      <title>jolly data</title>
+      <url>https://jollydata.blog/resources/logo_favicon.png</url>
+      <link>https://jollydata.blog</link>
+    </image>
+    <generator>Distill</generator>
+    <lastBuildDate>Thu, 26 Aug 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Tea, Earl Grey, Hot</title>
+      <dc:creator>Christian A. Gebhard</dc:creator>
+      <link>https://jollydata.blog/posts/2021-08-22-tea-earl-grey-hot-tidytuesday-2021-week-34</link>
+      <description>My submission for #TidyTuesday 2021 week 34. A look at StarTrek TNG voice interactions with the Enterprise's computer. In this submission I focus on the 'locate' command to find someone on the ship.</description>
+      <category>tidy tuesday</category>
+      <category>R</category>
+      <category>RegEx</category>
+      <guid>https://jollydata.blog/posts/2021-08-22-tea-earl-grey-hot-tidytuesday-2021-week-34</guid>
+      <pubDate>Thu, 26 Aug 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://jollydata.blog/posts/2021-08-22-tea-earl-grey-hot-tidytuesday-2021-week-34/res/preview.png" medium="image" type="image/png" width="1796" height="1257"/>
+    </item>
+    <item>
+      <title>Leaving known waters</title>
+      <dc:creator>Christian A. Gebhard</dc:creator>
+      <link>https://jollydata.blog/posts/2021-08-14-new-additions</link>
+      <description>Over the last weeks and months I have collected three features for the blog itself that I want to implement. None are built into the {distill} package, so there's some manual work needed. I'll go through the changes here.</description>
+      <category>meta</category>
+      <category>html</category>
+      <category>css</category>
+      <guid>https://jollydata.blog/posts/2021-08-14-new-additions</guid>
+      <pubDate>Sat, 21 Aug 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://jollydata.blog/posts/2021-08-14-new-additions/images/windrose_black.png" medium="image" type="image/png" width="956" height="928"/>
+    </item>
+    <item>
+      <title>TidyTuesday 2021 week 24: Great Lakes Commercial Fishing</title>
+      <dc:creator>Christian A. Gebhard</dc:creator>
+      <link>https://jollydata.blog/posts/2021-06-12-tt-fishing</link>
+      <description>An analysis of the commercial fish production in the Great Lakes 1867 - 2015. Using beeswarm plots to produce schools of fish. My very first submission for #TidyTuesday!</description>
+      <category>R</category>
+      <category>tidy tuesday</category>
+      <category>experimental</category>
+      <category>environment</category>
+      <guid>https://jollydata.blog/posts/2021-06-12-tt-fishing</guid>
+      <pubDate>Mon, 14 Jun 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://jollydata.blog/posts/2021-06-12-tt-fishing/images/preview_fish.png" medium="image" type="image/png" width="2260" height="1445"/>
+    </item>
+    <item>
+      <title>Bundestag Part III: Voting on the edge</title>
+      <dc:creator>Christian A. Gebhard</dc:creator>
+      <link>https://jollydata.blog/posts/2021-03-14-bundestag-part-iii</link>
+      <description>Leveraging network analysis tools, the voting behaviour of the deputies in the Bundestag shows similarity-clusters across three legislative periods. A visual analysis.</description>
+      <category>R</category>
+      <category>network analysis</category>
+      <category>germany</category>
+      <category>politics</category>
+      <guid>https://jollydata.blog/posts/2021-03-14-bundestag-part-iii</guid>
+      <pubDate>Thu, 06 May 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://jollydata.blog/posts/2021-03-14-bundestag-part-iii/images/ptIII_preview.png" medium="image" type="image/png" width="1874" height="1174"/>
+    </item>
+    <item>
+      <title>Bundestag Part II.1 - Go back to start...</title>
+      <dc:creator>Christian A. Gebhard</dc:creator>
+      <link>https://jollydata.blog/posts/2021-03-22-bundestag-part-ii1</link>
+      <description>After further research I found a way to get more data and with better quality.</description>
+      <category>R</category>
+      <category>germany</category>
+      <category>politics</category>
+      <category>RegEx</category>
+      <category>record linkage</category>
+      <guid>https://jollydata.blog/posts/2021-03-22-bundestag-part-ii1</guid>
+      <pubDate>Mon, 22 Mar 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://jollydata.blog/posts/2021-03-22-bundestag-part-ii1/preview_BTII1.jpg" medium="image" type="image/jpeg"/>
+    </item>
+    <item>
+      <title>Bundestag Part II - Web scraping parliamentary votes</title>
+      <dc:creator>Christian A. Gebhard</dc:creator>
+      <link>https://jollydata.blog/posts/2021-03-14-bundestag-part-ii-web-scraping-the-roll-call-votes</link>
+      <description>The data on roll-call votes is accessible for the public on the bundestag.de website, but not via an API. Web Scraping to the rescue! In this part I will collect the available data and compose a single, full dataset as preparation for the following posts.</description>
+      <category>python</category>
+      <category>germany</category>
+      <category>politics</category>
+      <category>web scraping</category>
+      <category>RegEx</category>
+      <guid>https://jollydata.blog/posts/2021-03-14-bundestag-part-ii-web-scraping-the-roll-call-votes</guid>
+      <pubDate>Sun, 14 Mar 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://jollydata.blog/posts/2021-03-14-bundestag-part-ii-web-scraping-the-roll-call-votes/images/harvest.jpg" medium="image" type="image/jpeg"/>
+    </item>
+    <item>
+      <title>With flying colours</title>
+      <dc:creator>Christian A. Gebhard</dc:creator>
+      <link>https://jollydata.blog/posts/2021-03-09-with-flying-colours</link>
+      <description>After three months of sailing, it is time to adjust the rigging. A refreshed look with a custom color palette, a custom ggplot2 theme and an updated logo and new typography.</description>
+      <category>meta</category>
+      <category>typography</category>
+      <category>ggplot2</category>
+      <guid>https://jollydata.blog/posts/2021-03-09-with-flying-colours</guid>
+      <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://jollydata.blog/posts/2021-03-09-with-flying-colours/images/Zeichnung.png" medium="image" type="image/png" width="680" height="508"/>
+    </item>
+    <item>
+      <title>German Bundestag - Part I: members of the parliament</title>
+      <dc:creator>Christian A. Gebhard</dc:creator>
+      <link>https://jollydata.blog/posts/2021-03-07-bundestag-part-i</link>
+      <description>An analysis of the german national parliament ("Bundestag"). This first part focuses on biographical data of the elected representatives and the composition of the parliament over time.</description>
+      <category>R</category>
+      <category>politics</category>
+      <category>germany</category>
+      <guid>https://jollydata.blog/posts/2021-03-07-bundestag-part-i</guid>
+      <pubDate>Sun, 07 Mar 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://jollydata.blog/posts/2021-03-07-bundestag-part-i/images/Bundestag_2017.svg" medium="image" type="image/svg+xml"/>
+    </item>
+    <item>
+      <title>World Of Waste</title>
+      <dc:creator>Christian A. Gebhard</dc:creator>
+      <link>https://jollydata.blog/posts/2021-01-24-world-of-waste</link>
+      <description>The amount of waste produced every year across the globe is frightening. But there's a glimmer of hope on the horizon.</description>
+      <category>R</category>
+      <category>environment</category>
+      <category>international</category>
+      <guid>https://jollydata.blog/posts/2021-01-24-world-of-waste</guid>
+      <pubDate>Sun, 07 Feb 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://jollydata.blog/posts/2021-01-24-world-of-waste/images/Sigle-recyclage.jpg" medium="image" type="image/jpeg"/>
+    </item>
+    <item>
+      <title>Olympic history</title>
+      <dc:creator>Christian A. Gebhard</dc:creator>
+      <link>https://jollydata.blog/posts/2021-01-01-olympic-history</link>
+      <description>Participating athletes and medal count in the Modern Olympic Games over 120 years. Analysis of athletes and national teams from 1896 until 2016 and the influence of population and GDP per capita on the medal count of the nations in 2016.</description>
+      <category>R</category>
+      <category>sports</category>
+      <category>international</category>
+      <category>tidy tuesday</category>
+      <guid>https://jollydata.blog/posts/2021-01-01-olympic-history</guid>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://jollydata.blog/posts/2021-01-01-olympic-history/olympic-history_files/figure-html5/unnamed-chunk-28-1.png" medium="image" type="image/png" width="1152" height="1440"/>
+    </item>
+    <item>
+      <title>Setting Sail</title>
+      <dc:creator>Christian A. Gebhard</dc:creator>
+      <link>https://jollydata.blog/posts/2020-12-27-setting-sail</link>
+      <description>Make ready for departure, I'm going on a journey.</description>
+      <category>meta</category>
+      <guid>https://jollydata.blog/posts/2020-12-27-setting-sail</guid>
+      <pubDate>Sun, 27 Dec 2020 00:00:00 +0000</pubDate>
+      <media:content url="https://jollydata.blog/posts/2020-12-27-setting-sail/../../resources/logo_favicon.png" medium="image" type="image/png" width="242" height="242"/>
+    </item>
+  </channel>
+</rss>
