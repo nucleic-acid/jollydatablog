@@ -1,0 +1,284 @@
+---
+title: "Tea, Earl Grey, Hot"
+description: |
+  My submission for #TidyTuesday 2021 week 34. A look at StarTrek TNG voice interactions with the Enterprise's computer. In this submission I focus on the 'locate' command to find someone on the ship.
+author:
+  - name: Christian A. Gebhard
+    url:
+      https://jollydata.blog/about.html: {}
+date: 2021-08-26
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: true
+    toc-floating: true
+    code_folding: true
+draft: false
+categories:
+  - tidy tuesday
+  - R
+  - RegEx
+base_url: https://jollydata.blog/posts/2021-08-22-tea-earl-grey-hot-tidytuesday-2021-week-34/
+preview: res/preview.png
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      collapse = FALSE,
+                      comment = "#>",
+                      fig.retina = 2, # Control using dpi
+                      fig.width = 6,  # generated images
+                      fig.align = "center",
+                      dpi = 72, 
+                      out.width = "100%",
+                      dev = "png",
+                      dev.args = list(png = list(type = "cairo-png")),
+                      optipng = "-o1 -quiet")
+
+xaringanExtra::use_panelset()
+
+# source("../../resources/jolly_theme.R", local = knitr::knit_global())
+# library("r2symbols")```
+
+```
+
+## The Task
+
+This week's [#TidyTuesday](https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-08-17) dataset is all about *Star Trek The Next Generation*.
+
+In particular, the data collected by [www.speechinteraction.org/TNG/](https://www.speechinteraction.org/TNG/) is about voice interactions of the characters with the ship's computer. While the dataset comprises all kinds of voice interactions (questions, commands and other utterances) I focus on the 'locate-command' alone.
+
+With it, characters can locate other people on the ship, if they are looking for them.^[Handy, if you really need to find someone at any time, yet kind of creepy if you think about it.]
+
+## The way
+
+### Setup of the environment
+
+First let's load the required packages:
+
+```{r Load required packages, collapse=FALSE}
+library("tidyverse")
+library("ggrepel")
+library("ggdark")
+library("showtext")
+library("reactable")
+
+```
+
+Then we need to setup the custom fonts for the plot. In this post I do not load the `jolly_theme.R`^[[check out this post](https://jollydata.blog/posts/2021-03-09-with-flying-colours/)].
+
+The Star Trek related fonts come with the [`{trekfont}`-package](https://cran.r-project.org/web/packages/trekfont/).
+
+```{r Setup custom fonts}
+font <- c("StarNext", "TNGcast")
+path <- system.file(paste0("fonts/", font, ".ttf"), package = "trekfont")
+for (i in 1:2) font_add(font[i], path[i])
+font_add_google("Open Sans")
+font_families()
+
+showtext_auto()
+```
+
+### Data preparation
+
+It all begins with the download of the #TidyTuesday dataset from github:
+
+```{r download the data}
+
+#load the data and store locally for future runs of the code
+tuesdata <- tidytuesdayR::tt_load(2021, week = 34)
+computer <- tuesdata$computer
+
+```
+
+### Count the voice commands
+
+Counting the number of location-commands is quite easy, as the dataset contains a column specifying who issues the command:
+
+```{r}
+
+# count how often a character located someone else
+searches_by_people <- computer %>%
+  # ignore interactions by the computer and ignore the Wake Word "Computer" itself
+  filter(sub_domain == "Locate", !str_detect(char, pattern = "[Cc]omputer"), type != "Wake Word")
+
+
+searches_by_people_count <- searches_by_people %>%
+  count(char, sort = TRUE) %>%
+  mutate(
+    char = str_to_lower(char),
+
+    # use last name for later joining
+    char = ifelse(char == "beverly", "crusher", char),
+    char = ifelse(char == "geordi", "la forge", char)
+  )
+```
+
+Checking, how often someone is being looked for is not as straight forward. Due to time limitations I took a shortcut and compromised possible mis-counts. I basically filter the voice commands for occurrences of the main characters' names.
+
+<aside>
+As the number of rows with location commands is <100 I skimmed the commands for the names used to locate people and put these in a vector.
+</aside>
+
+
+```{r Count how often characters are being located}
+
+
+# Define People of interest (this is not a complete cast list, but the result of skimming ~90 entries)
+people <- str_to_lower(c(
+  "data", "picard", "captain", "riker", "pulaski", "Goss", "Tam Elbrun", "Barclay",
+  "Dalen Quaice", "Hill and Selar", "Worf", "La Forge", "Vash", "Diana", "Troi", "Crusher", "Ensign Ro",
+  "Alexander Rozhenko", "Uhnari", "Morag"
+))
+
+# Create a Regex pattern by collapsing the vector with the "or" operator
+people_pattern <- paste0(people, collapse = "|")
+
+
+people_searched <- searches_by_people %>%
+  mutate(
+    # make the interactions strings to lower case
+    interaction_lower = str_to_lower(interaction),
+
+    # reduce the interactions strings to the searched person
+    # e.g. from "computer, locate commander riker" --> "riker" is extracted.
+    # Caution: This is not the best / generalizable way, but a rather hacky approach
+    # due to limited time. It works for this use case / dataset.
+    person_of_interest = str_extract(interaction_lower, pattern = people_pattern)
+  ) %>%
+  select(interaction, person_of_interest) %>%
+  filter(!is.na(person_of_interest)) %>%
+  count(person_of_interest, sort = TRUE) %>%
+  mutate(person_of_interest = ifelse(person_of_interest == "captain", "picard", person_of_interest))
+
+```
+
+### Enriching the dataset
+
+I created a csv containing the glyphs used for the characters of interest in the TNGcast-font. In Addition I took the appropriate Federation Uniform Colors from the `{trekcolors}` package.
+
+```{r Read label data}
+relevant <- read_csv2("res/relevant.csv", col_names = TRUE)
+
+# let's take a look:
+relevant %>%
+  filter(!is.na(char)) %>%
+  reactable(
+    # global reactable options
+    defaultSorted = "char",
+    # defaultSortOrder = "desc",
+    searchable = TRUE,
+    highlight = TRUE,
+    rowStyle = list(cursor = "pointer"),
+    theme = reactableTheme(
+      highlightColor = "#1BC7DC"
+    ),
+
+    # formatting individual columns
+    columns =
+      list(
+        char = colDef(
+          name = "Character Name",
+          sortable = TRUE,
+          minWidth = 150
+        ),
+        char_label = colDef(
+          name = "Label glyph",
+          minWidth = 50,
+          sortable = TRUE
+        ),
+        char_col = colDef(
+          name = "Uniform color HEX",
+          minWidth = 100,
+          sortable = TRUE,
+          style = function(value) {
+            list(background = value)
+          }
+        )
+      )
+  )
+```
+
+As last step before plotting the data is combined:
+
+```{r Join the two dataframes}
+whereabouts <- searches_by_people_count %>%
+  full_join(people_searched, by = c("char" = "person_of_interest")) %>%
+  rename(searching = n.x, searched = n.y) %>%
+  mutate(char = str_to_title(char)) %>%
+  replace_na(list(searching = 0L, searched = 0L)) %>%
+  inner_join(relevant, by = "char")
+
+```
+
+
+## The result
+
+Now, that the data has been prepared the plot can be drawn.
+
+```{r, fig.width=8, fig.height=7, layout="l-page", fig.cap="Characters in StarTrek The Next Generatio (TNG) frequently interact with the shep's computer via voice commands. One of the computer's functions is to locate a person on the ship. Within the speechinteractions.org/TNG/ dataset, these 'locate-commands' were filtered and analysed. The characters are plotted in regard to how often the used the 'locate-command' to find someone vs. how often they are being located via the computer.", fig.alt="Plot title: 'Where is Captain Picard?' A scatterplot showing how often Characters in Star Trek The Next Generation are using a voice command command to find someone via the ship's computer vs how often they are being located by someone else via the computer. The plot shows, that Captain Picard is the character who is searched for most often, but also the one using the locate command most often."}
+
+whereabouts %>%
+  ggplot(aes(searching, searched)) +
+  geom_point(size = 3) +
+  geom_label_repel(
+    aes(label = char_label, color = char_col),
+    box.padding = 0.5,
+    label.padding = 0.5,
+    max.time = 1,
+    max.iter = 100000,
+    family = "TNGcast",
+    size = 30
+  ) +
+  labs(
+    title = "Where is Captain Picard?",
+    subtitle = "How often did Characters in 'StarTrek TNG' ask the computer to locate someone on the Starship Enterprise\nvs. how often are they being located via the computer.\n",
+    x = "Times searching someone",
+    y = "Times being searched",
+    caption = "\n@c_gebhard | #TidyTuesday Week 34 (2021)\nData source: http://www.speechinteraction.org/TNG/"
+  ) +
+  coord_trans(x = "sqrt", y = "sqrt") +
+  scale_x_continuous(breaks = c(0:6, 10, 15, 18)) +
+  scale_y_continuous(breaks = c(1:7)) +
+  scale_color_identity() +
+  dark_theme_minimal() +
+  theme(
+    plot.title = element_text(
+      family = "StarNext",
+      face = "bold",
+      size = rel(3),
+      hjust = 0,
+      vjust = 5
+    ),
+    plot.subtitle = element_text(
+      family = "Open Sans",
+      size = rel(1.3),
+      hjust = 0
+    ),
+    plot.caption = element_text(
+      size = rel(1.1),
+      face = "italic",
+      hjust = 1
+    ),
+    plot.caption.position = "plot",
+    plot.margin = margin(1.5, 0.4, 0.4, 0.4, unit = "cm"),
+    axis.title = element_text(
+      face = "bold",
+      size = rel(1.3)
+    ),
+    axis.title.x = element_text(margin = margin(t = 15, r = 0, b = 0, l = 0)),
+    axis.title.y = element_text(margin = margin(t = 0, r = 15, b = 0, l = 0), angle = 90),
+    axis.text = element_text(
+      size = rel(1.3)
+    )
+  )
+
+ggsave("tt21-34_picard.png", dpi = 96, height = 8, width = 10)
+```
+
+Note that the ["officially" submitted plot](https://twitter.com/c_gebhard/status/1429909416346804226?s=20)^[aka the tweeted version] differs from the one above. To meet the deadline I submitted a simpler version with a simple scatterplot.
+
+## Comments
+Being a Star Trek fan I really enjoyed working on the dataset. In this post I shared what I learned in regard to custom fonts and using the `{reactable}` package. I hope it was informative to read. If there's something missing, let me know:
+

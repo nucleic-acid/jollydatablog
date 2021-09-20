@@ -1,0 +1,921 @@
+---
+title: "Olympic history"
+description: |
+  Participating athletes and medal count in the Modern Olympic Games over 120 years. Analysis of athletes and national teams from 1896 until 2016 and the influence of population and GDP per capita on the medal count of the nations in 2016.
+author:
+  - name: Christian A. Gebhard
+date: 2021-01-01
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: true
+    code_folding: true
+draft: false
+bibliography: ../../JD_library.bib
+categories:
+  - R
+  - sports
+  - international
+  - tidy tuesday
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      collapse = FALSE,
+                      comment = "#>",
+                      fig.retina = 2, # Control using dpi
+                      fig.width = 6,  # generated images
+                      fig.align = "center",
+                      dpi = 72, 
+                      out.width = "100%",
+                      dev = "png",
+                      dev.args = list(png = list(type = "cairo-png")),
+                      optipng = "-o1 -quiet")
+
+xaringanExtra::use_panelset()
+
+library("r2symbols")
+```
+
+> **Updated 2021-07-29:** The Olypmic dataset was presented as #TidyTuesday data in [week 31](https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-07-27) of 2021. I revised the last plot of this post as my contribution for #TidyTuesday.  
+> **Updated 2021-02-13:** Added bar chart race.
+
+## Introduction
+
+This is a **non-systematic** analysis of historical data on the Modern Olympic Games. The first Olympiad of the Modern Era organized by the IOC^[International Olympic Committee, [https://www.olympic.org/](https://www.olympic.org/)] were held at Athens in 1896. Inclined readers might want to read the extensive [Wikipedia article](https://en.wikipedia.org/wiki/Olympic_Games#Modern_Games). 
+
+For the summary and the conclusions you can skip the analysis and jump to [Conclusions and Summary].
+
+**Important note:** I'm not a real follower of the Olympic Games in general, nor did I follow up with any of the disciplines and athletes in particular before. If any of my "findings" are well known facts in the world of the Olympic Games, please excuse my ignorance and enjoy, that this fact is also represented in the underlying data.
+
+
+## Idea and Materials
+
+::::: {.panelset}
+
+::: {.panel}
+[The Idea]{.panel-name}
+
+A question came to my mind when finding the Olympic Games dataset on *kaggle*: "Can money buy medals?"^[Or more correctly: is the number of medals won linked to the GDP per capita?]
+
+Other questions I had from the beginning were:
+
+- How did the disciplines change over time?
+- What are the top scoring nations?
+- What factors improve the odds to win a medal: for this, population figures and economic data from *gapminder* will be called in.
+
+As you'll see, more interesting findings will be found on the way.
+
+At the time of writing there are 206 NOCs^[National Olympic Committees] 
+regularly sending athletes to the competitions. The number grew over time, so not all current NOCs are included in the analysis. This development is one of the aspects I'll focus on.
+
+
+:::
+
+::: {.panel}
+[Historical Olympic Data]{.panel-name}
+
+The [dataset](https://www.kaggle.com/heesoo37/120-years-of-olympic-history-athletes-and-results) comprises biographical data on the participating athletes (age, gender, body measurements, ...), the disciplines and specific events they attended as well as the medals they won. This is one of the more popular datasets on *kaggle*, and many have worked on this before me. I hope to bring some new aspects in, by combining the data with the gapminder dataset.
+
+#### Acknowledgements
+The data was hosted on [kaggle](https://www.kaggle.com/heesoo37/120-years-of-olympic-history-athletes-and-results) by [rgriffin](https://www.kaggle.com/heesoo37) under a [CC0: Public domain](https://creativecommons.org/publicdomain/zero/1.0/) license. The data was scraped from [http://www.sports-reference.com/](http://www.sports-reference.com/). The scripts *rgriffin* developed to scrape and rectangle the data can be found in this [github repo](https://github.com/rgriff23/Olympic_history). The credits and thanks for composing the data go to *rgriffin* and to the people at www.sports-reference.com for collecting them in the first place.
+
+The Rio 2016 logo used in the last plots was downloaded from https://commons.wikimedia.org/wiki/File:Rio_2016_logo.svg
+*Credits:* National Olympic Committee, Public domain, via Wikimedia Commons
+
+
+
+:::
+
+::: {.panel}
+[Population and Economic Data]{.panel-name}
+
+To analyze the influence of population size and economic markers on the "outcome" of the Olympic contenders I used [data](https://www.gapminder.org/data/) from the gapminder foundation. They use data e.g. from the World Bank "to fight devastating ignorance with a fact-based worldview everyone can understand"^[[https://www.gapminder.org/about](https://www.gapminder.org/about/)]. They achieve this e.g. by [giving](https://www.ted.com/talks/hans_rosling_let_my_dataset_change_your_mindset?utm_campaign=tedspread&utm_medium=referral&utm_source=tedcomshare) [talks](https://www.ted.com/talks/hans_and_ola_rosling_how_not_to_be_ignorant_about_the_world?utm_campaign=tedspread&utm_medium=referral&utm_source=tedcomshare) and offering teaching materials. They also provide the public with the underlying data.
+
+
+#### Attribution
+The above mentioned data is FREE DATA FROM WORLD BANK VIA [GAPMINDER.ORG](https://www.gapminder.org), released under the [CC-BY LICENSE](https://creativecommons.org/licenses/by/4.0/)
+
+:::
+
+:::::
+
+## Athletes and NOCs over time
+
+
+First, let's load the required packages, read the data, enrich the NOC data with the corresponding continent...
+
+```{r, code_folding = FALSE}
+library("tidyverse")
+library("rmarkdown")
+library("countrycode")
+
+
+# read the olympic data
+athlete_events <- read_csv("../../../data_sources/2021_olympic/athlete_events.csv",
+                 col_types = cols(
+                   ID = col_character(),
+                   Name = col_character(),
+                   Sex = col_factor(levels = c("M","F")),
+                   Age =  col_integer(),
+                   Height = col_double(),
+                   Weight = col_double(),
+                   Team = col_character(),
+                   NOC = col_character(),
+                   Games = col_character(),
+                   Year = col_integer(),
+                   Season = col_factor(levels = c("Summer","Winter")),
+                   City = col_character(),
+                   Sport = col_character(),
+                   Event = col_character(),
+                   Medal = col_factor(levels = c("Gold","Silver","Bronze"))
+                 )
+)
+
+# read in the NOC regions data
+noc_regions <- read_csv("../../../data_sources/2021_olympic/noc_regions.csv")
+
+# enrich the NOC data with the corresponding continent
+noc_regions$continent <- countrycode(sourcevar = noc_regions$region,
+                                     origin = "country.name",
+                                    destination = "continent")
+   
+# manually correct the last missing continent data   
+noc_regions <- noc_regions %>% 
+  mutate(continent = ifelse(NOC %in% c("FSM", "TUV"), "Oceania", continent),
+         continent = ifelse(NOC == "BOL", "Americas", continent),
+         continent = ifelse(NOC == "KOS", "Europe", continent),
+         continent = ifelse(is.na(continent), "Other", continent),
+         # in the athletes_events data the NOC code for Singapore is SGP, not SIN:
+         NOC = ifelse(NOC == "SIN", "SGP", NOC) 
+         )
+```
+
+...and then inspect the data.
+
+### Inspecting the Historic Data
+
+::::: {.panelset}
+
+::: {.panel}
+[Story line]{.panel-name}
+
+There are `r nrow(athlete_events)` rows and `r ncol(athlete_events)` variables in this dataset. The table below only shows the first 100 rows. As you can see, there are many NA's, especially in the body measurement columns, as this was not systematically recorded in the early Olympic Games. As I'm not focussing on these columns, I can ignore this for the moment.
+
+
+```{r}
+paged_table(athlete_events %>% arrange(Games) %>% head(100))
+```
+
+
+```{r, layout = "l-body", fig.cap="The number of sports included to the games varied over time. Since the 1980s the number grew with each year until the year 2000. During the last five events (2000, 2004, 2008, 2012 and 2016) the number was almost stable at 34 during summer events and 15 during winter events. WW I / II: Breaks due to World Wars I and II." }
+athlete_events %>% 
+  distinct(Year, Season, Sport) %>% 
+  count(Year, Season) %>% 
+  ggplot(aes(Year, n)) +
+    geom_col(fill = "#646ECA") +
+    facet_grid(Season ~ .) +
+    annotate("rect", xmin = 1914, xmax = 1918, 
+             ymin = 0, ymax = 35, alpha = 0.2) +
+    annotate("text", x = 1916, y = 27, label = "WW I", size = 2) +
+    annotate("rect",xmin = 1939, xmax = 1945, 
+             ymin = 0, ymax = 35, alpha = 0.2) +
+    annotate("text", x = 1942, y = 27, label = "WW II", size = 2) +
+    labs(title = "Number of sports included in the Olympic Games over the years", y = "Number of sports")+
+    theme_minimal() +
+    theme(text = element_text(
+        family = "Cabin"),
+      plot.title = element_text(
+        face = "bold",
+        hjust = 0),
+      axis.title = element_text(
+        face = "bold",
+        size = rel(1)),
+      axis.text = element_text(
+        face = "bold",
+        size = rel(0.85)))
+    
+```
+
+
+```{r, layout = "l-body", fig.cap="The number of NOCs that participated in the Olympic Games over time. WW I / II: Breaks due to World Wars I and II."}
+athlete_events %>%
+  distinct(Year, Season, NOC) %>%
+  left_join(noc_regions) %>% 
+  count(Year, Season, continent) %>%
+  ggplot(aes(Year, n, fill = continent)) +
+    geom_col() +
+    scale_fill_brewer(palette = "Pastel1") +
+    facet_grid(Season ~ .) +
+    labs(title = "Number of NOCs participating in the Olympic Games over the years", y = "Number of NOCs") +
+    annotate("rect", xmin = 1914, xmax = 1918, 
+             ymin = 0, ymax = 200, alpha = 0.2) +
+    annotate("text", x = 1916, y = 150, label = "WW I", size = 2) +
+    annotate("rect",xmin = 1939, xmax = 1945, 
+             ymin = 0, ymax = 200, alpha = 0.2) +
+    annotate("text", x = 1942, y = 150, label = "WW II", size = 2) +
+    theme_minimal() +
+    theme(legend.position = "bottom") +
+    theme(text = element_text(
+        family = "Cabin"),
+      plot.title = element_text(
+        face = "bold",
+        hjust = 0),
+      axis.title = element_text(
+        # color = rgb(105, 105, 105, maxColorValue = 255),
+        face = "bold",
+        size = rel(1)),
+      axis.text = element_text(
+        # color = rgb(105, 105, 105, maxColorValue = 255),
+        face = "bold",
+        size = rel(0.85)))
+
+
+```
+
+
+
+
+:::
+
+::: {.panel}
+[Below deck]{.panel-name}
+
+It is always good practice to read the manual or other explanatory material provided by the author of the dataset especially to know what the variables represent. In addition I like to comprehend a few critical components myself to facilitate the later analysis. In this case I wanted to understand the way, the medals for each competition are implemented in the dataset.
+
+#### Events and Medals
+
+From inspecting the data we can see, that each row corresponds to an athlete participating in a single event, where 'event' means a particular match or competition where medals are awarded in the end. So e.g. the Sport "Judo" comprises separate weight classes each for female and male athletes and there are bronze, silver and gold medals within each event. For men's Judo the Events in 2016 were: `r filter(athlete_events, grepl(Event, pattern = "^Judo Men's"), Year == 2016) %>% distinct(Event) %>% pull(Event)`.
+
+If no medal was won, the 'Medal' column is NA, otherwise the value is either "Bronze", "Silver" or "Gold".
+
+```{r}
+# Filter for men's judo events from 2016.
+mens_judo_events_2016 <-filter(athlete_events, grepl(Event, pattern = "^Judo Men's"), Year == 2016) %>% 
+  select(Event, Medal, Name, Year)
+
+```
+
+As a quick test, let's see if there are any duplicates or wrong medal attributions in the men's judo sport in 2016.
+
+```{r}
+# check if for each event only one gold/silver/bronze medal were awarded
+mens_judo_events_2016 %>% 
+  filter(!is.na(Medal)) %>% 
+  group_by(Event) %>% 
+  count(Medal) %>% 
+  arrange(desc(n)) %>% 
+  paged_table()
+```
+
+This was rather unexpected for a single competitor discipline: in all events two bronze medals were awarded. A quick research revealed, that this is not an error in the data collection, but rather a feature of the Judo Competitions due to the selection process during the final rounds.^[see [https://www.olympic.org/international-judo-federation](https://www.olympic.org/international-judo-federation) for more details.] 
+
+We should definitely keep this in mind, in case we touch this sport in a later step!
+
+
+To check if there is a similar "problem" in any other sport, I repeated the above analysis regardless of the event and year:
+
+```{r}
+athlete_events %>% 
+  select(Games, Event, Medal, Name, Year) %>% 
+  filter(!is.na(Medal)) %>% 
+  group_by(Games, Event) %>% 
+  count(Medal) %>% 
+  filter(n > 1) %>% 
+  arrange(desc(n)) %>% 
+  paged_table()
+```
+
+There are quite many events with n > 1 medals, but all seem to be team competitions, in which it is plausible to have several gold, silver and bronze medals. For now this is sufficiently clarified for me.
+
+#### Number of Sports in more detail
+
+I wanted to investigate the "dent" in the number of sports in the summer 2012 Olympiad. I therefore compared the sports included in the last five summer Olympiads and found that there are 32 "constant" disciplines, while Baseball, Golf, Rugby and Softball were not in all five Olympiads.
+
+
+```{r}
+athlete_events %>% 
+  # group_by(Games) %>% 
+  distinct(Year, Season, Sport) %>% 
+  filter(Year %in% c(2000, 2004, 2008, 2012, 2016), Season == "Summer") %>% 
+  count(Sport) %>% 
+  filter(n < 5) %>% 
+  rename("Appearances_within_last_five_Olympiads" = n)
+```
+
+How were these sports distributed over those last five summer Olympiads?
+
+```{r}
+athlete_events %>% 
+  # group_by(Games) %>% 
+  distinct(Year, Season, Sport) %>% 
+  filter(Year %in% c(2000, 2004, 2008, 2012, 2016), Season == "Summer") %>% 
+  mutate(Discipline = ifelse(Sport %in% c("Baseball", "Golf", "Rugby Sevens", "Softball"), Sport, "Constant Discipline")) %>% 
+  ggplot(aes(x = factor(Year), fill = factor(Discipline, levels = c("Golf", "Rugby Sevens", "Baseball", "Softball","Constant Discipline")))) +
+    geom_bar() +
+    coord_cartesian(ylim = c(27, 35)) +
+    scale_fill_brewer(palette = "Pastel1") +
+    labs(title = "Number of Disciplines in the Olympic Games from 2000 - 2016", 
+         x = "Year", 
+         y = "Number of Sports Disciplines",
+         fill = "Discipline") +
+    theme_minimal()+
+    theme(text = element_text(
+          family = "Cabin Condensed"),
+        plot.title = element_text(
+          color = rgb(29, 32, 60, maxColorValue = 255), 
+          face = "bold",
+          hjust = 0),
+        axis.title = element_text(
+          # color = rgb(105, 105, 105, maxColorValue = 255),
+          face = "bold",
+          size = rel(0.85)),
+        axis.text = element_text(
+          # color = rgb(105, 105, 105, maxColorValue = 255),
+          size = rel(0.85)))
+        
+```
+
+Apparently Base-/ Softball were discontinued after 2008 and they were replaced only in 2016 by Golf and Rugby Sevens, resulting in the "only" 32 disciplines in 2012.
+
+That's it for this "below deck" section. Let's get back to the main story right below!
+
+:::
+
+:::::
+<aside>
+If you want to see more than just the main story line of this post, and read results that didn't make it to the main part, you can check out the "Below deck" sections. There I might also document intermediate steps that are necessary to perform but not contributing to the story.
+</aside>
+
+
+### Top Scoring Athletes
+
+
+In this section I'd like to answer three questions:
+
+- How many Olympic Games did each athlete attend?
+- Who appeared most often and in what discipline?
+- Who won the most medals during Summer and Winter Games?
+
+#### How many Olympic Games did the athletes attend?
+
+We need an overview on the scales we're talking about here: is three Summer Games a lot? Is 5 Games common?
+
+To determine the distribution of the number of Games, single athletes have attended over the course of their career, I plotted them on a bar plot. As it turns out, the curve is exponential^[notice the logarithmic scale on the y-Axis], and there are athletes who attended more than seven Games both for female (F) and male (M) athletes:
+
+```{r, fig.cap="The distribution of athletes over the number of Olympic Games they attended. For both male (M) and female (F) athletes the distribution is approximately a falling exponential curve. For better visibility the y-Axis is on a logatithmic scale."}
+
+athlete_game_counts <- athlete_events %>% 
+  distinct(ID, Name, Year, Sex, .keep_all = TRUE) 
+
+athlete_game_counts %>% 
+  count(ID, Name, Sex, sort = TRUE) %>% 
+  ggplot(aes(factor(n))) +
+    geom_bar(fill = "#646ECA") +
+    scale_y_log10()+
+    facet_grid(Sex ~ .) +
+    labs(title = "Distribution of athletes in regard to their number of appearances", 
+        x = "Number of Olympic Games attended", 
+        y = "Number of athletes") +
+    theme_minimal() +
+    theme(text = element_text(family = "Cabin"),
+      plot.title = element_text(
+        face = "bold",
+        hjust = 0),
+      axis.title = element_text(
+        face = "bold",
+        size = rel(1)),
+      axis.text = element_text(
+        face = "bold",
+        size = rel(0.85)))
+```
+
+So how many do only appear on one Season?
+
+```{r}
+athlete_game_counts %>% 
+  count(ID, sort = TRUE) %>% 
+  mutate(one_timer = n < 2) %>% 
+  summarise(one_timer_frac = mean(one_timer))
+```
+This means, that more than 70% of all athletes only appear once on an Olympic Game.
+
+#### Who appeared most often and in what discipline?
+
+Top scoring female athletes:
+
+```{r}
+female_most_experienced <- athlete_game_counts %>% 
+  filter(Sex == "F") %>% 
+  count(ID, Name, sort = TRUE) %>% 
+  head(10)
+
+female_most_experienced %>% 
+  left_join(athlete_events) %>% 
+  select(Name, n, Sport) %>% 
+  rename("Olympic_Games" = n) %>% 
+  distinct()
+```
+
+Top scoring male athletes:
+
+```{r}
+male_most_experienced <- athlete_game_counts %>% 
+  filter(Sex == "M") %>% 
+  count(ID, Name, sort = TRUE) %>% 
+  head(10)
+
+male_most_experienced %>% 
+  left_join(athlete_events) %>% 
+  select(Name, n,  Sport) %>% 
+  rename("Olympic_Games" = n) %>% 
+  distinct()
+```
+
+**To conclude this:** The record is held by the Canadian [Ian Millar](https://en.wikipedia.org/wiki/Ian_Millar), who appeared on 10 Olympic Summer Games over a time of 40 years!
+
+
+#### Who won the most medals in any discipline?
+
+From 1896 until 2016 a total of `r athlete_events %>% filter(!is.na(Medal)) %>% nrow()` medals have been awarded. Of these `r athlete_events %>% filter(!is.na(Medal), Season == "Summer") %>% nrow()` were awarded at Summer Games, `r athlete_events %>% filter(!is.na(Medal), Season == "Winter") %>% nrow()` medals at Winter Games.
+
+The different *metals* were distributed as such:
+
+```{r}
+athlete_events %>%
+  filter(!is.na(Medal)) %>%
+  group_by(Season) %>% 
+  count(Medal)
+
+```
+
+The 30 top scoring female athletes, measured by total medals count^[To resolve ties, the medal_score values gold > silver > bronze (See. code for calculation)], are:
+
+```{r, layout="l-page"}
+athlete_events %>% 
+  filter(Sex == "F", !is.na(Medal)) %>% 
+  group_by(ID, Name) %>% 
+  count(Medal) %>% 
+  ungroup() %>% 
+  pivot_wider(names_from = Medal, values_from = n, values_fill = 0) %>% 
+  mutate(total = Bronze + Silver + Gold, 
+         medal_score = 3 * Gold + 2 * Silver + Bronze) %>% 
+  arrange(desc(total), desc(medal_score)) %>% 
+  select(Name, Bronze, Silver, Gold, total, medal_score) %>% 
+  head(30) %>% 
+  paged_table()
+```
+
+
+The 30 top scoring male athletes, measured by total medals count, are:
+
+```{r, layout="l-page", fig.cap="Top scoring male athlets, sorted descending by total medal count. To resolve ties, the medal_score values gold > silver > bronze (See. code for calculation)."}
+athlete_events %>% 
+  filter(Sex == "M", !is.na(Medal)) %>% 
+  group_by(ID, Name) %>% 
+  count(Medal) %>% 
+  ungroup() %>% 
+  pivot_wider(names_from = Medal, values_from = n, values_fill = 0) %>% 
+  mutate(total = Bronze + Silver + Gold, 
+         medal_score = 3 * Gold + 2 * Silver + Bronze) %>% 
+  arrange(desc(total), desc(medal_score)) %>% 
+  select(Name, Bronze, Silver, Gold, total, medal_score) %>% 
+  head(30) %>% 
+  paged_table()
+```
+
+### Top Scoring NOCs
+
+First let's count the number of medals won by NOC:
+
+```{r}
+noc_medal_count <- athlete_events %>% 
+  filter(!is.na(Medal)) %>% 
+  group_by(NOC) %>% 
+  count(Medal, sort = TRUE) %>% 
+  pivot_wider(names_from = Medal, values_from = n) %>% 
+  mutate(total = Bronze + Silver + Gold, 
+         medal_score = 3 * Gold + 2 * Silver + Bronze) %>% 
+  arrange(desc(total), desc(medal_score))
+
+noc_medal_count %>% 
+  paged_table()
+```
+
+Now, one might say, that there is at least one question arising: as you can see in Figure 2, some nations did not participate from the start, so the total medal count is unfair. Let's see what happens, if we devide the medal count by the number of Games each NOC appeared on: there's quite some movement at the top of the list now:
+
+<aside>
+Another question is: "What if we normalized for the number of athletes that are being sent by the NOCs?" Read on to the next section to find out about this.
+</aside>
+
+```{r}
+noc_game_count <- athlete_events %>% 
+  distinct(NOC, Games, .keep_all = FALSE) %>% 
+  count(NOC) %>% 
+  rename(n_games = n)
+
+noc_medal_count %>% 
+  left_join(noc_game_count) %>% 
+  mutate(
+    Gold = Gold / n_games,
+    Silver = Silver / n_games,
+    Bronze = Bronze / n_games,
+    total = total / n_games,
+    medal_score = medal_score / n_games,
+  ) %>% 
+  arrange(desc(total), desc(medal_score)) %>% 
+  paged_table()
+
+```
+
+Note, that due to historic territorial changes, the Soviet Union (URS) and Russia (RUS) appear separately, as does the EUN, the "[Unified Team at the Olympics](https://en.wikipedia.org/wiki/Unified_Team_at_the_Olympics)" that only participated in 1992 as a temporary successor to the URS, until the former constituent states of the Soviet Union could register their own NOCs with the IOC.
+Similarly, East and West Germany (GDR and FRG respectively), appear separate from the now unified Federal Republic of Germany (GER).
+This might be the case for even more NOCs, however the above mentioned historically separate NOCs affect members of the Top 10, which is why I mentioned them.
+
+<aside>
+TIL: at the 1952 Olympics in Helsinki, the Saarland sent their own athletes as [separate NOC](https://de.wikipedia.org/wiki/Nationales_Olympisches_Komitee_des_Saarlandes) recognized by the IOC (no medals won that year). Four years later at Melbourne their team had already merged with the NOC of Western Germany. Before that however in 1954 the Saarland won the World Cup in Womens' Canoeing.
+</aside>
+
+Now let's have a nice visualization of the top scoring NOCs (in absolute medal counts) to wrap up this section.
+
+```{r, layout="l-page", fig.cap="Bar chart race of the Top 10 NOCs for the total medal count over 120 years. NOCs: USA (United States of America), URS (Soviet Union), GER (Germany), GBR (Great Britain), FRA (France), ITA (Italy), SWE (Sweden), CAN (Canada), AUS (Australia), RUS (Russia), HUN (Hungary), FIN (Finland), NOR (Norway), BEL (Belgium), GDR (East Germany)"}
+noc_medal_yearly <- athlete_events %>% 
+  filter(!is.na(Medal)) %>% 
+  arrange(NOC, Year) %>% 
+  group_by(NOC, Year) %>% 
+  summarise(year_total = n()) %>% 
+  ungroup() %>% 
+  complete(NOC, Year, fill = list(year_total = 0L)) %>% 
+  arrange(NOC, Year) %>% 
+  group_by(NOC) %>%
+  mutate(cum_total = cumsum(year_total)) %>% 
+  ungroup() %>% 
+  arrange(cum_total) %>% 
+  group_by(Year) %>% 
+  filter(row_number() >= (n() - 10)) %>% 
+  mutate(Rank = row_number())
+
+library("gganimate")
+ 
+
+anim <- noc_medal_yearly %>% 
+  ggplot(aes(x=Rank, cum_total, group=NOC)) +
+    geom_col(fill = "#2d315d")+
+    geom_text(aes(label = NOC), col = "white", 
+                hjust = "right", nudge_y = -50) +
+    geom_text(aes(label = scales::comma(cum_total, accuracy = 1)), 
+                hjust = "left", nudge_y = 50) +
+    scale_y_continuous(limits = c(0, 6100)) +
+    coord_flip() +
+    labs(title = "Top Scoring NOCs 1896 to 2016", 
+        x = "National Olympic Committee", 
+        y = "Total Number of Medals\n(incl. Bronze, Silver and Gold)",
+        caption = "Data source:\n'120 years of Olympic history: athletes and results' by rgriffin via kaggle.com, CC0-license") +
+    theme_minimal() +
+    theme(text = element_text(family = "Cabin"),
+      plot.title = element_text(
+        face = "bold",
+        hjust = 0),
+      axis.title = element_text(
+        face = "bold",
+        size = rel(1)),
+      axis.text = element_text(
+        face = "bold",
+        size = rel(0.85)),
+      legend.position = "none"
+      ) +
+  transition_time(Year) +
+  labs(subtitle = "Total Medal Count as of {round(frame_time, 0)}") + 
+  theme(plot.subtitle = element_text(hjust = 0, size = 12))
+
+animate(anim, renderer = gifski_renderer(),
+        end_pause = 100, 
+        nframes = 4*(2016-1896), fps = 5,
+        width = 1080, height = 720, res = 150)
+
+# insta_format:
+# animate(anim, renderer = av_renderer('animation.mp4'),
+#         end_pause = 100, 
+#         nframes = 5*(2016-1896), fps = 25,
+#         width = 1080, height = 1080, res = 150)
+
+# anim_save("NOC_top_scoring_race.gif")
+
+```
+
+## Does money buy medals?
+
+Let's hypothesize that two factors are important for the number of medals an NOC wins: number of athletes sent and the wealth of a country that influences the quality of training and also the number of trained athletes. So the first step is to analyze the relationship between GPD per capita and number of athletes. With this we can better intepret the influence of both on the Medal count.
+
+### Incorporating the Gapminder data
+
+#### Preparation of the data
+
+- the gapminder income dataset (GDP per capita) is read from file
+- luckily the *countrycode* function can directly convert country names to IOC-Codes (i. e. NOC codes), so we can add those easily.
+- in addition the gapminder population data is read
+- both gapminder datasets are in wide format and have to be pivoted to a long form (`pop_long` and `gapminder_long`), I then filtered them to the years with Olympic Games^[this would be achieved by the later joining as well, but I felt it was better for the later performance on a machine with limited memory.]
+
+<aside>
+"GDP per capita measures the value of everything produced in a country during a year, divided by the number of people. The unit is in international dollars, fixed 2011 prices. The data is adjusted for inflation and differences in the cost of living between countries, so-called PPP dollars."^[[https://www.gapminder.org/data/documentation/gd001/](https://www.gapminder.org/data/documentation/gd001/), accessed 06.01.2021]
+</aside>
+
+```{r}
+library("readxl")
+gapminder <- read_excel("../../../data_sources/2021_olympic/income_per_person_gdppercapita_ppp_inflation_adjusted.xlsx", 
+                        sheet = "income_per_person_gdppercapita_")
+
+gapminder$IOC <- countrycode(sourcevar = gapminder$country,
+                                     origin = "country.name",
+                                    destination = "ioc")
+
+gapminder$Continent <- countrycode(sourcevar = gapminder$country,
+                                     origin = "country.name",
+                                    destination = "continent")
+
+pop <- read_csv("../../../data_sources/2021_olympic/gapminder_population_total.csv",
+                col_names = TRUE)
+
+
+# reduce data: filter for years with Olympic Games
+OG_years <- athlete_events %>% 
+  distinct(Year) %>% 
+  pull()
+
+gapminder_long <- gapminder %>% 
+  pivot_longer(-c(country, IOC, Continent), 
+               names_to = "Year", 
+               values_to = "GDPpc", 
+               names_transform = list(Year = as.integer)) %>% 
+  filter(Year %in% OG_years)
+
+pop_long <- pop %>% 
+  pivot_longer(-country, 
+               names_to = "Year", 
+               values_to = "population",
+               names_transform = list(Year = as.integer)) %>% 
+  filter(Year %in% OG_years)
+```
+
+#### Combining all the data
+
+For this we need to...
+
+- store the number of distinct athletes per Year and NOC in `athlete_counts`
+- store the medal count per Year and NOC in `gap_medal_count`
+- `inner_join` these two sets with `gapminder_long` and `pop_long`
+- the `ath_frac` is calculated as the fraction of athletes sent by a NOC devided by the NOCs population in that year.
+
+...so that in the end we have all data in long format in the `gap_med_ath` for analysis and plotting.
+
+
+```{r}
+athlete_counts <- athlete_events %>% 
+  distinct(NOC, Year, ID, .keep_all = TRUE) %>%
+  group_by(NOC, Year) %>% 
+  summarise(ath_count = n())
+
+gap_medal_counts <- athlete_events %>% 
+  filter(!is.na(Medal)) %>% 
+  group_by(NOC, Year) %>% 
+  summarise(med_count = n())
+
+gap_med_ath <- gapminder_long %>% 
+  inner_join(athlete_counts,
+             by = c("IOC" = "NOC", "Year" = "Year"),
+             suffix = c("_gap", "_ath")) %>% 
+  inner_join(gap_medal_counts,
+             by = c("IOC" = "NOC", "Year" = "Year"),
+             suffix = c("_gap", "_ath")) %>% 
+  inner_join(pop_long,
+             by = c("Year", "country")) %>% 
+  mutate(ath_frac = ath_count / population) %>% 
+  rename(Medals = med_count)
+
+```
+
+
+### Correlation analysis
+
+For an overview of the correlation between the population, GDP, athletes and medal count I chose a correlation matrix^[I chose `method = "spearman"` since the medal count is not normally distributed and I couldn't assume normality for the other variables either.] for the data in the year 2016:
+
+```{r, fig.height=8, fig.width=8, fig.cap="Quick scatterplot matrix of the 2016 data in regard to possible correlations.", fig.alt="Matrix of scatter plots. The matrix shows pairwise scatter plots of GDP per capita, athlete count, Medals won, population and athletes per capita. Within the matrix the visually strongest positive correlation is seen between athlete count and medals, a weaker positive correlation is seen in GDP per capita and athlete count or athlete per capita."}
+cor_dat <- gap_med_ath %>% 
+  filter(Year == 2016) %>% 
+  select(-c(country, Continent, Year, IOC)) 
+
+plot(cor_dat)
+
+cor_dat %>% 
+  cor(method = "spearman")
+
+```
+
+There seems to be a moderate positive correlation between GDP per capita and athlete fraction (*rho* = 0.5041005). If we test this correlation we get a quite strong significe for this correlation as well:
+
+```{r}
+cor.test(cor_dat$GDPpc, cor_dat$ath_frac, method = "spearman")
+```
+
+Other correlations between GDP vs. absolute athlete count, as well as GDP vs. Medal count were - at best - weak, yet highly significant:
+
+```{r}
+cor.test(cor_dat$GDPpc, cor_dat$ath_count, method = "spearman")
+cor.test(cor_dat$GDPpc, cor_dat$Medals, method = "spearman")
+cor.test(cor_dat$ath_count, cor_dat$Medals, method = "spearman")
+```
+
+```{r, layout="l-page", fig.height=6, fig.width=8}
+gap_med_ath %>% 
+  filter(Year == 2016) %>% 
+  ggplot(aes(GDPpc, ath_frac, color = Continent, group = Continent)) +
+    geom_point(alpha = 0.4) +
+    geom_text(aes(label = IOC), size = 2, hjust = 0, vjust = 0, position = "dodge") +
+    scale_fill_brewer(palette = "Pastel1") +
+    stat_smooth(method = "lm", se = FALSE) +
+    stat_smooth(method = "lm", group = 1, color = "black", alpha = 0.2) +
+    scale_x_log10()+
+    scale_y_log10() +
+    # coord_trans(x= "log10", y = "log10") +
+    labs(title = "GDP per capita vs athletes 'per capita' in 2016", 
+          x = "GDP per capita (log10 scale)", 
+          y = "Fraction of athletes per population (log10 scale)",
+         caption = "Data sources:\nFree data from World Bank via gapminder.org, CC-BY license\n'120 years of Olympic history: athletes and results' by rgriffin via kaggle.com, CC0-license") +
+    theme_minimal() +
+    theme(text = element_text(family = "Cabin"),
+      plot.title = element_text(
+        face = "bold",
+        hjust = 0),
+      axis.title = element_text(
+        face = "bold",
+        size = rel(1)),
+      axis.text = element_text(
+        face = "bold",
+        size = rel(0.85))
+    )
+```
+
+When looking at the plot above, we can see the overall positive correlation between GDP and athletes 'per capita' (black line), however the correlation depends on the continent! The positive trend is largest for African and Asian countries, moderate for Europe and even slightly negative for the Americas and Oceania. We could go deeper into that here, but that's beyond the scope of this already long post. I'm happy if you read this far at all!
+
+### Bringing it all together
+
+You might have noticed, that I didn't mention the strongest correlation in the matrix above at all: Medals vs absolute athlete count correlated with a rho of 0.8195948! We probably wouldn't need a significance test here^[[that's the spirit](https://xkcd.com/2400/)], but while we're at it:
+
+<aside>
+```{r}
+cor_dat %>% 
+  ggplot(aes(ath_count, Medals)) +
+    geom_point() +
+    stat_smooth() +
+    labs(title = "Medal count vs. paricipating athletes for each NOC",
+         x = "Athletes sent to 2016 Olympic Games",
+         y = "Medals won at 2016 Olympic Games") +
+    theme_minimal()+
+    theme(text = element_text(family = "Cabin"),
+        plot.title = element_text(
+          face = "bold",
+          hjust = 0),
+        axis.title = element_text(
+          face = "bold",
+          size = rel(1)),
+        axis.text = element_text(
+          face = "bold",
+          size = rel(0.85))
+      )
+```
+</aside>
+
+
+```{r}
+cor.test(cor_dat$Medals, cor_dat$ath_count, method = "spearman")
+```
+
+How could we bring all the interesting bits of information together here? By plotting the two factors GDP and athlete count on each axis and mapping the Medal count to the size of the "bubbles":
+
+```{r, layout="l-page", fig.height=10, fig.width=8, fig.cap="Medal Count in regard to GDP per capita and Athlete Count in 2016.  I refreshed this graph for #TidyTuesday week 31/2021.", preview = TRUE, fig.alt = "Scatterplot showing the connection between the number of participating athletes and the NOCs medal count for the year 2016. The number of athletes in each olympic team is mapped to the x-axis, number of medals won by each team is on the y-axis, the size of the NOCs point in the plot shows the GDP per capita. The plot shows a clear positive correlation, indicating that countries that send more athletes, win more medals in return."}
+
+# add Jolly Theme for this last post, to avoid problems with the old plots above:
+source("../../resources/jolly_theme.R", local = knitr::knit_global())
+
+library(ggrepel)
+
+# filter for the 2016 Rio Olympics for further use
+gap_med_ath_2016 <- gap_med_ath %>%
+  filter(Year == 2016)
+
+
+# Neither medal cound nor athlete count are normally distributed.
+# Hence, Spearman's rank correlation is used:
+cor.test(gap_med_ath_2016$ath_count, gap_med_ath_2016$Medals, method = "spearman")
+
+library(png)
+rio <- readPNG("images/rio2016.png", T)
+
+gap_med_ath_2016 %>%
+  ggplot(aes(ath_count, Medals, color = Continent, group = Continent)) +
+  geom_point(aes(size = GDPpc), alpha = 0.4) +
+  geom_text_repel(
+    aes(label = IOC),
+    size = 3.5,
+    max.time = 3,
+    max.iter = 1000000,
+    max.overlaps = 25
+  ) +
+  annotate(
+    geom = "text",
+    label = "Spearman's ρ = 0.820\np < 2.2e-16",
+    x = 23, y = 23,
+    size = 5, hjust = 1,
+    colour = "black"
+  ) +
+  scale_color_manual("Continent",
+    values = c(jolly_yellow, jolly_green, jolly_red, jolly_blue, jolly_petrol)
+  ) +
+  scale_x_log10(breaks = c(10, 50, 100, 500), minor_breaks = NULL) +
+  scale_y_log10(breaks = c(10, 50, 100, 300), minor_breaks = NULL) +
+  scale_size(range = c(1, 18), name = "GDP p. c. ($, fixed 2011 prices)") +
+  labs(
+    title = "More athletes win more medals",
+    subtitle = "Countries sending more athletes to the 2016 Games won more\nmedals. The size of the bubbles represents the GDP per capita,\ninspired by the famous Gapminder graph.",
+    x = "Number of participating Athletes",
+    y = "Total number of Medals won",
+    caption = "@c_gebhard | Data sources:\nFree data from World Bank via gapminder.org, CC-BY license\n'120 years of Olympic history: athletes and results' by rgriffin via kaggle.com, CC0-license\nLogo: National Olympic Committee, Public domain, via Wikimedia Commons"
+  ) +
+  jolly_theme() +
+  theme(
+    legend.direction = "horizontal", legend.box = "vertical",
+    legend.text = element_text(size = 12)
+  ) +
+  guides(color = guide_legend(override.aes = list(size = 6))) +
+  patchwork::inset_element(rio, 0.8, 0.9, 1, 1,
+    clip = F, align_to = "full"
+  )
+
+ggsave("MoreAthletesMoreMedals.png", dpi = 96, height = 10, width = 8)
+```
+
+
+```{r, layout="l-page", fig.height=10, fig.width=8, fig.height=10, fig.width=8, fig.cap="Athletes per capita vs GDP per capita: whealthy countries sent more athletes (in regard to their population) in 2016.I refreshed this graph for #TidyTuesday week 31/2021.", fig.alt="Scatterplot showing the connection between GDP per capita, the number of participating athletes and the NOCs medal count for the year 2016. The GDP per capita is mapped to the x-axis, the number of athletes per capita is on the y-axis, the size of the NOCs point in the plot shows the number of medals won. The plot shows a positive correlation between GDP and athletes per capita, indicating that whealthy countries send more athletes (relative to their population)."}
+
+format(
+  cor.test(gap_med_ath_2016$ath_frac, gap_med_ath_2016$GDPpc, method = "spearman"), 
+  scientific = FALSE)
+
+
+gap_med_ath %>%
+  filter(Year == 2016) %>%
+  ggplot(aes(GDPpc, ath_frac, color = Continent, group = Continent)) +
+  geom_point(aes(size = Medals), alpha = 0.4) +
+  geom_text_repel(
+    aes(label = IOC),
+    size = 3.5,
+    max.time = 3,
+    max.iter = 1000000,
+    max.overlaps = 25
+  ) +
+  annotate(
+    geom = "text",
+    label = "Spearman's ρ = 0.504\np = 0.0000014",
+    x = 5000, y = 0.00001,
+    size = 5, hjust = 1,
+    colour = "black"
+  ) +
+  scale_color_manual("Continent",
+    values = c(jolly_yellow, jolly_green, jolly_red, jolly_blue, dark_slate)
+  ) +
+  scale_x_continuous(breaks = c(1000, 5000, 10000, 50000), minor_breaks = NULL) +
+  scale_y_continuous(breaks = c(0.000001, 0.00001, 0.0001, 0.001), minor_breaks = NULL) +
+  scale_size(range = c(1, 18), name = "Medal count") +
+  coord_trans(x = "log10", y = "log10") +
+  labs(
+    title = "Whealty countries send more athletes",
+    subtitle = "Countries with a higher GDP p.c. sent more athletes 'p. c.' to the\n2016 Games. The size of the bubbles represents the number of\nmedals, those atheletes won this year.",
+    x = "GDP p. c. ($, fixed 2011 prices)",
+    y = "'Athletes p. c.'\n(athletes divided by the countries' popualations",
+    caption = "@c_gebhard | Data sources:\nFree data from World Bank via gapminder.org, CC-BY license\n'120 years of Olympic history: athletes and results' by rgriffin via kaggle.com, CC0-license\nLogo: National Olympic Committee, Public domain, via Wikimedia Commons"
+  ) +
+  jolly_theme() +
+  theme(
+    legend.direction = "horizontal", legend.box = "vertical",
+    legend.text = element_text(size = 12)
+  ) +
+  guides(color = guide_legend(override.aes = list(size = 6))) +
+  patchwork::inset_element(rio, 0.8, 0.9, 1, 1,
+    clip = F, align_to = "full"
+  )
+
+ggsave("MoreGDPMoreAthletes.png", dpi = 96, height = 10, width = 8)
+
+```
+
+
+We see the strong correlation (rho = 0.8195948): A larger team sent to the Games returned a larger total number of medals.
+
+
+## Conclusions and Summary
+
+- Most athletes participate only once at the Olympic Games, there are however a few exceptions of athletes who participated more often, even up to 10 times.
+- In absolute numbers the USA and the former Soviet Union won the most medals (as of 2016). however if you put the medals into perspective of the number of participating athletes or the number of Olympic Games each NOC appeared at, there are some NOCs that were more successful at the few Games they participated at.
+- There is a strong positive correlation between the number of athletes an NOC sends to the Games and the number of medals they bring home.
+- There is a positive correlation between GDP per capita on the medal count. While statistically significant, this is a weak correlation and by all means you can't infer any causation from this.

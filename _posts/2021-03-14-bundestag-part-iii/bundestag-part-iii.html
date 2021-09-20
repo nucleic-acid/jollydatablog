@@ -1,0 +1,2045 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { color: #20794d; } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #20794d; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
+  <!--radix_placeholder_meta_tags-->
+  <title>Bundestag Part III: Voting on the edge</title>
+
+  <meta property="description" itemprop="description" content="Leveraging network analysis tools, the voting behaviour of the deputies in the Bundestag shows similarity-clusters across three legislative periods. A visual analysis."/>
+
+
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2021-05-06"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-05-06"/>
+  <meta name="article:author" content="Christian A. Gebhard"/>
+
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="Bundestag Part III: Voting on the edge"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="Leveraging network analysis tools, the voting behaviour of the deputies in the Bundestag shows similarity-clusters across three legislative periods. A visual analysis."/>
+  <meta property="og:locale" content="en_US"/>
+
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="Bundestag Part III: Voting on the edge"/>
+  <meta property="twitter:description" content="Leveraging network analysis tools, the voting behaviour of the deputies in the Bundestag shows similarity-clusters across three legislative periods. A visual analysis."/>
+
+  <!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","draft","categories","preview"]}},"value":[{"type":"character","attributes":{},"value":["Bundestag Part III: Voting on the edge"]},{"type":"character","attributes":{},"value":["Leveraging network analysis tools, the voting behaviour of the deputies in the Bundestag shows similarity-clusters across three legislative periods. A visual analysis.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Christian A. Gebhard"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["https://jollydata.blog/about.html"]}},"value":[{"type":"NULL"}]}]}]},{"type":"character","attributes":{},"value":["05-06-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc-floating","code_folding"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["R","network analysis","germany","politics"]},{"type":"character","attributes":{},"value":["images/ptIII_preview.png"]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["bundestag-part-iii_files/anchor-4.2.2/anchor.min.js","bundestag-part-iii_files/bowser-1.9.3/bowser.min.js","bundestag-part-iii_files/distill-2.2.21/template.v2.js","bundestag-part-iii_files/figure-html5/reading the data-1.png","bundestag-part-iii_files/figure-html5/splitting the data 2-1.png","bundestag-part-iii_files/figure-html5/splitting the data-1.png","bundestag-part-iii_files/figure-html5/unnamed-chunk-1-1.png","bundestag-part-iii_files/figure-html5/unnamed-chunk-2-1.png","bundestag-part-iii_files/figure-html5/unnamed-chunk-2-2.png","bundestag-part-iii_files/figure-html5/unnamed-chunk-3-1.png","bundestag-part-iii_files/figure-html5/unnamed-chunk-3-2.svg","bundestag-part-iii_files/figure-html5/unnamed-chunk-4-1.png","bundestag-part-iii_files/figure-html5/unnamed-chunk-4-1.svg","bundestag-part-iii_files/figure-html5/unnamed-chunk-4-2.png","bundestag-part-iii_files/header-attrs-2.10/header-attrs.js","bundestag-part-iii_files/header-attrs-2.6.4/header-attrs.js","bundestag-part-iii_files/header-attrs-2.7/header-attrs.js","bundestag-part-iii_files/htmlwidgets-1.5.3/htmlwidgets.js","bundestag-part-iii_files/jquery-1.11.3/jquery.min.js","bundestag-part-iii_files/pagedtable-1.1/css/pagedtable.css","bundestag-part-iii_files/pagedtable-1.1/js/pagedtable.js","bundestag-part-iii_files/panelset-0.2.4/panelset.css","bundestag-part-iii_files/panelset-0.2.4/panelset.js","bundestag-part-iii_files/panelset-0.2.6/panelset.css","bundestag-part-iii_files/panelset-0.2.6/panelset.js","bundestag-part-iii_files/popper-2.6.0/popper.min.js","bundestag-part-iii_files/tippy-6.2.7/tippy-bundle.umd.min.js","bundestag-part-iii_files/tippy-6.2.7/tippy-light-border.css","bundestag-part-iii_files/tippy-6.2.7/tippy.css","bundestag-part-iii_files/tippy-6.2.7/tippy.umd.min.js","bundestag-part-iii_files/vis-4.20.1/img/network/acceptDeleteIcon.png","bundestag-part-iii_files/vis-4.20.1/img/network/addNodeIcon.png","bundestag-part-iii_files/vis-4.20.1/img/network/backIcon.png","bundestag-part-iii_files/vis-4.20.1/img/network/connectIcon.png","bundestag-part-iii_files/vis-4.20.1/img/network/cross.png","bundestag-part-iii_files/vis-4.20.1/img/network/cross2.png","bundestag-part-iii_files/vis-4.20.1/img/network/deleteIcon.png","bundestag-part-iii_files/vis-4.20.1/img/network/downArrow.png","bundestag-part-iii_files/vis-4.20.1/img/network/editIcon.png","bundestag-part-iii_files/vis-4.20.1/img/network/leftArrow.png","bundestag-part-iii_files/vis-4.20.1/img/network/minus.png","bundestag-part-iii_files/vis-4.20.1/img/network/plus.png","bundestag-part-iii_files/vis-4.20.1/img/network/rightArrow.png","bundestag-part-iii_files/vis-4.20.1/img/network/upArrow.png","bundestag-part-iii_files/vis-4.20.1/img/network/zoomExtends.png","bundestag-part-iii_files/vis-4.20.1/vis.css","bundestag-part-iii_files/vis-4.20.1/vis.min.js","bundestag-part-iii_files/visNetwork-binding-2.0.9/visNetwork.js","bundestag-part-iii_files/webcomponents-2.0.0/webcomponents.js","images/ptIII_preview.png","images/wp_clust_detail2.png","images/wp_clust_marked_400.png","images/wp_clust_marked.png"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+
+  <style type="text/css">
+
+  body {
+    background-color: white;
+  }
+
+  .pandoc-table {
+    width: 100%;
+  }
+
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+
+  d-byline .byline {
+    grid-template-columns: 2fr 2fr;
+  }
+
+  d-byline .byline h3 {
+    margin-block-start: 1.5em;
+  }
+
+  d-byline .byline .authors-affiliations h3 {
+    margin-block-start: 0.5em;
+  }
+
+  .authors-affiliations .orcid-id {
+    width: 16px;
+    height:16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    vertical-align: middle;
+    padding-bottom: 2px;
+  }
+
+  d-title .dt-tags {
+    margin-top: 1em;
+    grid-column: text;
+  }
+
+  .dt-tags .dt-tag {
+    text-decoration: none;
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0em 0.4em;
+    margin-right: 0.5em;
+    margin-bottom: 0.4em;
+    font-size: 70%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  d-article table.gt_table td,
+  d-article table.gt_table th {
+    border-bottom: none;
+  }
+
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .shaded-content {
+    background: white;
+  }
+
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  d-article {
+    padding-top: 2.5rem;
+    padding-bottom: 30px;
+  }
+
+  d-appendix {
+    padding-top: 30px;
+  }
+
+  d-article>p>img {
+    width: 100%;
+  }
+
+  d-article h2 {
+    margin: 1rem 0 1.5rem 0;
+  }
+
+  d-article h3 {
+    margin-top: 1.5rem;
+  }
+
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+
+  /* Tweak code blocks */
+
+  d-article div.sourceCode code,
+  d-article pre code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: auto;
+  }
+
+  d-article div.sourceCode {
+    background-color: white;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+
+  d-article pre {
+    font-size: 12px;
+    color: black;
+    background: none;
+    margin-top: 0;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  d-article pre a {
+    border-bottom: none;
+  }
+
+  d-article pre a:hover {
+    border-bottom: none;
+    text-decoration: underline;
+  }
+
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+
+  @media(min-width: 768px) {
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: visible !important;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 18px;
+    font-size: 14px;
+  }
+
+  d-article pre {
+    font-size: 14px;
+  }
+
+  }
+
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  /* CSS for d-contents */
+
+  .d-contents {
+    grid-column: text;
+    color: rgba(0,0,0,0.8);
+    font-size: 0.9em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 0.25em;
+    justify-self: start;
+  }
+
+  @media(min-width: 1000px) {
+    .d-contents.d-contents-float {
+      height: 0;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      justify-self: center;
+      padding-right: 3em;
+      padding-left: 2em;
+    }
+  }
+
+  .d-contents nav h3 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+
+  .d-contents li {
+    list-style-type: none
+  }
+
+  .d-contents nav > ul {
+    padding-left: 0;
+  }
+
+  .d-contents ul {
+    padding-left: 1em
+  }
+
+  .d-contents nav ul li {
+    margin-top: 0.6em;
+    margin-bottom: 0.2em;
+  }
+
+  .d-contents nav a {
+    font-size: 13px;
+    border-bottom: none;
+    text-decoration: none
+    color: rgba(0, 0, 0, 0.8);
+  }
+
+  .d-contents nav a:hover {
+    text-decoration: underline solid rgba(0, 0, 0, 0.6)
+  }
+
+  .d-contents nav > ul > li > a {
+    font-weight: 600;
+  }
+
+  .d-contents nav > ul > li > ul {
+    font-weight: inherit;
+  }
+
+  .d-contents nav > ul > li > ul > li {
+    margin-top: 0.2em;
+  }
+
+
+  .d-contents nav ul {
+    margin-top: 0;
+    margin-bottom: 0.25em;
+  }
+
+  .d-article-with-toc h2:nth-child(2) {
+    margin-top: 0;
+  }
+
+
+  /* Figure */
+
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+
+  .figure img {
+    width: 100%;
+  }
+
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+
+  /* Citations */
+
+  d-article .citation {
+    color: inherit;
+    cursor: inherit;
+  }
+
+  div.hanging-indent{
+    margin-left: 1em; text-indent: -1em;
+  }
+
+  /* Citation hover box */
+
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
+  }
+
+
+  /* Tweak 1000px media break to show more text */
+
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+
+    .grid {
+      grid-column-gap: 16px;
+    }
+
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+
+
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  /* Include appendix styles here so they can be overridden */
+
+  d-appendix {
+    contain: layout style;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-top: 60px;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0,0,0,0.5);
+    padding-top: 60px;
+    padding-bottom: 48px;
+  }
+
+  d-appendix h3 {
+    grid-column: page-start / text-start;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.65);
+  }
+
+  d-appendix h3 + * {
+    margin-top: 1em;
+  }
+
+  d-appendix ol {
+    padding: 0 0 0 15px;
+  }
+
+  @media (min-width: 768px) {
+    d-appendix ol {
+      padding: 0 0 0 30px;
+      margin-left: -30px;
+    }
+  }
+
+  d-appendix li {
+    margin-bottom: 1em;
+  }
+
+  d-appendix a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  d-appendix > * {
+    grid-column: text;
+  }
+
+  d-appendix > d-footnote-list,
+  d-appendix > d-citation-list,
+  d-appendix > distill-appendix {
+    grid-column: screen;
+  }
+
+  /* Include footnote styles here so they can be overridden */
+
+  d-footnote-list {
+    contain: layout style;
+  }
+
+  d-footnote-list > * {
+    grid-column: text;
+  }
+
+  d-footnote-list a.footnote-backlink {
+    color: rgba(0,0,0,0.3);
+    padding-left: 0.5em;
+  }
+
+
+
+  /* Anchor.js */
+
+  .anchorjs-link {
+    /*transition: all .25s linear; */
+    text-decoration: none;
+    border-bottom: none;
+  }
+  *:hover > .anchorjs-link {
+    margin-left: -1.125em !important;
+    text-decoration: none;
+    border-bottom: none;
+  }
+
+  /* Social footer */
+
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+
+  .disqus-comments {
+    margin-right: 30px;
+  }
+
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+
+  #disqus_thread {
+    margin-top: 30px;
+  }
+
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+
+
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+
+
+  .sidebar-section.custom {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .custom p {
+    margin-bottom: 0.5em;
+  }
+
+  /* Styles for listing layout (hide title) */
+  .layout-listing d-title, .layout-listing .d-title {
+    display: none;
+  }
+
+  /* Styles for posts lists (not auto-injected) */
+
+
+  .posts-with-sidebar {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+
+  .posts-list .description h2,
+  .posts-list .description p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  .posts-list .description h2 {
+    font-weight: 700;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .posts-list h2.post-tag {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 12px;
+  }
+  .posts-list {
+    margin-top: 60px;
+    margin-bottom: 24px;
+  }
+
+  .posts-list .post-preview {
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 24px 0;
+  }
+
+  .post-preview-last {
+    border-bottom: none !important;
+  }
+
+  .posts-list .posts-list-caption {
+    grid-column: screen;
+    font-weight: 400;
+  }
+
+  .posts-list .post-preview h2 {
+    margin: 0 0 6px 0;
+    line-height: 1.2em;
+    font-style: normal;
+    font-size: 24px;
+  }
+
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.4em;
+    font-size: 16px;
+  }
+
+  .posts-list .post-preview .thumbnail {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    position: relative;
+    max-width: 500px;
+  }
+  .posts-list .post-preview img {
+    width: 100%;
+    display: block;
+  }
+
+  .posts-list .metadata {
+    font-size: 12px;
+    line-height: 1.4em;
+    margin-bottom: 18px;
+  }
+
+  .posts-list .metadata > * {
+    display: inline-block;
+  }
+
+  .posts-list .metadata .publishedDate {
+    margin-right: 2em;
+  }
+
+  .posts-list .metadata .dt-authors {
+    display: block;
+    margin-top: 0.3em;
+    margin-right: 2em;
+  }
+
+  .posts-list .dt-tags {
+    display: block;
+    line-height: 1em;
+  }
+
+  .posts-list .dt-tags .dt-tag {
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0.3em 0.4em;
+    margin-right: 0.2em;
+    margin-bottom: 0.4em;
+    font-size: 60%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .posts-list img {
+    opacity: 1;
+  }
+
+  .posts-list img[data-src] {
+    opacity: 0;
+  }
+
+  .posts-more {
+    clear: both;
+  }
+
+
+  .posts-sidebar {
+    font-size: 16px;
+  }
+
+  .posts-sidebar h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .sidebar-section {
+    margin-bottom: 30px;
+  }
+
+  .categories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .categories li {
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 0;
+  }
+
+  .categories li>a {
+    border-bottom: none;
+  }
+
+  .categories li>a:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
+
+  .categories .active {
+    font-weight: 600;
+  }
+
+  .categories .category-count {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+
+  @media(min-width: 768px) {
+    .posts-list .post-preview h2 {
+      font-size: 26px;
+    }
+    .posts-list .post-preview .thumbnail {
+      float: right;
+      width: 30%;
+      margin-bottom: 0;
+    }
+    .posts-list .post-preview .description {
+      float: left;
+      width: 45%;
+    }
+    .posts-list .post-preview .metadata {
+      float: left;
+      width: 20%;
+      margin-top: 8px;
+    }
+    .posts-list .post-preview p {
+      margin: 0 0 12px 0;
+      line-height: 1.5em;
+      font-size: 16px;
+    }
+    .posts-with-sidebar .posts-list {
+      float: left;
+      width: 75%;
+    }
+    .posts-with-sidebar .posts-sidebar {
+      float: right;
+      width: 20%;
+      margin-top: 60px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+
+
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+
+
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  .downlevel .posts-list .post-preview {
+    color: inherit;
+  }
+
+
+
+  </style>
+
+  <script type="application/javascript">
+
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+
+  // show body when load is complete
+  function on_load_complete() {
+
+    // add anchors
+    if (window.anchors) {
+      window.anchors.options.placement = 'left';
+      window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+    }
+
+
+    // set body to visible
+    document.body.style.visibility = 'visible';
+
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+
+  function init_distill() {
+
+    init_common();
+
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+
+    // move refs into #references-listing
+    $('#references-listing').replaceWith($('#refs'));
+
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-contents a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+
+      // capture layout
+      var layout = $(this).attr('data-layout');
+
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+
+
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+
+    // remove code block used to force  highlighting css
+    $('.distill-force-highlighting-css').parent().remove();
+
+    // remove empty line numbers inserted by pandoc when using a
+    // custom syntax highlighting theme
+    $('code.sourceCode a:empty').remove();
+
+    // load distill framework
+    load_distill_framework();
+
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+
+      // article with toc class
+      $('.d-contents').parent().addClass('d-article-with-toc');
+
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+
+      // add orcid ids
+      $('.authors-affiliations').find('.author').each(function(i, el) {
+        var orcid_id = front_matter.authors[i].orcidID;
+        if (orcid_id) {
+          var a = $('<a></a>');
+          a.attr('href', 'https://orcid.org/' + orcid_id);
+          var img = $('<img></img>');
+          img.addClass('orcid-id');
+          img.attr('alt', 'ORCID ID');
+          img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+          a.append(img);
+          $(this).append(a);
+        }
+      });
+
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+
+      // remove d-appendix and d-footnote-list local styles
+      $('d-appendix > style:first-child').remove();
+      $('d-footnote-list > style:first-child').remove();
+
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
+
+      // clear polling timer
+      clearInterval(tid);
+
+      // show body now that everything is ready
+      on_load_complete();
+    }
+
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+
+  }
+
+  function init_downlevel() {
+
+    init_common();
+
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+
+    // remove toc
+    $('.d-contents').remove();
+
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+
+
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+
+    $('body').addClass('downlevel');
+
+    on_load_complete();
+  }
+
+
+  function init_common() {
+
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+
+      }
+    });
+
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      });
+    }
+
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+
+  </script>
+
+  <!--/radix_placeholder_distill-->
+  <script src="bundestag-part-iii_files/header-attrs-2.10/header-attrs.js"></script>
+  <link href="bundestag-part-iii_files/panelset-0.2.6/panelset.css" rel="stylesheet" />
+  <script src="bundestag-part-iii_files/panelset-0.2.6/panelset.js"></script>
+  <link href="bundestag-part-iii_files/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+  <script src="bundestag-part-iii_files/pagedtable-1.1/js/pagedtable.js"></script>
+  <script src="bundestag-part-iii_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="bundestag-part-iii_files/popper-2.6.0/popper.min.js"></script>
+  <link href="bundestag-part-iii_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="bundestag-part-iii_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="bundestag-part-iii_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="bundestag-part-iii_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="bundestag-part-iii_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="bundestag-part-iii_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="bundestag-part-iii_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"Bundestag Part III: Voting on the edge","description":"Leveraging network analysis tools, the voting behaviour of the deputies in the Bundestag shows similarity-clusters across three legislative periods. A visual analysis.","authors":[{"author":"Christian A. Gebhard","authorURL":{"https://jollydata.blog/about.html":{}},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-05-06T00:00:00.000+02:00","citationText":"Gebhard, 2021"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>Bundestag Part III: Voting on the edge</h1>
+<!--radix_placeholder_categories-->
+<div class="dt-tags">
+<div class="dt=tag">R</div>
+<div class="dt=tag">network analysis</div>
+<div class="dt=tag">germany</div>
+<div class="dt=tag">politics</div>
+</div>
+<!--/radix_placeholder_categories-->
+<p><p>Leveraging network analysis tools, the voting behaviour of the deputies in the Bundestag shows similarity-clusters across three legislative periods. A visual analysis.</p></p>
+</div>
+
+<div class="d-byline">
+  Christian A. Gebhard true 
+  
+<br/>05-06-2021
+</div>
+
+<div class="d-article">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#preparation">Preparation</a>
+<ul>
+<li><a href="#setup-and-loading-the-data">Setup and Loading the data</a></li>
+<li><a href="#preparing-the-data">Preparing the data</a></li>
+</ul></li>
+<li><a href="#building-the-network">Building the network</a></li>
+<li><a href="#visually-analysing-the-network">Visually analysing the network</a></li>
+<li><a href="#conclusions">Conclusions</a></li>
+<li><a href="#comments">Comments</a></li>
+</ul>
+</nav>
+</div>
+<blockquote>
+<p><strong>Updated 2021-09-20:</strong> minor text refinements, added comment section</p>
+</blockquote>
+<h2 id="introduction">Introduction</h2>
+<p>This is the third part of the series on the german national parliament, the <em>Bundestag</em>. In the previous parts, I got an exploratory feeling for the available open data (<a href="https://jollydata.blog/posts/2021-03-07-bundestag-part-i/">Part I</a>) and collected more data on the votes / polls in the parliament (<a href="https://jollydata.blog/posts/2021-03-22-bundestag-part-ii1/">Part II.1</a>)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<p>In this part, I want to explore the voting behaviour of the deputies across all available datasets, spanning three legislative periods from 2009 until now. Sounds great, doesn’t it? Well…I knew what I wanted quite early, but getting there took much more time and effort, than expected and I had to tackle challenges I did not foresee before starting this post. If you’re interested in them I’ll give a summary below, but I plan a whole “below deck” post with all that I learned in the process. This way I can focus on the results here. As always, you can jump to <a href="#conclusions">Conclusions</a> right away.</p>
+<p><strong>Note:</strong> <em>As (for me) this is the first network analysis project of this size, I cannot guarantee, that the underlying data is represented/handled correctly by the code. I wrote the post with best intentions, with no desire to influence anyone’s opinion for the upcoming election. Please take it as what it is: an experimental approach to a new technology by a non-professional. If you find any issues with the code or find anything else, that is not right, please do let me know!</em></p>
+<div class="panelset">
+<div class="panel">
+<p><span class="panel-name">The Ugly</span></p>
+<p>There’s one huge problem with the voting data: a lot of implicitly missing data. Some deputies replaced colleagues, that left the parliament short before the next elections, due to personal or other reasons. Some of these replacement-deputies voted in only one or two polls, which means they have more than 600 implicitly missing votes.</p>
+<p>But even if I’d exclude these few extreme “outliers” a large portion of the deputies only served in one or two of the three legislative periods. In fact, only about a quarter of them was present in all three periods (s. Figure 1). This makes unsupervised learning difficult at least. Also, I’m not aware of practicable methods to perform clustering on barely categorical data such as the votes “yes”, “no” or “abstention”.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>Sure, I could have split the dataset into the separate legislative periods and continue from there. But I wanted to get a sense of “longitudinal clusters” and maybe even compare parlamentarians that served at different times. So I had to find another way: A network analysis.</p>
+</div>
+<div class="panel">
+<p><span class="panel-name">The Bad</span></p>
+<p>I’m doing the analysis on a midrange 2013 notebook with 8GB of RAM. Building a network is quite straight forward using specialized libraries such as <code>{igraph}</code> for R or <code>{networkx}</code> in Python. They offer a lot of possibilities. However, the bad thing is the size of the graph I intended to build. At some point I had to juggle 72 million edges between the nodes. The R session frequently hit the boundaries of my memory<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> more often than I expected, even though I tried many different approaches.</p>
+<p>I even tried to rent powerful RStudio servers on <em>AWS</em> and <em>Google Cloud Platform</em>, but didn’t succeed either, as the code was pretty inefficient in the beginning and probably did not leverage the vast computing power and memory on these servers.</p>
+<p>I plan to make a piece on my lessons in a separate post.</p>
+</div>
+<div class="panel">
+<p><span class="panel-name">The Good</span></p>
+<p>After many iterations and improvements, setbacks and redesigns I found a way to juggle the data on my limited hardware: I performed the construction of the graph object and the similarity analysis between the deputies in R with <code>{igraph}</code> and then switched to the specialized software <a href="https://cytoscape.org"><strong>Cytoscape</strong></a> for layouting and plotting the network:</p>
+<blockquote>
+“Cytoscape is an open source software platform for visualizing molecular interaction networks and biological pathways and integrating these networks with annotations, gene expression profiles and other state data. Although Cytoscape was originally designed for biological research, now it is a general platform for complex network analysis and visualization.”
+<footer>
+— <a href="https://cytoscape.org/what_is_cytoscape.html" class="uri">https://cytoscape.org/what_is_cytoscape.html</a>
+</footer>
+</blockquote>
+<p>As this Java software was designed to handle extremely large networks, it managed the voting data quite well. Cytoscape comprises many additional plugins or apps for special cases. I only used some of the basic functions of but still enjoyed playing around with the different layout algorithms and tweak the visualizations.</p>
+<p>For this analysis I used Cytoscape version 3.8.2, running on Java 11.0.11.</p>
+</div>
+<div class="panel">
+<p><span class="panel-name">The data</span></p>
+<p>The Bundestag <a href="https://www.bundestag.de/parlament/plenum/abstimmung/liste">provides polling data</a> for quite a long time going back as PDF reports, but only since around 2010 in machine readable tables. Roll call data since 2009 is available as lists that can be scraped from the website. Unfortunately there is no specific license mentioned for the open data, but the data is offered to “interested users” for “further machine processing”. Sounds good enough for my use.</p>
+<p>I’ll be using the data hosted in a <a href="https://github.com/bundestag">github repo</a> called “bundestag”, which was generated scraping the www.bundestag.de website. Among the different datasets, there are json files with the individual votes linked to the ID number of the ballot and in others there is the meta-data on the ballots including title, date, etc. Both are unofficial data, but I probably couldn’t scrape it in a better quality, so I will continue to use this data.</p>
+<p>The data used was published under “The Unlicense” with no conditions whatsoever. <strong>I still want to give credit to the <a href="https://github.com/orgs/bundestag/people">contributors</a> of this repo and thank them for their great and helpful work!</strong></p>
+<p>To read about how I loaded and prepared this data, please check out <a href="https://jollydata.blog/posts/2021-03-22-bundestag-part-ii1/">Part II.1</a>.</p>
+</div>
+</div>
+<h2 id="preparation">Preparation</h2>
+<p>A graph object is composed of <em>nodes</em><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> and <em>edges</em>. Nodes represent entities, that are connected to one another by edges. For a detailed explanation, check out the <a href="https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)">Wikipedia article</a> on graph theory.<br />
+For this post it is sufficient to say that I intend to make the elected deputies the nodes in my graph. They will be connected to one another, if they share a similar voting behaviour in the available poll data.</p>
+<h3 id="setup-and-loading-the-data">Setup and Loading the data</h3>
+<p>As I prepared the data beforehand, I can dive into the analysis right away with only minor adjustments and preparations as described in the next section. First, these are the libraries used:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='st'><a href='https://tidyverse.tidyverse.org'>"tidyverse"</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='st'><a href='https://github.com/rstudio/rmarkdown'>"rmarkdown"</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='st'><a href='https://igraph.org'>"igraph"</a></span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>The data was prepared to a rectangular/tidy form with every vote of each deputy in each poll as a row/observation. Let’s load the dataset and inspect it:</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># read the data from file</span>
+<span class='va'>voting_data</span> <span class='op'>&lt;-</span> <span class='fu'>read_csv</span><span class='op'>(</span><span class='st'>"../../../data_sources/2021_bundestag/parsed/polls_voting_complete.csv"</span>, na <span class='op'>=</span> <span class='st'>"na"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>name <span class='op'>=</span> <span class='va'>name_clean</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='va'>name_clean</span><span class='op'>)</span> 
+
+<span class='fu'>glimpse</span><span class='op'>(</span><span class='va'>voting_data</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<pre><code>#&gt; Rows: 427,039
+#&gt; Columns: 7
+#&gt; $ state   &lt;chr&gt; &quot;Sachsen-Anhalt&quot;, &quot;Mecklenburg-Vorpommern&quot;, &quot;Bayern&quot;…
+#&gt; $ name    &lt;chr&gt; &quot;Ackermann, Jens&quot;, &quot;Ahrendt, Christian&quot;, &quot;Aigner, Il…
+#&gt; $ party   &lt;chr&gt; &quot;FDP&quot;, &quot;FDP&quot;, &quot;CDU/CSU&quot;, &quot;Die Linke&quot;, &quot;Die Linke&quot;, &quot;…
+#&gt; $ vote    &lt;chr&gt; &quot;nein&quot;, &quot;nein&quot;, &quot;nein&quot;, &quot;ja&quot;, &quot;ja&quot;, &quot;nein&quot;, &quot;ja&quot;, &quot;e…
+#&gt; $ p_id    &lt;dbl&gt; 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 10…
+#&gt; $ p_date  &lt;date&gt; 2011-07-08, 2011-07-08, 2011-07-08, 2011-07-08, 201…
+#&gt; $ p_title &lt;chr&gt; &quot;Panzerlieferung an Saudi-Arabien&quot;, &quot;Panzerlieferung…</code></pre>
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>voting_data</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<pre><code>#&gt;     state               name              party          
+#&gt;  Length:427039      Length:427039      Length:427039     
+#&gt;  Class :character   Class :character   Class :character  
+#&gt;  Mode  :character   Mode  :character   Mode  :character  
+#&gt;                                                          
+#&gt;                                                          
+#&gt;                                                          
+#&gt;      vote                p_id           p_date          
+#&gt;  Length:427039      Min.   :  1.0   Min.   :2009-12-03  
+#&gt;  Class :character   1st Qu.:172.0   1st Qu.:2012-10-25  
+#&gt;  Mode  :character   Median :363.0   Median :2015-10-15  
+#&gt;                     Mean   :365.7   Mean   :2015-09-14  
+#&gt;                     3rd Qu.:558.0   3rd Qu.:2018-11-23  
+#&gt;                     Max.   :720.0   Max.   :2021-03-26  
+#&gt;    p_title         
+#&gt;  Length:427039     
+#&gt;  Class :character  
+#&gt;  Mode  :character  
+#&gt;                    
+#&gt;                    
+#&gt; </code></pre>
+</div>
+<p>There are 427039 single votes listed for 655 polls, ranging from 2009-12-03 to 2021-03-26.</p>
+<h3 id="preparing-the-data">Preparing the data</h3>
+<p>As mentioned before, the data spans three legislative periods (LP) divided by the elections / reconstitutions of the parliament at 2013-10-22 and 2017-10-24. The periods are named after the serial number of the respective parliament: Bundestag 17, 18 and 19.<br />
+Although I want to make a longitudinal analysis, I still want to see if the LPs do have an influence on the clustering, so I added them as a feature:</p>
+<aside>
+During coding I frequently used “wp” or “w_period” from the German “Wahlperiode”, meaning legislative period.
+</aside>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># split the dataset at the election dates and assign the election period to w_period</span>
+<span class='va'>voting_data_with_wp</span> <span class='op'>&lt;-</span> <span class='va'>voting_data</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>
+    w_period <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/cut.html'>cut</a></span><span class='op'>(</span>
+      x <span class='op'>=</span> <span class='va'>p_date</span>,
+      breaks <span class='op'>=</span> <span class='fu'>lubridate</span><span class='fu'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/ymd.html'>ymd</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"2009-12-03"</span>, <span class='st'>"2013-10-22"</span>, <span class='st'>"2017-10-24"</span>, <span class='st'>"2021-03-26"</span><span class='op'>)</span><span class='op'>)</span>,
+      labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"bt17"</span>, <span class='st'>"bt18"</span>, <span class='st'>"bt19"</span><span class='op'>)</span>,
+      include.lowest <span class='op'>=</span> <span class='cn'>TRUE</span>
+    <span class='op'>)</span>
+  <span class='op'>)</span>
+
+<span class='co'># check success / correct splitting</span>
+<span class='va'>voting_data_with_wp</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>w_period</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>summarise</span><span class='op'>(</span>min_date <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>min</a></span><span class='op'>(</span><span class='va'>p_date</span><span class='op'>)</span>, max_date <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span><span class='op'>(</span><span class='va'>p_date</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>#&gt; # A tibble: 3 × 3
+#&gt;   w_period min_date   max_date  
+#&gt;   &lt;fct&gt;    &lt;date&gt;     &lt;date&gt;    
+#&gt; 1 bt17     2009-12-03 2013-06-28
+#&gt; 2 bt18     2013-11-28 2017-06-30
+#&gt; 3 bt19     2017-12-12 2021-03-26</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># check the data</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>voting_data_with_wp</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://pkgs.rstudio.com/rmarkdown/reference/paged_table.html'>paged_table</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["state"],"name":[1],"type":["chr"],"align":["left"]},{"label":["name"],"name":[2],"type":["chr"],"align":["left"]},{"label":["party"],"name":[3],"type":["chr"],"align":["left"]},{"label":["vote"],"name":[4],"type":["chr"],"align":["left"]},{"label":["p_id"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["p_date"],"name":[6],"type":["date"],"align":["right"]},{"label":["p_title"],"name":[7],"type":["chr"],"align":["left"]},{"label":["w_period"],"name":[8],"type":["fct"],"align":["left"]}],"data":[{"1":"Sachsen-Anhalt","2":"Ackermann, Jens","3":"FDP","4":"nein","5":"100","6":"2011-07-08","7":"Panzerlieferung an Saudi-Arabien","8":"bt17"},{"1":"Mecklenburg-Vorpommern","2":"Ahrendt, Christian","3":"FDP","4":"nein","5":"100","6":"2011-07-08","7":"Panzerlieferung an Saudi-Arabien","8":"bt17"},{"1":"Bayern","2":"Aigner, Ilse","3":"CDU/CSU","4":"nein","5":"100","6":"2011-07-08","7":"Panzerlieferung an Saudi-Arabien","8":"bt17"},{"1":"Hamburg","2":"Aken, Jan van","3":"Die Linke","4":"ja","5":"100","6":"2011-07-08","7":"Panzerlieferung an Saudi-Arabien","8":"bt17"},{"1":"Bremen","2":"Alpers, Agnes","3":"Die Linke","4":"ja","5":"100","6":"2011-07-08","7":"Panzerlieferung an Saudi-Arabien","8":"bt17"},{"1":"Saarland","2":"Altmaier, Peter","3":"CDU/CSU","4":"nein","5":"100","6":"2011-07-08","7":"Panzerlieferung an Saudi-Arabien","8":"bt17"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p>For the planned graph I need to extract the edge data (more on that later) and the node/vertex data. The latter is a dataframe containing details on the deputies. Apart from the name, the party and the state further data is added: the number of active periods and a factor-column encoding in which period(s) a deputy served.</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># select the data of interest</span>
+<span class='va'>voting_data_completed</span> <span class='op'>&lt;-</span> <span class='va'>voting_data</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>select</span><span class='op'>(</span><span class='va'>name</span>, <span class='va'>vote</span>, <span class='va'>p_id</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>arrange</span><span class='op'>(</span><span class='va'>p_id</span>, <span class='va'>name</span><span class='op'>)</span>
+
+<span class='co'># select the deputy info of interest</span>
+<span class='va'>deputies</span> <span class='op'>&lt;-</span> <span class='va'>voting_data_with_wp</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>distinct</span><span class='op'>(</span><span class='va'>name</span>, <span class='va'>w_period</span>, .keep_all <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>select</span><span class='op'>(</span><span class='va'>name</span>, <span class='va'>party</span>, <span class='va'>state</span>, <span class='va'>w_period</span><span class='op'>)</span> 
+
+<span class='co'># count the number of electoral periods in which a deputy was listed</span>
+<span class='va'>deputies_wps</span> <span class='op'>&lt;-</span> <span class='va'>deputies</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>count</span><span class='op'>(</span><span class='va'>name</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>rename</span><span class='op'>(</span>n_wp <span class='op'>=</span> <span class='va'>n</span><span class='op'>)</span>
+
+<span class='co'># the deputies are further grouped according to the periods in which they served.</span>
+<span class='co'># by calculating the mean of their respective active periods.</span>
+<span class='va'>deputies_wpclust</span> <span class='op'>&lt;-</span> <span class='va'>deputies</span> <span class='op'>%&gt;%</span> 
+    <span class='fu'>mutate</span><span class='op'>(</span>
+    wp_num <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'>str_remove</span><span class='op'>(</span><span class='va'>w_period</span>, <span class='st'>"^bt"</span><span class='op'>)</span><span class='op'>)</span>
+    <span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>name</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>summarise</span><span class='op'>(</span>wp_clust <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>wp_num</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>deputies_wps</span>, <span class='fu'>aes</span><span class='op'>(</span><span class='va'>n_wp</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_histogram</span><span class='op'>(</span>bins <span class='op'>=</span> <span class='fl'>3</span>, fill <span class='op'>=</span> <span class='va'>jolly_petrol</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>scale_x_continuous</span><span class='op'>(</span>breaks <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span><span class='op'>)</span>, labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"1"</span>, <span class='st'>"2"</span>, <span class='st'>"3"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>
+    title <span class='op'>=</span> <span class='st'>"How many legislative periods did the deputies serve?"</span>,
+    subtitle <span class='op'>=</span> <span class='st'>"Number of deputies voting for at least one poll in one, two or three legisl. periods."</span>,
+    x <span class='op'>=</span> <span class='st'>"Legislative periods"</span>,
+    y <span class='op'>=</span> <span class='st'>"Number of deputies"</span>,
+    caption <span class='op'>=</span> <span class='st'>"by jollydata.blog\nusing data from https://github.com/bundestag"</span>
+  <span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>jolly_theme</span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
+<img src="bundestag-part-iii_files/figure-html5/unnamed-chunk-1-1.png" alt="Distribution of the number of active legislative periods of all deputies." width="100%" />
+<p class="caption">
+Figure 1: Distribution of the number of active legislative periods of all deputies.
+</p>
+</div>
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>deputies_complete</span> <span class='op'>&lt;-</span> <span class='va'>deputies</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>left_join</span><span class='op'>(</span><span class='va'>deputies_wps</span>, by <span class='op'>=</span> <span class='st'>"name"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>left_join</span><span class='op'>(</span><span class='va'>deputies_wpclust</span>, by <span class='op'>=</span> <span class='st'>"name"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>mutate</span><span class='op'>(</span>
+    wp_clust_fct <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>n_wp</span> <span class='op'>==</span> <span class='fl'>3</span>, <span class='st'>"all_wp"</span>, <span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>wp_clust</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='op'>)</span>
+
+<span class='va'>deputies_distinct</span> <span class='op'>&lt;-</span> <span class='va'>deputies_complete</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>distinct</span><span class='op'>(</span><span class='va'>name</span>, .keep_all <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+</div>
+<!-- I then still split the data, even though I did not use the separate sets in the end. -->
+<h2 id="building-the-network">Building the network</h2>
+<p>As mentioned before, I chose a network analysis as approach to cluster the representatives according to their voting behaviour. The process includes three core functions written in R and the later visualiziation in cytoscape.</p>
+<div class="panelset">
+<section id="the-logic" class="panel-name panel">
+<h3 class="panel-name">The Logic</h3>
+<p>I posted the code in all detail in the next tab. The logic of the whole process goes as such:</p>
+<ol type="1">
+<li>In the <code>compose_graph</code>-function the votes dataframe is nested under the poll ID, i.e. for each poll ID there is a “sub-dataframe” containing the name of the deputy and her/his vote in that poll. Using <code>purrr::map()</code> each nested dataframe is passed to the <code>build_graph_dataframe</code> function.</li>
+<li>In <code>build_graph_dataframe</code> the votes of all <span class="math inline">\(N\)</span> deputies in the received poll data are compared to one another, creating a <span class="math inline">\(N\times N\)</span> matrix, where TRUE means “voted the same” and FALSE means “voted differently”. This boolean matrix is coerced into a numerical matrix of 0s and 1s and interpreted as adjacency matrix of a graph object, which is then converted to an edgelist. This edgelist-dataframe is returned to <code>compose_graph</code>.</li>
+<li>There, the now nested edgelists are unnested resulting in one huge edgelist (&gt;70 Million edges). This list is a representation of a <em>multi-graph</em>, where deputies can be linked to each other by multiple edges (one for each poll, in which they voted the same). Basically, deputies who voted similarly over the time of their career share more common edges.</li>
+<li>The multi-edges are then simplified as single, but weighted edges, where the weight is the number of the previously multiple edges connecting two nodes.</li>
+<li>The <code>export_to_cytoscape</code> function takes several agruments. By default it converts the edgelist to an adjacency matrix (containing the weights of the edges). Calling <code>cor()</code> calculates a correlation- or similarity-matrix from the adjacency matrix. In layman’s terms, this compares, how mathematically similar<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> each deputy is to the voting behaviour of all other representatives.<br />
+In technical terms, the resulting correlation matrix contains Pearson’s r for the weights in each column<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. More specific, the correlation is high, if two deputies share similarly weighted edges to common “neighbours”.</li>
+<li><code>export_to_cytoscape</code> filters the values to a given threshold (default is <span class="math inline">\(r &gt;= 0.5\)</span>) and reconstructs a now similarity-weighted edgelist, containing only edges between representatives, whose voting correlated with an r of at least 0.5. This filtered edgelist is then exported for use in Cytoscape.</li>
+<li><code>export_to_cytoscape</code> also exports a node-list containing the names and further information on the deputies (state, party affiliation, number of active legislative periods, …)</li>
+</ol>
+</section>
+<section id="the-code" class="panel-name panel">
+<h3 class="panel-name">The Code</h3>
+<p>To keep the blog post short, I collapsed these three functions. Feel free to unfold the code fot the three above mentioned funcions:</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># this is the central function for the construction of the graph/adjacency function</span>
+<span class='co'># it takes a dataframe with name and vote and returns an edgelist for deputies</span>
+<span class='co'># that votes the same in this datafram (= one particular poll)</span>
+<span class='va'>build_graph_dataframe</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>source_df</span><span class='op'>)</span> <span class='op'>{</span>
+  
+  <span class='co'># pull the votes and construct a named vector</span>
+  <span class='va'>votes_temp</span> <span class='op'>&lt;-</span> <span class='fu'>pull</span><span class='op'>(</span><span class='va'>source_df</span>, <span class='va'>vote</span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>votes_temp</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'>pull</span><span class='op'>(</span><span class='va'>source_df</span>, <span class='va'>name</span><span class='op'>)</span>
+  
+  <span class='co'># apply the comparison of the whole vector to each vector element</span>
+  <span class='co'># this returns a boolean matrix object with TRUE, when thwo deputies voted </span>
+  <span class='co'># the same, and FALSE in all other cases (voted differently or one vote is missing)</span>
+  <span class='co'># if two deputies were present but abstained from voting this was counted </span>
+  <span class='co'># as equal as well.</span>
+  <span class='va'>vote_edges_mat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>sapply</a></span><span class='op'>(</span><span class='va'>votes_temp</span>, <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='va'>x</span> <span class='op'>==</span> <span class='va'>votes_temp</span><span class='op'>)</span>
+  
+  <span class='co'># remove lower triangle (incl. diagonal) of the matrix to prevent duplicated </span>
+  <span class='co'># edges and eigenvectors</span>
+  <span class='va'>vote_edges_mat</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/lower.tri.html'>lower.tri</a></span><span class='op'>(</span><span class='va'>vote_edges_mat</span>, diag <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='cn'>NA</span>
+
+  <span class='co'># convert the matrix to a dataframe. Col-/rownames are the deputies' names due</span>
+  <span class='co'># to using a named vector above. This results in an edgelist with source- and </span>
+  <span class='co'># target nodes.</span>
+  <span class='va'>vote_edges_df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span><span class='op'>(</span><span class='va'>vote_edges_mat</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+    
+    <span class='co'># convert the rownames to a column of source-nodes</span>
+    <span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/rownames.html'>rownames_to_column</a></span><span class='op'>(</span><span class='st'>"from"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+      
+    <span class='co'># convert the columns into a column of target-nodes</span>
+    <span class='fu'>pivot_longer</span><span class='op'>(</span><span class='op'>-</span><span class='va'>from</span>, names_to <span class='op'>=</span> <span class='st'>"to"</span>, names_repair <span class='op'>=</span> <span class='st'>"minimal"</span>, values_to <span class='op'>=</span> <span class='st'>"same_vote"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    
+    <span class='co'># only keep the TRUE edges and remove the now obsolete "same_vote" column.</span>
+    <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>same_vote</span> <span class='op'>==</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>select</span><span class='op'>(</span><span class='va'>from</span>, <span class='va'>to</span><span class='op'>)</span>
+  
+  <span class='co'># return the edgelist</span>
+  <span class='kw'><a href='https://rdrr.io/r/base/function.html'>return</a></span><span class='op'>(</span><span class='va'>vote_edges_df</span><span class='op'>)</span>
+<span class='op'>}</span>
+</code></pre>
+</div>
+</details>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>compose_graph</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>votes_df</span>, <span class='va'>deputies_df</span>, <span class='va'>slug</span> <span class='op'>=</span> <span class='st'>"default_slug"</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='co'># input: </span>
+  <span class='co'># votes_df: a dataframe containing name, vote and p_id columns</span>
+  <span class='co'># deputies_df: a df containing name, party and state cols</span>
+  <span class='co'># slug: a slug to name all resulting csv files</span>
+  
+  
+  <span class='co'># takes the voting data (name, p_id and vote) and nests it under p_id</span>
+  <span class='va'>unnested_edgelist</span> <span class='op'>&lt;-</span> <span class='va'>votes_df</span> <span class='op'>%&gt;%</span> 
+    <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>p_id</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+    <span class='fu'>nest</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+    <span class='fu'>transmute</span><span class='op'>(</span>edgelists <span class='op'>=</span> <span class='fu'>map</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>build_graph_dataframe</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+    <span class='fu'>unnest</span><span class='op'>(</span><span class='va'>edgelists</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+    <span class='fu'>ungroup</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+    <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='va'>p_id</span><span class='op'>)</span>
+  
+  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='st'>"Edgelist created. Dimensions:"</span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span><span class='op'>(</span><span class='va'>unnested_edgelist</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='co'># store the composed edgelist for future quick access.</span>
+  <span class='va'>filename1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='va'>slug</span>, <span class='st'>"_allvotes_edgelist.rds"</span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/readRDS.html'>saveRDS</a></span><span class='op'>(</span><span class='va'>unnested_edgelist</span>, file <span class='op'>=</span> <span class='va'>filename1</span><span class='op'>)</span>
+  
+  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='st'>"Edgelist saved. Building multi edge graph..."</span><span class='op'>)</span>
+  <span class='co'># construct a graph from the edgelist. This creates multiple edges between</span>
+  <span class='co'># most of the deputies (one for each pollin which they voted the same).</span>
+  <span class='va'>multi_edge_graph</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/igraph/man/graph_from_data_frame.html'>graph_from_data_frame</a></span><span class='op'>(</span><span class='va'>unnested_edgelist</span>, directed <span class='op'>=</span> <span class='cn'>FALSE</span>, vertices <span class='op'>=</span> <span class='va'>deputies_df</span><span class='op'>)</span>
+  
+  <span class='fu'><a href='https://rdrr.io/r/base/rm.html'>rm</a></span><span class='op'>(</span><span class='va'>unnested_edgelist</span><span class='op'>)</span>
+  <span class='co'># add default weight = 1 to all edges</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/igraph/man/E.html'>E</a></span><span class='op'>(</span><span class='va'>multi_edge_graph</span><span class='op'>)</span><span class='op'>$</span><span class='va'>weight</span> <span class='op'>&lt;-</span> <span class='fl'>1</span>
+
+  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='st'>"Multigraph created. Moving on to saving it."</span><span class='op'>)</span>
+  
+  <span class='co'># save progress</span>
+  <span class='va'>filename2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='va'>slug</span>, <span class='st'>"_multi_edge_graph.rds"</span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/readRDS.html'>saveRDS</a></span><span class='op'>(</span><span class='va'>multi_edge_graph</span>, <span class='va'>filename2</span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='st'>"Multigraph saved. Reducing to weighted edge graph..."</span><span class='op'>)</span>
+
+
+  <span class='co'># combine the attributes (aka weights) using the sum function. Now each node</span>
+  <span class='co'># pair is connected by only one edge or none, but the number of same votes is</span>
+  <span class='co'># kept as weight for the particular edge.</span>
+  <span class='va'>voting_graph</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/igraph/man/simplify.html'>simplify</a></span><span class='op'>(</span><span class='va'>multi_edge_graph</span>, edge.attr.comb <span class='op'>=</span> <span class='st'>"sum"</span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/rm.html'>rm</a></span><span class='op'>(</span><span class='va'>multi_edge_graph</span><span class='op'>)</span>
+
+  <span class='co'># save progress</span>
+  <span class='va'>filename3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='va'>slug</span>, <span class='st'>"_voting_graph.rds"</span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/readRDS.html'>saveRDS</a></span><span class='op'>(</span><span class='va'>voting_graph</span>, <span class='va'>filename3</span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='st'>"All saved."</span><span class='op'>)</span>
+  
+  <span class='fu'><a href='https://rdrr.io/r/base/rm.html'>rm</a></span><span class='op'>(</span><span class='va'>voting_graph</span><span class='op'>)</span>
+<span class='op'>}</span>
+</code></pre>
+</div>
+</details>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>export_to_cytoscape</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>g</span>, <span class='va'>similarity</span> <span class='op'>=</span> <span class='cn'>TRUE</span>, <span class='va'>slug</span> <span class='op'>=</span> <span class='st'>"default"</span>, <span class='va'>sim_threshold</span> <span class='op'>=</span> <span class='fl'>0.7</span>, <span class='va'>with_spearman</span> <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='co'># inputs</span>
+  <span class='co'># a graph object g</span>
+  <span class='co'># similarity: chooses if the similarity of the deputies should be exported for</span>
+  <span class='co'># cytoscape (TRUE, default) or the raw edges representing equal votes (FALSE)</span>
+  <span class='co'># slug: prefix for the filenames</span>
+
+  <span class='co'># convert the graph to a dataframe</span>
+  <span class='va'>cytoscape_export_df</span> <span class='op'>&lt;-</span> <span class='fu'>igraph</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/graph_from_data_frame.html'>as_data_frame</a></span><span class='op'>(</span><span class='va'>g</span>, what <span class='op'>=</span> <span class='st'>"both"</span><span class='op'>)</span>
+
+  <span class='kw'>if</span> <span class='op'>(</span><span class='va'>similarity</span> <span class='op'>==</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+
+    <span class='co'># store nodes as nodelist (import as simple csv resulted in errors in cytoscape, so ; is used)</span>
+    <span class='va'>filename1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='va'>slug</span>, <span class='st'>"_nodelist.csv"</span><span class='op'>)</span>
+    <span class='va'>cytoscape_export_df</span><span class='op'>$</span><span class='va'>vertices</span> <span class='op'>%&gt;%</span>
+      <span class='fu'>write_delim</span><span class='op'>(</span><span class='va'>filename1</span>, delim <span class='op'>=</span> <span class='st'>";"</span><span class='op'>)</span>
+
+    <span class='co'># store edges as edgelist</span>
+    <span class='va'>filename2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='va'>slug</span>, <span class='st'>"_edgelist.csv"</span><span class='op'>)</span>
+    <span class='va'>cytoscape_export_df</span><span class='op'>$</span><span class='va'>edges</span> <span class='op'>%&gt;%</span>
+      <span class='fu'>write_delim</span><span class='op'>(</span><span class='st'>"edgelist.csv"</span>, delim <span class='op'>=</span> <span class='st'>";"</span><span class='op'>)</span>
+  <span class='op'>}</span> <span class='kw'>else</span> <span class='op'>{</span>
+    <span class='co'># convert graph to adjacency matrix. Directly obtaining a regular/full matrix didn't</span>
+    <span class='co'># work, maybe due to memory issues during conversion?</span>
+    <span class='co'># So the graph is converted as sparse matrix (keeping the weights as values) and then to a full matrix</span>
+    <span class='va'>A</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/igraph/man/as_adjacency_matrix.html'>as_adjacency_matrix</a></span><span class='op'>(</span><span class='va'>g</span>, attr <span class='op'>=</span> <span class='st'>"weight"</span>, sparse <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span>
+    <span class='va'>Af</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span><span class='op'>(</span><span class='va'>A</span><span class='op'>)</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span><span class='op'>(</span><span class='va'>Af</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fl'>0.001</span>
+
+    <span class='kw'>if</span> <span class='op'>(</span><span class='va'>with_spearman</span> <span class='op'>==</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>{</span>
+      <span class='co'># perform correlation (spearman)</span>
+      <span class='va'>S</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cor</a></span><span class='op'>(</span><span class='va'>Af</span>, method <span class='op'>=</span> <span class='st'>"spearman"</span><span class='op'>)</span>
+      <span class='va'>filename3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='va'>slug</span>, <span class='st'>"_spearman_"</span>, <span class='va'>sim_threshold</span>, <span class='st'>"nodelist.csv"</span><span class='op'>)</span>
+      <span class='va'>filename4</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='va'>slug</span>, <span class='st'>"_spearman_"</span>, <span class='va'>sim_threshold</span>, <span class='st'>"edgelist.csv"</span><span class='op'>)</span>
+    <span class='op'>}</span> <span class='kw'>else</span> <span class='op'>{</span>
+      <span class='co'># perform correlation (pearson)</span>
+      <span class='va'>S</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cor</a></span><span class='op'>(</span><span class='va'>Af</span><span class='op'>)</span>
+      <span class='va'>filename3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='va'>slug</span>, <span class='st'>"_pearson_"</span>, <span class='va'>sim_threshold</span>, <span class='st'>"nodelist.csv"</span><span class='op'>)</span>
+      <span class='va'>filename4</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='va'>slug</span>, <span class='st'>"_pearson_"</span>, <span class='va'>sim_threshold</span>, <span class='st'>"edgelist.csv"</span><span class='op'>)</span>
+    <span class='op'>}</span>
+
+    <span class='co'># set diagonal to 0</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span><span class='op'>(</span><span class='va'>S</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fl'>0</span>
+
+    <span class='co'># convert back to graph ("similarity graph")</span>
+    <span class='va'>sim_graph</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/igraph/man/graph_from_adjacency_matrix.html'>graph_from_adjacency_matrix</a></span><span class='op'>(</span><span class='va'>S</span>, weighted <span class='op'>=</span> <span class='cn'>TRUE</span>, mode <span class='op'>=</span> <span class='st'>"undirected"</span><span class='op'>)</span>
+
+    <span class='co'># convert graph to dataframe (edgelist including weight column)</span>
+    <span class='va'>sim_df</span> <span class='op'>&lt;-</span> <span class='fu'>igraph</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/graph_from_data_frame.html'>as_data_frame</a></span><span class='op'>(</span><span class='va'>sim_graph</span>, what <span class='op'>=</span> <span class='st'>"edges"</span><span class='op'>)</span>
+
+    <span class='co'># filter for edges with a high weight (aka connecting similar deputies) and</span>
+    <span class='co'># write to file for later import into cytoscape</span>
+
+    <span class='va'>sim_df</span> <span class='op'>%&gt;%</span>
+      <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>weight</span> <span class='op'>&gt;</span> <span class='va'>sim_threshold</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+      <span class='fu'>write_delim</span><span class='op'>(</span><span class='va'>filename4</span>, delim <span class='op'>=</span> <span class='st'>";"</span><span class='op'>)</span>
+
+    <span class='va'>nodelist_df</span> <span class='op'>&lt;-</span> <span class='fu'>igraph</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/igraph/man/graph_from_data_frame.html'>as_data_frame</a></span><span class='op'>(</span><span class='va'>g</span>, what <span class='op'>=</span> <span class='st'>"vertices"</span><span class='op'>)</span>
+    <span class='va'>nodelist_df</span> <span class='op'>%&gt;%</span>
+      <span class='fu'>write_delim</span><span class='op'>(</span><span class='va'>filename3</span>, delim <span class='op'>=</span> <span class='st'>";"</span><span class='op'>)</span>
+  <span class='op'>}</span>
+<span class='op'>}</span>
+</code></pre>
+</div>
+</details>
+</div>
+<p>The following code passes the previously prepared data to the above functions.</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># run function for the bt17 data</span>
+<span class='fu'>compose_graph</span><span class='op'>(</span><span class='va'>voting_data_completed</span>, <span class='va'>deputies_distinct</span>, slug <span class='op'>=</span> <span class='st'>"all_wpcluster"</span><span class='op'>)</span>
+
+<span class='co'># resulting graph object are stored to "all_wpcluster_voting_graph.rds"</span>
+</code></pre>
+</div>
+</details>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>h</span> <span class='op'>&lt;-</span> <span class='fu'>read_rds</span><span class='op'>(</span><span class='st'>"all_wpcluster_voting_graph.rds"</span><span class='op'>)</span>
+
+<span class='fu'>export_to_cytoscape</span><span class='op'>(</span>g <span class='op'>=</span> <span class='va'>h</span>, slug <span class='op'>=</span> <span class='st'>"all_wpclust"</span>, similarity <span class='op'>=</span> <span class='cn'>TRUE</span>, sim_threshold <span class='op'>=</span> <span class='fl'>0.5</span>, with_spearman <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+</div>
+</section>
+</div>
+<h2 id="visually-analysing-the-network">Visually analysing the network</h2>
+<p>Finally, the data is in the right shape for a visual representation of the graph! As mentioned above the software Cytoscape is used. After loading the edges and nodes into the work environment in Cytoscape, the graph layout is computed. For this the “Prefuse Force Dîrected Layout” is used with the addition, that the edge-weights are being respected.</p>
+<blockquote>
+The force-directed layout is a layout based on the “force-directed” paradigm. This layout is based on the algorithm implemented as part of the prefuse toolkit provided by Jeff Heer.
+<footer>
+— <a href="https://manual.cytoscape.org/en/3.8.2/Navigation_and_Layout.html?highlight=prefuse" class="uri">https://manual.cytoscape.org/en/3.8.2/Navigation_and_Layout.html?highlight=prefuse</a>
+</footer>
+</blockquote>
+<p>The nodes and edges are positioned according to a simulated physical environment, “by assigning forces among the set of edges and the set of nodes, based on their relative positions, and then using these forces either to simulate the motion of the edges and nodes or to minimize their energy”<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
+<p>Note that the distances between nodes are not proportional to the mathematical similarity, nor does proximity necessarily mean strong similarity in voting behaviour. The layout algorithm optimizes the node positions by approximation, so clusters are generally tightly interlinked within, but few connections to the next cluster allows the clusters to stay apart. However, keep in mind, that these results are not as accurate, as e.g. clustering algorithms in a PCA.</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/include_graphics.html'>include_graphics</a></span><span class='op'>(</span><span class='st'>"images/wp_clust_marked_400.png"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
+<img src="images/wp_clust_marked_400.png" alt="A force-directed layout of the parlamentarians of three legislative periods. The deputies are generally clustered into govrernment vs oppositionn. Within these superclusters there is a separation into clusters of deputies active in only one legislative period, while they are connected by deputies serving two or all three periods. Graph created with Cytoscape, using the weighted 'Prefuse Force Dîrected Layout'. Dotted lines were added afterwards to indicate and annotate the clusters. Political parties: CDU/CSU (black), SPD (red), Die Grünen (green), Linke (purple), FDP (yellow), AfD (blue)." width="100%" />
+<p class="caption">
+Figure 2: A force-directed layout of the parlamentarians of three legislative periods. The deputies are generally clustered into govrernment vs oppositionn. Within these superclusters there is a separation into clusters of deputies active in only one legislative period, while they are connected by deputies serving two or all three periods. Graph created with Cytoscape, using the weighted ‘Prefuse Force Dîrected Layout’. Dotted lines were added afterwards to indicate and annotate the clusters. Political parties: CDU/CSU (black), SPD (red), Die Grünen (green), Linke (purple), FDP (yellow), AfD (blue).
+</p>
+</div>
+</div>
+<p>The above image shows a pleasing clustering into party affiliation and legislative periods. For a closer look, here is the <a href="images/wp_clust_marked.png">full size version</a>. A more detailed view, where the nodes have been spread out, so that the representatives’ names fit as a label can be found <a href="images/wp_clust_detail2.png">here</a>. The dotted lines are there to indicate “regions” not clear boundaries.</p>
+<p>There are a few findings that I want to point out:</p>
+<ul>
+<li>There is a clear overall separation between the governing coalitions and the opposing parties.</li>
+<li>As the <em>FDP</em> was governing in BT17, was not elected into BT18 and rejoined the Bundestag in BT19 they are split into two groups connected by only a few deputies, that were present in both LPs.</li>
+<li>The deputies of the opposition are roughly grouped into two distant clusters of deputies serving only in BT17 and BT19. Inbetween they are linked by those representatives who served in two or all three LPs. As they do have common votes with either or both “sides”, they connect the BT17 and BT19 clusters nicely.</li>
+<li>The opposition clusters even show a quite distinguishable “longitudinal” clustering, as the two strains of <em>Die Grünen</em> and <em>Die Linke</em> do not mix much and run more or less parallel but separate across the three legislative periods. I hoped to see something like that.</li>
+<li>The BT17-Opposition-Cluster also contains the <em>SPD</em> deputies that were part of the opposition in BT17. This cluster is linked to the <em>SPD</em>-deputies that also served in the governing coalition of BT18.</li>
+</ul>
+<h2 id="conclusions">Conclusions</h2>
+<p>The goal of this post was to visually cluster the voting behaviour and compare it to party membership and legislative period.</p>
+<p>The results above show, that this was achieved and the plot contains interesting findings both in the overview version (Fig. 2), as well as in the detailed, labeled version.</p>
+<p>After this exploratory visual analysis I want to dive deeper into a more accurate analysis. This will be part of a new blog post. If you’re interested in the technical hurdles I had to overcome during the above analysis, check out my (soon to be published) “below deck” companion post for this series.</p>
+<h2 id="comments">Comments</h2>
+<p>Did you also have troubles handling large data in igraph or ggraph and found a way to minimize memory usage? I’d like to hear it!</p>
+<p>Also, do you know of other ways to do cluster analysis on categorical data with many missing data points?</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>You can also check out <a href="https://jollydata.blog/posts/2021-03-14-bundestag-part-ii-web-scraping-the-roll-call-votes/">Part II</a>, but I did not use the data collected there. I keep that blog post for reference, but use the data collected and prepared in <a href="https://jollydata.blog/posts/2021-03-22-bundestag-part-ii1/">Part II.1</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>I could have dummy-coded / one-hot-encoded the vote categories, but that would have resulted in way more features than deputies, which seemed strange. I might reconsider this in the future…<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>and crashed<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>another name is <em>vertex</em><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p>on a scale from -1: completely different to 1: identical<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6" role="doc-endnote"><p>= deputy<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7" role="doc-endnote"><p>For more information on force-directed layouts, there is a <a href="https://en.wikipedia.org/wiki/Force-directed_graph_drawing">Wikipedia article</a>.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>

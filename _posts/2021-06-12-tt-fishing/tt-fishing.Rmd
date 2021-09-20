@@ -1,0 +1,176 @@
+---
+title: "TidyTuesday 2021 week 24: Great Lakes Commercial Fishing"
+description: |
+  An analysis of the commercial fish production in the Great Lakes 1867 - 2015. Using beeswarm plots to produce schools of fish. My very first submission for #TidyTuesday!
+author:
+  - name: Christian A. Gebhard
+    url:
+      https://jollydata.blog/about.html: {}
+date: 2021-06-14
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: true
+    toc-floating: true
+    code_folding: true
+draft: false
+categories:
+  - R
+  - tidy tuesday
+  - experimental
+  - environment
+base_url: https://jollydata.blog/posts/2021-06-12-tt-fishing/
+preview: images/preview_fish.png
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      collapse = FALSE,
+                      comment = "#>",
+                      fig.retina = 2, # Control using dpi
+                      fig.width = 6,  # generated images
+                      fig.align = "center",
+                      dpi = 72, 
+                      out.width = "100%",
+                      dev = "png",
+                      dev.args = list(png = list(type = "cairo-png")),
+                      optipng = "-o1 -quiet")
+
+xaringanExtra::use_panelset()
+
+source("../../resources/jolly_theme.R", local = knitr::knit_global())
+library("r2symbols")
+
+```
+
+*last updated: `r Sys.Date()`*
+
+## About Tidy Tuesday and The Data
+
+The #TidyTuesday is a project by the "R for Data Science Online Learning Community". Each week a well documented dataset provided for the community to explore and visualize. Further information can be found in the [github repository](https://github.com/rfordatascience/tidytuesday).
+
+In week 24 of 2021 the provided dataset is on the commercial fishing production of the Great Lakes (Erie, Superior and Michigan). The dataset description and links to further resources can be found in [this weeks data repository](https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-06-08).
+
+Thanks to the [Great Lakes Fishery Commission](http://www.glfc.org/great-lakes-databases.php) for providing the data openly and thanks to the R for Data Science project for cleaning and preparing the dataset.
+
+## Schools of Fish
+
+This is a rather short post, as time ran out before the next release of Tidy Tuesday. I wanted to play around with using icons within plots and the result is an implementation of beeswarm plots that resemble schools of fish. The raw code ^[executable without my blog specific ressources] can be found [in my repository](https://github.com/nucleic-acid/TidyTuesdaySubmissions/tree/main/2021_week_24). Below is the code to produce the blog version of the plot.
+
+### Libraries and Setup
+```{r}
+library(tidyverse)
+library(emojifont)
+library(ggbeeswarm)
+```
+
+
+## Loading and Inspecting the Data
+
+
+```{r}
+tuesdata <- tidytuesdayR::tt_load('2021-06-08')
+
+glimpse(tuesdata$fishing)
+
+fishing <- tuesdata$fishing
+head(fishing)
+
+glimpse(fishing)
+
+```
+
+### Cleaning
+
+```{r}
+fishing_clean <- fishing |>
+  mutate(
+    species = case_when(
+      str_detect(species, "[Cc]atfish|[Bb]ullhead") ~ "Channel Catfish and Bullheads",
+      str_detect(species, "[Cc]isco|[Cc]hub") ~ "Cisco and Chubs",
+      str_detect(species, "[Ww]alleye|(Blue Pike)") ~ "Walleye and Blue Pike",
+      str_detect(species, "[Rr]ock [Bb]ass|[Cc]rappie") ~ "Rock Bass and Crappie",
+      str_detect(species, "[Pp]acific [Ss]almon") ~ "Pacific Salmon",
+      TRUE ~ species
+    )
+  ) |>
+  filter(
+    region %in% c("U.S. Total", "Total Canada (ONT)"),
+    !is.na(values)
+  ) |>
+  group_by(species, year) |>
+  mutate(yearly_total_US_CA = sum(values)) |> 
+  distinct(year, species, yearly_total_US_CA)
+
+ 
+fishing_filtered <- fishing_clean |> 
+  group_by(species) |> 
+  summarise(t = sum(yearly_total_US_CA)) |>
+  filter(t > 500000)
+
+fishing_final <- fishing_clean |> 
+  right_join(fishing_filtered, by = "species")
+
+
+```
+### Visualizations
+
+This is a classical line plot showing the commercial production over time for the six most prominent species:
+
+```{r, fig.width=8, fig.height=6, layout="l-page"}
+fishing_final |> 
+  ggplot(
+    aes(year, yearly_total_US_CA, color = species)
+  ) +
+  labs(
+    title = "Yearly production of fish in the Great Lakes",
+    subtitle = "Combined (US + CA) commercial production of the 6 most prominent species\nof fish in Lakes Erie, Michigan, Superior.",
+    x = "Year",
+    y = "Commercially produced fish in 1000 pounds",
+    caption = "jollydata.blog 2021\nData Source: Great Lakes Fishery Commission."
+  ) +
+  geom_line() +
+  jolly_theme()
+```
+
+The experimental plot with the beeswarm plots looks like this^[Explanation in the alt-text of the plot]:
+
+```{r, layout="l-body-outset", fig.width=7, fig.height=12, fig.alt = "Beeswarm plot showing the amount of commercial production of 6 fish species in the Great Lakes from 1867 to 2015. The rather experimental implementation of horizontal beeswarm plots depicts fish-icons as points within the swarm, each icon representing 1000 tonnes of produced fish. Accordingly, in years of high production the beeswarm is thicker and shows more icons."}
+list.emojifonts()
+load.fontawesome()
+load.emojifont("OpenSansEmoji.ttf")
+search_emoji('fish')
+
+
+fishing_final |> 
+  mutate(ktonnes = round(yearly_total_US_CA * 0.4535924 * 0.001)) |> 
+  uncount(ktonnes) |> 
+  ggplot(aes(x=species, y=year, color = species)) +
+    geom_text(label = emoji("fish"), family="OpenSansEmoji", size=4, alpha = 0.3, position = position_quasirandom(bandwidth = 0.75, varwidth = F)) +
+    # geom_quasirandom() +
+    labs(
+      title = "Commercial Fish Production in the Great Lakes 1867-2015",
+      subtitle = "Combined (US + CA) commercial production of the 6 most prominent species\nof fish in Lakes Erie, Michigan, Superior.",
+      x = "Species\n(Each fish-icon represents 1000 tonnes of produced fish.)",
+      y = "Year",
+      caption = "\nSource: Great Lakes Fishery Commission | by jollydata.blog 2021 for week 24 of #TidyTuesday"
+    ) +
+    scale_y_continuous(
+      breaks = c(1900, 1950, 2000), 
+      minor_breaks = c(1870, 1880, 1890, 1910, 1920, 1930, 1940, 1960, 1970, 1980, 1990, 2010)
+      ) +
+    scale_color_manual(values =  c("#F39F5C", "#EC836D", "#2D7F89", "#E86B72", "#29BCCE", "#56BB83")) +
+    coord_flip() +
+    jolly_theme() +
+    theme(legend.position = "none")
+  
+ggsave(last_plot(), filename = "images/2021-24_TT_fishing.pdf",device = "pdf", 
+                width = 10, height = 20, dpi = 500)
+```
+A (rather large) PDF version of the plot can be found [here](images/2021-24_TT_fishing.pdf).
+
+## Conclusion
+The resulting plot gives an overview of the relative yearly productions, similar to a stream plot, without going into too much detail. It shows that there was a relatively short period of an "Alewife burst" coinciding with drastically reduced productions of Cisco, Chubs, Lake Trouts, Walley and Blue Pike.
+
+I enjoyed playing around with the `{ggbeeswarm}` package and `{emojifont}` package. Getting the latter one to work in the intended way was rather tedious, but possible in the end.

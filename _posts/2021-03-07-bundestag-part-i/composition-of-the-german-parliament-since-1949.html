@@ -1,0 +1,2890 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { color: #20794d; } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #20794d; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
+  <!--radix_placeholder_meta_tags-->
+  <title>German Bundestag - Part I: members of the parliament</title>
+
+  <meta property="description" itemprop="description" content="An analysis of the german national parliament (&quot;Bundestag&quot;). This first part focuses on biographical data of the elected representatives and the composition of the parliament over time."/>
+
+
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2021-03-07"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-03-07"/>
+  <meta name="article:author" content="Christian A. Gebhard"/>
+
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="German Bundestag - Part I: members of the parliament"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="An analysis of the german national parliament (&quot;Bundestag&quot;). This first part focuses on biographical data of the elected representatives and the composition of the parliament over time."/>
+  <meta property="og:locale" content="en_US"/>
+
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="German Bundestag - Part I: members of the parliament"/>
+  <meta property="twitter:description" content="An analysis of the german national parliament (&quot;Bundestag&quot;). This first part focuses on biographical data of the elected representatives and the composition of the parliament over time."/>
+
+  <!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","draft","categories","preview"]}},"value":[{"type":"character","attributes":{},"value":["German Bundestag - Part I: members of the parliament"]},{"type":"character","attributes":{},"value":["An analysis of the german national parliament (\"Bundestag\"). This first part focuses on biographical data of the elected representatives and the composition of the parliament over time.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Christian A. Gebhard"]}]}]},{"type":"character","attributes":{},"value":["2021-03-07"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_float","code_folding"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["R","politics","germany"]},{"type":"character","attributes":{},"value":["images/Bundestag_2017.svg"]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["composition-of-the-german-parliament-since-1949_files/anchor-4.2.2/anchor.min.js","composition-of-the-german-parliament-since-1949_files/bowser-1.9.3/bowser.min.js","composition-of-the-german-parliament-since-1949_files/distill-2.2.21/template.v2.js","composition-of-the-german-parliament-since-1949_files/figure-html5/unnamed-chunk-1-1.png","composition-of-the-german-parliament-since-1949_files/figure-html5/unnamed-chunk-10-1.png","composition-of-the-german-parliament-since-1949_files/figure-html5/unnamed-chunk-13-1.png","composition-of-the-german-parliament-since-1949_files/figure-html5/unnamed-chunk-14-1.png","composition-of-the-german-parliament-since-1949_files/figure-html5/unnamed-chunk-15-1.png","composition-of-the-german-parliament-since-1949_files/figure-html5/unnamed-chunk-16-1.png","composition-of-the-german-parliament-since-1949_files/figure-html5/unnamed-chunk-17-1.png","composition-of-the-german-parliament-since-1949_files/figure-html5/unnamed-chunk-18-1.png","composition-of-the-german-parliament-since-1949_files/figure-html5/unnamed-chunk-2-1.png","composition-of-the-german-parliament-since-1949_files/figure-html5/unnamed-chunk-4-1.png","composition-of-the-german-parliament-since-1949_files/figure-html5/unnamed-chunk-5-1.png","composition-of-the-german-parliament-since-1949_files/figure-html5/unnamed-chunk-6-1.png","composition-of-the-german-parliament-since-1949_files/figure-html5/unnamed-chunk-7-1.png","composition-of-the-german-parliament-since-1949_files/header-attrs-2.6.4/header-attrs.js","composition-of-the-german-parliament-since-1949_files/jquery-1.11.3/jquery.min.js","composition-of-the-german-parliament-since-1949_files/pagedtable-1.1/css/pagedtable.css","composition-of-the-german-parliament-since-1949_files/pagedtable-1.1/js/pagedtable.js","composition-of-the-german-parliament-since-1949_files/panelset-0.2.4/panelset.css","composition-of-the-german-parliament-since-1949_files/panelset-0.2.4/panelset.js","composition-of-the-german-parliament-since-1949_files/popper-2.6.0/popper.min.js","composition-of-the-german-parliament-since-1949_files/tippy-6.2.7/tippy-bundle.umd.min.js","composition-of-the-german-parliament-since-1949_files/tippy-6.2.7/tippy-light-border.css","composition-of-the-german-parliament-since-1949_files/tippy-6.2.7/tippy.css","composition-of-the-german-parliament-since-1949_files/tippy-6.2.7/tippy.umd.min.js","composition-of-the-german-parliament-since-1949_files/webcomponents-2.0.0/webcomponents.js","images/Bundestag_2017.svg","images/DBP_1949_112_Bundestag.jpg","images/header.jpg"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+
+  <style type="text/css">
+
+  body {
+    background-color: white;
+  }
+
+  .pandoc-table {
+    width: 100%;
+  }
+
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+
+  d-byline .byline {
+    grid-template-columns: 2fr 2fr;
+  }
+
+  d-byline .byline h3 {
+    margin-block-start: 1.5em;
+  }
+
+  d-byline .byline .authors-affiliations h3 {
+    margin-block-start: 0.5em;
+  }
+
+  .authors-affiliations .orcid-id {
+    width: 16px;
+    height:16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    vertical-align: middle;
+    padding-bottom: 2px;
+  }
+
+  d-title .dt-tags {
+    margin-top: 1em;
+    grid-column: text;
+  }
+
+  .dt-tags .dt-tag {
+    text-decoration: none;
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0em 0.4em;
+    margin-right: 0.5em;
+    margin-bottom: 0.4em;
+    font-size: 70%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  d-article table.gt_table td,
+  d-article table.gt_table th {
+    border-bottom: none;
+  }
+
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .shaded-content {
+    background: white;
+  }
+
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  d-article {
+    padding-top: 2.5rem;
+    padding-bottom: 30px;
+  }
+
+  d-appendix {
+    padding-top: 30px;
+  }
+
+  d-article>p>img {
+    width: 100%;
+  }
+
+  d-article h2 {
+    margin: 1rem 0 1.5rem 0;
+  }
+
+  d-article h3 {
+    margin-top: 1.5rem;
+  }
+
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+
+  /* Tweak code blocks */
+
+  d-article div.sourceCode code,
+  d-article pre code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: auto;
+  }
+
+  d-article div.sourceCode {
+    background-color: white;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+
+  d-article pre {
+    font-size: 12px;
+    color: black;
+    background: none;
+    margin-top: 0;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  d-article pre a {
+    border-bottom: none;
+  }
+
+  d-article pre a:hover {
+    border-bottom: none;
+    text-decoration: underline;
+  }
+
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+
+  @media(min-width: 768px) {
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: visible !important;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 18px;
+    font-size: 14px;
+  }
+
+  d-article pre {
+    font-size: 14px;
+  }
+
+  }
+
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  /* CSS for d-contents */
+
+  .d-contents {
+    grid-column: text;
+    color: rgba(0,0,0,0.8);
+    font-size: 0.9em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 0.25em;
+    justify-self: start;
+  }
+
+  @media(min-width: 1000px) {
+    .d-contents.d-contents-float {
+      height: 0;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      justify-self: center;
+      padding-right: 3em;
+      padding-left: 2em;
+    }
+  }
+
+  .d-contents nav h3 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+
+  .d-contents li {
+    list-style-type: none
+  }
+
+  .d-contents nav > ul {
+    padding-left: 0;
+  }
+
+  .d-contents ul {
+    padding-left: 1em
+  }
+
+  .d-contents nav ul li {
+    margin-top: 0.6em;
+    margin-bottom: 0.2em;
+  }
+
+  .d-contents nav a {
+    font-size: 13px;
+    border-bottom: none;
+    text-decoration: none
+    color: rgba(0, 0, 0, 0.8);
+  }
+
+  .d-contents nav a:hover {
+    text-decoration: underline solid rgba(0, 0, 0, 0.6)
+  }
+
+  .d-contents nav > ul > li > a {
+    font-weight: 600;
+  }
+
+  .d-contents nav > ul > li > ul {
+    font-weight: inherit;
+  }
+
+  .d-contents nav > ul > li > ul > li {
+    margin-top: 0.2em;
+  }
+
+
+  .d-contents nav ul {
+    margin-top: 0;
+    margin-bottom: 0.25em;
+  }
+
+  .d-article-with-toc h2:nth-child(2) {
+    margin-top: 0;
+  }
+
+
+  /* Figure */
+
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+
+  .figure img {
+    width: 100%;
+  }
+
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+
+  /* Citations */
+
+  d-article .citation {
+    color: inherit;
+    cursor: inherit;
+  }
+
+  div.hanging-indent{
+    margin-left: 1em; text-indent: -1em;
+  }
+
+  /* Citation hover box */
+
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
+  }
+
+
+  /* Tweak 1000px media break to show more text */
+
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+
+    .grid {
+      grid-column-gap: 16px;
+    }
+
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+
+
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  /* Include appendix styles here so they can be overridden */
+
+  d-appendix {
+    contain: layout style;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-top: 60px;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0,0,0,0.5);
+    padding-top: 60px;
+    padding-bottom: 48px;
+  }
+
+  d-appendix h3 {
+    grid-column: page-start / text-start;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.65);
+  }
+
+  d-appendix h3 + * {
+    margin-top: 1em;
+  }
+
+  d-appendix ol {
+    padding: 0 0 0 15px;
+  }
+
+  @media (min-width: 768px) {
+    d-appendix ol {
+      padding: 0 0 0 30px;
+      margin-left: -30px;
+    }
+  }
+
+  d-appendix li {
+    margin-bottom: 1em;
+  }
+
+  d-appendix a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  d-appendix > * {
+    grid-column: text;
+  }
+
+  d-appendix > d-footnote-list,
+  d-appendix > d-citation-list,
+  d-appendix > distill-appendix {
+    grid-column: screen;
+  }
+
+  /* Include footnote styles here so they can be overridden */
+
+  d-footnote-list {
+    contain: layout style;
+  }
+
+  d-footnote-list > * {
+    grid-column: text;
+  }
+
+  d-footnote-list a.footnote-backlink {
+    color: rgba(0,0,0,0.3);
+    padding-left: 0.5em;
+  }
+
+
+
+  /* Anchor.js */
+
+  .anchorjs-link {
+    /*transition: all .25s linear; */
+    text-decoration: none;
+    border-bottom: none;
+  }
+  *:hover > .anchorjs-link {
+    margin-left: -1.125em !important;
+    text-decoration: none;
+    border-bottom: none;
+  }
+
+  /* Social footer */
+
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+
+  .disqus-comments {
+    margin-right: 30px;
+  }
+
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+
+  #disqus_thread {
+    margin-top: 30px;
+  }
+
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+
+
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+
+
+  .sidebar-section.custom {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .custom p {
+    margin-bottom: 0.5em;
+  }
+
+  /* Styles for listing layout (hide title) */
+  .layout-listing d-title, .layout-listing .d-title {
+    display: none;
+  }
+
+  /* Styles for posts lists (not auto-injected) */
+
+
+  .posts-with-sidebar {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+
+  .posts-list .description h2,
+  .posts-list .description p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  .posts-list .description h2 {
+    font-weight: 700;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .posts-list h2.post-tag {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 12px;
+  }
+  .posts-list {
+    margin-top: 60px;
+    margin-bottom: 24px;
+  }
+
+  .posts-list .post-preview {
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 24px 0;
+  }
+
+  .post-preview-last {
+    border-bottom: none !important;
+  }
+
+  .posts-list .posts-list-caption {
+    grid-column: screen;
+    font-weight: 400;
+  }
+
+  .posts-list .post-preview h2 {
+    margin: 0 0 6px 0;
+    line-height: 1.2em;
+    font-style: normal;
+    font-size: 24px;
+  }
+
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.4em;
+    font-size: 16px;
+  }
+
+  .posts-list .post-preview .thumbnail {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    position: relative;
+    max-width: 500px;
+  }
+  .posts-list .post-preview img {
+    width: 100%;
+    display: block;
+  }
+
+  .posts-list .metadata {
+    font-size: 12px;
+    line-height: 1.4em;
+    margin-bottom: 18px;
+  }
+
+  .posts-list .metadata > * {
+    display: inline-block;
+  }
+
+  .posts-list .metadata .publishedDate {
+    margin-right: 2em;
+  }
+
+  .posts-list .metadata .dt-authors {
+    display: block;
+    margin-top: 0.3em;
+    margin-right: 2em;
+  }
+
+  .posts-list .dt-tags {
+    display: block;
+    line-height: 1em;
+  }
+
+  .posts-list .dt-tags .dt-tag {
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0.3em 0.4em;
+    margin-right: 0.2em;
+    margin-bottom: 0.4em;
+    font-size: 60%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .posts-list img {
+    opacity: 1;
+  }
+
+  .posts-list img[data-src] {
+    opacity: 0;
+  }
+
+  .posts-more {
+    clear: both;
+  }
+
+
+  .posts-sidebar {
+    font-size: 16px;
+  }
+
+  .posts-sidebar h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .sidebar-section {
+    margin-bottom: 30px;
+  }
+
+  .categories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .categories li {
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 0;
+  }
+
+  .categories li>a {
+    border-bottom: none;
+  }
+
+  .categories li>a:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
+
+  .categories .active {
+    font-weight: 600;
+  }
+
+  .categories .category-count {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+
+  @media(min-width: 768px) {
+    .posts-list .post-preview h2 {
+      font-size: 26px;
+    }
+    .posts-list .post-preview .thumbnail {
+      float: right;
+      width: 30%;
+      margin-bottom: 0;
+    }
+    .posts-list .post-preview .description {
+      float: left;
+      width: 45%;
+    }
+    .posts-list .post-preview .metadata {
+      float: left;
+      width: 20%;
+      margin-top: 8px;
+    }
+    .posts-list .post-preview p {
+      margin: 0 0 12px 0;
+      line-height: 1.5em;
+      font-size: 16px;
+    }
+    .posts-with-sidebar .posts-list {
+      float: left;
+      width: 75%;
+    }
+    .posts-with-sidebar .posts-sidebar {
+      float: right;
+      width: 20%;
+      margin-top: 60px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+
+
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+
+
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  .downlevel .posts-list .post-preview {
+    color: inherit;
+  }
+
+
+
+  </style>
+
+  <script type="application/javascript">
+
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+
+  // show body when load is complete
+  function on_load_complete() {
+
+    // add anchors
+    if (window.anchors) {
+      window.anchors.options.placement = 'left';
+      window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+    }
+
+
+    // set body to visible
+    document.body.style.visibility = 'visible';
+
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+
+  function init_distill() {
+
+    init_common();
+
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+
+    // move refs into #references-listing
+    $('#references-listing').replaceWith($('#refs'));
+
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-contents a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+
+      // capture layout
+      var layout = $(this).attr('data-layout');
+
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+
+
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+
+    // remove code block used to force  highlighting css
+    $('.distill-force-highlighting-css').parent().remove();
+
+    // remove empty line numbers inserted by pandoc when using a
+    // custom syntax highlighting theme
+    $('code.sourceCode a:empty').remove();
+
+    // load distill framework
+    load_distill_framework();
+
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+
+      // article with toc class
+      $('.d-contents').parent().addClass('d-article-with-toc');
+
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+
+      // add orcid ids
+      $('.authors-affiliations').find('.author').each(function(i, el) {
+        var orcid_id = front_matter.authors[i].orcidID;
+        if (orcid_id) {
+          var a = $('<a></a>');
+          a.attr('href', 'https://orcid.org/' + orcid_id);
+          var img = $('<img></img>');
+          img.addClass('orcid-id');
+          img.attr('alt', 'ORCID ID');
+          img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+          a.append(img);
+          $(this).append(a);
+        }
+      });
+
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+
+      // remove d-appendix and d-footnote-list local styles
+      $('d-appendix > style:first-child').remove();
+      $('d-footnote-list > style:first-child').remove();
+
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
+
+      // clear polling timer
+      clearInterval(tid);
+
+      // show body now that everything is ready
+      on_load_complete();
+    }
+
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+
+  }
+
+  function init_downlevel() {
+
+    init_common();
+
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+
+    // remove toc
+    $('.d-contents').remove();
+
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+
+
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+
+    $('body').addClass('downlevel');
+
+    on_load_complete();
+  }
+
+
+  function init_common() {
+
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+
+      }
+    });
+
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      });
+    }
+
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+
+  </script>
+
+  <!--/radix_placeholder_distill-->
+  <script src="composition-of-the-german-parliament-since-1949_files/header-attrs-2.6.4/header-attrs.js"></script>
+  <link href="composition-of-the-german-parliament-since-1949_files/panelset-0.2.4/panelset.css" rel="stylesheet" />
+  <script src="composition-of-the-german-parliament-since-1949_files/panelset-0.2.4/panelset.js"></script>
+  <link href="composition-of-the-german-parliament-since-1949_files/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+  <script src="composition-of-the-german-parliament-since-1949_files/pagedtable-1.1/js/pagedtable.js"></script>
+  <script src="composition-of-the-german-parliament-since-1949_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="composition-of-the-german-parliament-since-1949_files/popper-2.6.0/popper.min.js"></script>
+  <link href="composition-of-the-german-parliament-since-1949_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="composition-of-the-german-parliament-since-1949_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="composition-of-the-german-parliament-since-1949_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="composition-of-the-german-parliament-since-1949_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="composition-of-the-german-parliament-since-1949_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="composition-of-the-german-parliament-since-1949_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="composition-of-the-german-parliament-since-1949_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"German Bundestag - Part I: members of the parliament","description":"An analysis of the german national parliament (\"Bundestag\"). This first part focuses on biographical data of the elected representatives and the composition of the parliament over time.","authors":[{"author":"Christian A. Gebhard","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-03-07T00:00:00.000+01:00","citationText":"Gebhard, 2021"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>German Bundestag - Part I: members of the parliament</h1>
+<!--radix_placeholder_categories-->
+<div class="dt-tags">
+<div class="dt=tag">R</div>
+<div class="dt=tag">politics</div>
+<div class="dt=tag">germany</div>
+</div>
+<!--/radix_placeholder_categories-->
+<p><p>An analysis of the german national parliament (“Bundestag”). This first part focuses on biographical data of the elected representatives and the composition of the parliament over time.</p></p>
+</div>
+
+<div class="d-byline">
+  Christian A. Gebhard  
+  
+<br/>2021-03-07
+</div>
+
+<div class="d-article">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#reading-and-preparing-the-data">Reading and preparing the data</a></li>
+<li><a href="#parliamentarians-and-their-mandates">Parliamentarians and their Mandates</a>
+<ul>
+<li><a href="#number-of-representatives-over-time">Number of representatives over time</a></li>
+<li><a href="#types-of-mandates-direct-mandate-vs-party-list">Types of mandates: direct mandate vs party list</a></li>
+<li><a href="#types-of-mandates-comparison-between-the-parties">Types of mandates: comparison between the parties</a></li>
+<li><a href="#number-of-mandates-per-representative">Number of mandates per representative</a></li>
+</ul></li>
+<li><a href="#distribution-of-age-and-gender">Distribution of age and gender</a>
+<ul>
+<li><a href="#age-and-gender-distribution-in-the-current-bundestag">Age and Gender distribution in the current Bundestag</a></li>
+<li><a href="#age-and-gender-distributions-within-the-parties-in-2017">Age and Gender Distributions within the parties in 2017</a></li>
+<li><a href="#age-and-gender-across-the-history-of-the-bundestag">Age and Gender across the history of the Bundestag</a></li>
+</ul></li>
+<li><a href="#conclusions">Conclusions</a></li>
+</ul>
+</nav>
+</div>
+<figure>
+<img src="images/header.jpg" alt="“Plenarsaal Deutscher Bundestag” by Tobi NDH is licensed under CC BY-NC-SA 2.0" /><figcaption aria-hidden="true"><a href="https://www.flickr.com/photos/93243867@N00/33507442743">“Plenarsaal Deutscher Bundestag”</a> by <a href="https://www.flickr.com/photos/93243867@N00">Tobi NDH</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/2.0/">CC BY-NC-SA 2.0</a></figcaption>
+</figure>
+<h2 id="introduction">Introduction</h2>
+<p>Since its first assembly on September 7th 1949 the <em>“Bundestag”</em> has been the legislative democratic representation of Germany. Due to the separation of Germany after World War II the <em>Bundestag</em> represented the western german population until 1990 and was initially located in the city “Bonn”. The first assembly representing the unified Federal Republic of Germany was elected on December 2nd 1990 for the 12th legislative period of the parliament.</p>
+<p>On June 20th 1991 the parliament decided to move from Bonn to the capital of Germany Berlin. The relocation took place in 1999.</p>
+<p>At the time of writing, the <em>Bundestag</em> is in its 19th legislative period, the next election will take place on September 26th 2021.</p>
+<div class="panelset">
+<div class="panel">
+<p><span class="panel-name">Data</span></p>
+<ul>
+<li>The data on the MdBs <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> was downloaded from the Open Data platform of the <em>Bundestag</em> <a href="https://www.bundestag.de/services/opendata">https://www.bundestag.de/services/opendata</a> on March 2nd 2021 (data status 2021-01-08)<br />
+Unfortunately there is no specific license mentioned, but the data is offered to “interested users” for “further machine processing”. Sounds good enough for my use.</li>
+<li>The population data was obtained from: Federal Statistical Office of Germany (“Destatis”), Genesis-Online, downloaded from <a href="https://service.destatis.de/bevoelkerungspyramide/index.html">https://service.destatis.de/bevoelkerungspyramide/index.html</a> on 2021-03-05, <a href="https://www.govdata.de/dl-de/by-2-0">Data license by-2-0</a>.</li>
+</ul>
+</div>
+<div class="panel">
+<p><span class="panel-name">Other Sources</span></p>
+<p>Preview image for this blog post: Alektor89, Public domain, via <a href="https://commons.wikimedia.org/wiki/File:Bundestag18D.svg">Wikimedia Commons</a></p>
+</div>
+</div>
+<h2 id="reading-and-preparing-the-data">Reading and preparing the data</h2>
+<p>The Bundestag-data was provided/downloaded as XML-file. So after reading the data it has to be transformed to a rectangular data.</p>
+<p><em>If you’re not interested in the technical details, you can jump to the next section, where I will start with the first exploratory analysis.</em></p>
+<p>Before all, we need to load the necessary packages:</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='st'><a href='http://tidyverse.tidyverse.org'>"tidyverse"</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='st'><a href='https://github.com/rstudio/rmarkdown'>"rmarkdown"</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='st'><a href='https://xml2.r-lib.org/'>"xml2"</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='st'><a href='http://www.omegahat.net/RSXML'>"XML"</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='st'><a href='https://github.com/rstudio/gt'>"gt"</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='st'><a href='https://wilkelab.org/cowplot/'>"cowplot"</a></span><span class='op'>)</span> <span class='co'># for combined age pyramid</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='st'><a href='https://lubridate.tidyverse.org'>"lubridate"</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='st'><a href='https://wilkelab.org/ggridges/'>"ggridges"</a></span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+</div>
+<p>Then, read the data on the MdBs. The steps taken are explained in the comments.</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># read the XML file</span>
+<span class='va'>xml_data</span> <span class='op'>&lt;-</span> <span class='fu'><a href='http://xml2.r-lib.org/reference/read_xml.html'>read_xml</a></span><span class='op'>(</span><span class='st'>"../../../data_sources/2021_bundestag/MdB-Stammdaten-data/MDB_STAMMDATEN.XML"</span><span class='op'>)</span>
+
+<span class='co'># parse XML to a list and make a tibble from the list</span>
+<span class='va'>mdb_list</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/XML/man/xmlTreeParse.html'>xmlParse</a></span><span class='op'>(</span><span class='va'>xml_data</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/pkg/XML/man/xmlToList.html'>xmlToList</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>mdb_origin</span> <span class='op'>&lt;-</span> <span class='fu'>tibble</span><span class='op'>(</span>
+  xml_data <span class='op'>=</span> <span class='va'>mdb_list</span>
+  <span class='op'>)</span>
+
+<span class='co'># unnest the names column to identify the members of parliament</span>
+<span class='va'>mdb_namen</span> <span class='op'>&lt;-</span> <span class='va'>mdb_origin</span><span class='op'>[</span><span class='op'>-</span><span class='fl'>1</span>,<span class='op'>]</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>unnest_wider</span><span class='op'>(</span><span class='va'>xml_data</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>unnest_longer</span><span class='op'>(</span><span class='va'>NAMEN</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>unnest_wider</span><span class='op'>(</span><span class='va'>NAMEN</span><span class='op'>)</span>
+
+<span class='co'># some people had name changes and are therefore listed more than once.</span>
+<span class='co'># first these duplicates will be removed, then </span>
+<span class='co'># the legislative periods are unnested</span>
+<span class='va'>mdb_WP</span> <span class='op'>&lt;-</span> <span class='va'>mdb_namen</span> <span class='op'>%&gt;%</span> 
+  <span class='co'># sort the duplicates by date of change, only keep the last entry (=last known name)</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>HISTORIE_VON <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='va'>HISTORIE_VON</span>, format <span class='op'>=</span> <span class='st'>"%d.%m.%Y"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>ID</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>arrange</span><span class='op'>(</span><span class='fu'>desc</span><span class='op'>(</span><span class='va'>HISTORIE_VON</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>distinct</span><span class='op'>(</span><span class='va'>ID</span>, .keep_all <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>ungroup</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='co'># unnest the electorial periods</span>
+  <span class='fu'>unnest_longer</span><span class='op'>(</span><span class='va'>WAHLPERIODEN</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>unnest_wider</span><span class='op'>(</span><span class='va'>WAHLPERIODEN</span><span class='op'>)</span>
+
+<span class='co'># unnest the biographical data</span>
+<span class='va'>mdb_main_full</span> <span class='op'>&lt;-</span> <span class='va'>mdb_WP</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>unnest_wider</span><span class='op'>(</span><span class='va'>BIOGRAFISCHE_ANGABEN</span><span class='op'>)</span>
+
+<span class='co'># remove unneeded columns for this post </span>
+<span class='va'>mdb_main</span> <span class='op'>&lt;-</span> <span class='va'>mdb_main_full</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>VITA_KURZ</span>, <span class='va'>RELIGION</span>, <span class='va'>NAMEN_id</span>, <span class='va'>VEROEFFENTLICHUNGSPFLICHTIGES</span>, 
+            <span class='va'>HISTORIE_VON</span>, <span class='va'>HISTORIE_BIS</span>, <span class='va'>FAMILIENSTAND</span>, <span class='va'>GEBURTSLAND</span>, <span class='va'>GEBURTSORT</span>,
+            <span class='va'>INSTITUTIONEN</span>, <span class='va'>WAHLPERIODEN_id</span>, <span class='va'>ORTSZUSATZ</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>mutate</span><span class='op'>(</span>GEBURTSDATUM <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='va'>GEBURTSDATUM</span>, format <span class='op'>=</span> <span class='st'>"%d.%m.%Y"</span><span class='op'>)</span>,
+         MDBWP_VON <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='va'>MDBWP_VON</span>, format <span class='op'>=</span> <span class='st'>"%d.%m.%Y"</span><span class='op'>)</span>,
+         MDBWP_BIS <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='va'>MDBWP_BIS</span>, format <span class='op'>=</span> <span class='st'>"%d.%m.%Y"</span><span class='op'>)</span>,
+         WP <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>WP</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+</div>
+<p>Some smaller parties obtained a few seats in the early years of the Bundestag. While being important in a comprehensive historical setting, for the scope of this post they are of minor significance and I will comprise them in a collective “Other” category. Some others merged into larger parties and I will count them to the currently existing merged party if there is a clear political connection, e.g. PDS and WASG merged into “Die Linke” or e.g. “Grüne” and “Bündnis 90” merged into “Bündnis 90/Die Grüne”. <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>A few manual adjustments had to be made to fill missing values. To fill the gaps of party membership I used a file from the Bundestag listing all representatives and their respective membership for each electorial period.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p>Also, for one representative, Werner Kuhn, there was no type of seat mentioned. He succeded Paul Krüger, who had a seat in the 14th electorial period via the party list and stepped down from his mandate before the end of the period. To keep things simpler here, I filled the missing mandate type for Mr. Kuhn with “Landesliste” as well.</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># parties to collapse:</span>
+<span class='va'>greens</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"BÜNDNIS 90/DIE GRÜNEN"</span>, <span class='st'>"GRÜNE"</span>, <span class='st'>"DIE GRÜNEN/BÜNDNIS 90"</span><span class='op'>)</span>
+<span class='va'>lefts</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"DIE LINKE."</span>, <span class='st'>"PDS"</span>, <span class='st'>"PDS/LL"</span><span class='op'>)</span>
+<span class='va'>others</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span> <span class='st'>"WAV"</span>, <span class='st'>"SRP"</span>, <span class='st'>"BP"</span>, <span class='st'>"DRP"</span>, <span class='st'>"FU"</span>, <span class='st'>"KPD"</span>, <span class='st'>"DZP"</span>, <span class='st'>"GB/ BHE"</span>, <span class='st'>"CVP"</span>, <span class='st'>"CSUS"</span>, <span class='st'>"DP"</span>, <span class='st'>"DPB"</span>, <span class='st'>"DPS"</span>, <span class='st'>"DSU"</span>, <span class='st'>"LKR"</span>, <span class='st'>"Plos"</span><span class='op'>)</span>
+
+<span class='va'>mdb_compact</span> <span class='op'>&lt;-</span> <span class='va'>mdb_main</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span> <span class='co'># manually fill the NAs </span>
+    PARTEI_KURZ <span class='op'>=</span> <span class='fu'>case_when</span><span class='op'>(</span>
+      <span class='va'>ID</span> <span class='op'>==</span> <span class='st'>"11000580"</span> <span class='op'>~</span> <span class='st'>"SPD"</span>, <span class='co'># Alfred Frenzel</span>
+      <span class='va'>ID</span> <span class='op'>==</span> <span class='st'>"11002068"</span> <span class='op'>~</span> <span class='st'>"Other"</span>, <span class='co'># Helmuth Schranz</span>
+      <span class='va'>ID</span> <span class='op'>==</span> <span class='st'>"11001333"</span> <span class='op'>~</span> <span class='st'>"Other"</span>, <span class='co'># Heinrich Leuchtgens</span>
+      <span class='cn'>TRUE</span> <span class='op'>~</span> <span class='va'>PARTEI_KURZ</span>
+    <span class='op'>)</span>
+  <span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span> <span class='co'># collapse many parties in the few relevant vs. other</span>
+    Party <span class='op'>=</span> <span class='fu'>fct_collapse</span><span class='op'>(</span><span class='va'>PARTEI_KURZ</span>,
+      GRUENE <span class='op'>=</span> <span class='va'>greens</span>,
+      LINKE <span class='op'>=</span> <span class='va'>lefts</span>,
+      Other <span class='op'>=</span> <span class='va'>others</span>
+    <span class='op'>)</span>
+  <span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>mutate</span><span class='op'>(</span>MANDATSART <span class='op'>=</span> <span class='fu'>replace_na</span><span class='op'>(</span><span class='va'>MANDATSART</span>, <span class='st'>"Landesliste"</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># add missing mandate for Werner Kuhn. See text above for details.</span>
+  
+
+<span class='va'>party_palette</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"GRUENE"</span><span class='op'>=</span> <span class='st'>"#3a9c00"</span>,
+                   <span class='st'>"SPD"</span> <span class='op'>=</span> <span class='st'>"#e2382a"</span>, 
+                   <span class='st'>"LINKE"</span> <span class='op'>=</span> <span class='st'>"#cc1f2f"</span>,
+                   <span class='st'>"CDU"</span> <span class='op'>=</span> <span class='st'>"#000000"</span>,
+                   <span class='st'>"CSU"</span> <span class='op'>=</span> <span class='st'>"#323232"</span>,
+                   <span class='st'>"FDP"</span> <span class='op'>=</span> <span class='st'>"yellow"</span>,
+                   <span class='st'>"AfD"</span> <span class='op'>=</span> <span class='st'>"#0080FF"</span>,
+                   <span class='st'>"Other"</span><span class='op'>=</span><span class='st'>"#a9a9a9"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+</div>
+<h2 id="parliamentarians-and-their-mandates">Parliamentarians and their Mandates</h2>
+<h3 id="number-of-representatives-over-time">Number of representatives over time</h3>
+<p>The following plot is not really pretty, as the colors generally representing the parties were used. In this post I want to focus on the people of the Bundestag. It is therefore noteworthy mentioning, that the number of representatives visualized below is <em>not necessarily</em> the number of seats for the parliamentary group. Some elected parliamentarians left office due to personal reasons, career changes or other reasons. Those seats were then given to succeeding representatives from the same party to keep the elected mandates in the Bundestag constant. The data provided by the Bundestag (and used here) is a list of all politicians serving in each electoral periods, so including successors in office. If there were many changes in a parliamentary group, this may distort the political proportions. <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>mdb_compact</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>WP</span>, <span class='va'>Party</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>summarise</span><span class='op'>(</span>total_seats <span class='op'>=</span> <span class='fu'>n</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span><span class='va'>WP</span>, <span class='va'>total_seats</span>, fill <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/reorder.factor.html'>reorder</a></span><span class='op'>(</span><span class='va'>Party</span>, <span class='op'>-</span><span class='va'>total_seats</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+    <span class='fu'>geom_col</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> <span class='co'># alternativ geom_area()</span>
+    <span class='fu'>scale_fill_manual</span><span class='op'>(</span>values <span class='op'>=</span> <span class='va'>party_palette</span>, name <span class='op'>=</span> <span class='st'>"Party"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>labs</span><span class='op'>(</span>
+      title <span class='op'>=</span> <span class='st'>"Number of representatives in the Bundestag"</span>,
+      subtitle <span class='op'>=</span> <span class='st'>"Across all electorial periods, split by party"</span>,
+      x <span class='op'>=</span> <span class='st'>"Electorial Period"</span>,
+      y<span class='op'>=</span> <span class='st'>"Number of representatives in the parliament"</span>,
+      caption <span class='op'>=</span> <span class='st'>"@jollydata_blog using data from:\nwww.bundestag.de/services/opendata"</span>
+    <span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>theme</span><span class='op'>(</span>text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+          family <span class='op'>=</span> <span class='st'>"Cabin"</span><span class='op'>)</span>,
+        plot.title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+          face <span class='op'>=</span> <span class='st'>"bold"</span>,
+          hjust <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>,
+        axis.title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+          <span class='co'># color = rgb(105, 105, 105, maxColorValue = 255),</span>
+          face <span class='op'>=</span> <span class='st'>"bold"</span>,
+          size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>,
+        axis.text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+          <span class='co'># color = rgb(105, 105, 105, maxColorValue = 255),</span>
+          face <span class='op'>=</span> <span class='st'>"bold"</span>,
+          size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.85</span><span class='op'>)</span><span class='op'>)</span>,
+        legend.position <span class='op'>=</span> <span class='st'>"bottom"</span>,
+        <span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<p><img src="composition-of-the-german-parliament-since-1949_files/figure-html5/unnamed-chunk-1-1.png" width="624" /></p>
+</div>
+<h3 id="types-of-mandates-direct-mandate-vs-party-list">Types of mandates: direct mandate vs party list</h3>
+<p>If you’re not familiar with the german national voting process, you can have a look at <a href="https://en.wikipedia.org/wiki/Bundestag#Election">this short paragraph</a> in Wikipedia. In short, there are two ways to get elected: either you are personally elected as the representative of your constituency (direct mandate or in german “Direktwahl”). Currently 299 seats are elected this way. The second possibility is by obtaining a seat via your federal state’s party list (“Landesliste”). These addidtional 299 (or more) seats are assigned proportionally to the percentage of votes for each party.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<div class="panelset">
+<div class="panel">
+<p><span class="panel-name">Plot</span></p>
+<p>Now let’s visualize the types of mandates over time:</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>mdb_compact</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>WP</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>count</span><span class='op'>(</span><span class='va'>MANDATSART</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>mutate</span><span class='op'>(</span>
+    MANDATSART <span class='op'>=</span> <span class='fu'>fct_relevel</span><span class='op'>(</span><span class='va'>MANDATSART</span>, levels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Landesliste"</span>, <span class='st'>"Volkskammer"</span>, <span class='st'>"Direktwahl"</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span><span class='va'>WP</span>, <span class='va'>n</span>, fill <span class='op'>=</span> <span class='va'>MANDATSART</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>geom_col</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>scale_fill_manual</span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#868aa9"</span>, <span class='st'>"#363c70"</span>, <span class='st'>"#c2c4d4"</span><span class='op'>)</span>, name <span class='op'>=</span> <span class='st'>"Type of Mandate"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>labs</span><span class='op'>(</span>
+      title <span class='op'>=</span> <span class='st'>"Direct Mandates vs Party List Seats"</span>,
+      x <span class='op'>=</span> <span class='st'>"Electorial Period"</span>,
+      y <span class='op'>=</span> <span class='st'>"Number of seats"</span>,
+      caption <span class='op'>=</span> <span class='st'>"@jollydata_blog using data from:\nwww.bundestag.de/services/opendata"</span>
+    <span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>theme</span><span class='op'>(</span>text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+          family <span class='op'>=</span> <span class='st'>"Cabin"</span><span class='op'>)</span>,
+        plot.title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+          face <span class='op'>=</span> <span class='st'>"bold"</span>,
+          hjust <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>,
+        axis.title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+          <span class='co'># color = rgb(105, 105, 105, maxColorValue = 255),</span>
+          face <span class='op'>=</span> <span class='st'>"bold"</span>,
+          size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>,
+        axis.text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+          <span class='co'># color = rgb(105, 105, 105, maxColorValue = 255),</span>
+          face <span class='op'>=</span> <span class='st'>"bold"</span>,
+          size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.85</span><span class='op'>)</span><span class='op'>)</span>,
+        legend.position <span class='op'>=</span> <span class='st'>"bottom"</span>,
+        <span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<p><img src="composition-of-the-german-parliament-since-1949_files/figure-html5/unnamed-chunk-2-1.png" width="624" /></p>
+</div>
+</div>
+<div class="panel">
+<p><span class="panel-name">Figures</span></p>
+<div class="layout-chunk" data-layout="l-page">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>mdb_mandate_wide</span> <span class='op'>&lt;-</span> <span class='va'>mdb_compact</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>WP</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>count</span><span class='op'>(</span><span class='va'>MANDATSART</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>pivot_wider</span><span class='op'>(</span>id_cols <span class='op'>=</span> <span class='va'>WP</span>, names_from <span class='op'>=</span> <span class='va'>MANDATSART</span>, values_from <span class='op'>=</span> <span class='va'>n</span>, values_fill <span class='op'>=</span> <span class='fl'>0L</span><span class='op'>)</span> 
+
+<span class='va'>mdb_mandate_wide</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/pkg/rmarkdown/man/paged_table.html'>paged_table</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["WP"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Direktwahl"],"name":[2],"type":["int"],"align":["right"]},{"label":["Landesliste"],"name":[3],"type":["int"],"align":["right"]},{"label":["Volkskammer"],"name":[4],"type":["int"],"align":["right"]}],"data":[{"1":"1","2":"255","3":"219","4":"0"},{"1":"2","2":"242","3":"316","4":"0"},{"1":"3","2":"247","3":"315","4":"0"},{"1":"4","2":"247","3":"333","4":"0"},{"1":"5","2":"248","3":"311","4":"0"},{"1":"6","2":"248","3":"308","4":"0"},{"1":"7","2":"248","3":"301","4":"0"},{"1":"8","2":"247","3":"306","4":"0"},{"1":"9","2":"247","3":"302","4":"0"},{"1":"10","2":"247","3":"329","4":"0"},{"1":"11","2":"248","3":"309","4":"145"},{"1":"12","2":"327","3":"372","4":"0"},{"1":"13","2":"328","3":"365","4":"0"},{"1":"14","2":"328","3":"371","4":"0"},{"1":"15","2":"299","3":"329","4":"0"},{"1":"16","2":"299","3":"343","4":"0"},{"1":"17","2":"299","3":"353","4":"0"},{"1":"18","2":"299","3":"359","4":"0"},{"1":"19","2":"299","3":"438","4":"0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p>Which is more common: direct mandate or seats via the party list? The data is quite clear: Only in the first Bundestag there were more direct mandates:</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>mdb_mandate_wide</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Direktwahl</span> <span class='op'>&gt;</span> <span class='va'>Landesliste</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/pkg/rmarkdown/man/paged_table.html'>paged_table</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["WP"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Direktwahl"],"name":[2],"type":["int"],"align":["right"]},{"label":["Landesliste"],"name":[3],"type":["int"],"align":["right"]},{"label":["Volkskammer"],"name":[4],"type":["int"],"align":["right"]}],"data":[{"1":"1","2":"255","3":"219","4":"0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</div>
+<p>The “Volkskammer” was the parliament of former Eastern Germany. After the German reunification (October 3rd 1990) 145 members of the last “Volkskammer” were included in the then 11th Bundestag. This mixed parliament was only active for a short period, as on December 2nd 1990 the first national vote of unified germany elected the 12th Bundestag.</p>
+<aside>
+Oddly the <a href="https://de.wikipedia.org/wiki/Liste_der_Mitglieder_des_Deutschen_Bundestages_(11._Wahlperiode)">Wikipedia-Article</a> on the 11th Bundestag states that only 144 representatives were included from the Volkskammer. Since the same article lists 145 names, this probably is an error in the article.
+</aside>
+<h3 id="types-of-mandates-comparison-between-the-parties">Types of mandates: comparison between the parties</h3>
+<p>While overall more seats are assigned via the parties’ lists, there is variation between the parties:</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>mdb_compact</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>Party</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>count</span><span class='op'>(</span><span class='va'>MANDATSART</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>ungroup</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>pivot_wider</span><span class='op'>(</span>id_cols <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>Party</span><span class='op'>)</span>, names_from <span class='op'>=</span> <span class='va'>MANDATSART</span>, values_from <span class='op'>=</span> <span class='va'>n</span>, values_fill <span class='op'>=</span> <span class='fl'>0L</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>arrange</span><span class='op'>(</span><span class='va'>Direktwahl</span> <span class='op'>/</span> <span class='va'>Landesliste</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/pkg/gt/man/gt.html'>gt</a></span><span class='op'>(</span>
+    rowname_col <span class='op'>=</span> <span class='st'>"Party"</span>
+  <span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/pkg/gt/man/tab_source_note.html'>tab_source_note</a></span><span class='op'>(</span>source_note <span class='op'>=</span> <span class='st'>"@jollydata_blog using data from:\nwww.bundestag.de/services/opendata"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/pkg/gt/man/tab_header.html'>tab_header</a></span><span class='op'>(</span>
+    title <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/gt/man/md.html'>md</a></span><span class='op'>(</span><span class='st'>"**Direct vs party list mandates of the political Parties**"</span><span class='op'>)</span>,
+    subtitle <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/gt/man/md.html'>md</a></span><span class='op'>(</span><span class='st'>"*Cumulative seats over all 19 elective periods*"</span><span class='op'>)</span>
+    <span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/pkg/gt/man/tab_footnote.html'>tab_footnote</a></span><span class='op'>(</span>
+    footnote <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/gt/man/md.html'>md</a></span><span class='op'>(</span><span class='st'>"Members of the last *Volkskammer* of Eastern Germany that were incorporated into the 11th Bundestag."</span><span class='op'>)</span>,
+    locations <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/gt/man/cells_column_labels.html'>cells_column_labels</a></span><span class='op'>(</span>columns <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/vars.html'>vars</a></span><span class='op'>(</span><span class='va'>Volkskammer</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/pkg/gt/man/cols_align.html'>cols_align</a></span><span class='op'>(</span>align <span class='op'>=</span> <span class='st'>"right"</span>,
+             columns <span class='op'>=</span> <span class='fl'>2</span><span class='op'>:</span><span class='fl'>4</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/pkg/gt/man/tab_options.html'>tab_options</a></span><span class='op'>(</span>
+    heading.align <span class='op'>=</span> <span class='st'>"left"</span>,
+    column_labels.border.top.color <span class='op'>=</span> <span class='st'>"white"</span>,
+    column_labels.border.top.width <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/gt/man/px.html'>px</a></span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span>,
+    column_labels.border.bottom.color <span class='op'>=</span> <span class='st'>"black"</span>,
+    table_body.hlines.color <span class='op'>=</span> <span class='st'>"white"</span>,
+    table_body.vlines.color <span class='op'>=</span> <span class='st'>"white"</span>,
+    table_body.border.top.color <span class='op'>=</span> <span class='st'>"black"</span>,
+    table_body.border.top.width <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/gt/man/px.html'>px</a></span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span>,
+    table.border.bottom.color <span class='op'>=</span> <span class='st'>"black"</span>,
+    table.border.bottom.width <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/gt/man/px.html'>px</a></span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span>
+  <span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/pkg/gt/man/tab_style.html'>tab_style</a></span><span class='op'>(</span>
+    style <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+      <span class='fu'><a href='https://rdrr.io/pkg/gt/man/cell_text.html'>cell_text</a></span><span class='op'>(</span>font <span class='op'>=</span> <span class='st'>"Inconsolata"</span><span class='op'>)</span>
+    <span class='op'>)</span>,
+    locations <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+      <span class='fu'><a href='https://rdrr.io/pkg/gt/man/cells_column_labels.html'>cells_column_labels</a></span><span class='op'>(</span>
+       <span class='fu'><a href='https://tidyselect.r-lib.org/reference/everything.html'>everything</a></span><span class='op'>(</span><span class='op'>)</span>
+      <span class='op'>)</span>,
+      <span class='fu'><a href='https://rdrr.io/pkg/gt/man/cells_body.html'>cells_body</a></span><span class='op'>(</span>
+        <span class='fu'><a href='https://tidyselect.r-lib.org/reference/everything.html'>everything</a></span><span class='op'>(</span><span class='op'>)</span>
+      <span class='op'>)</span>
+    <span class='op'>)</span>
+  <span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#uyteqdxhos .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: black;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#uyteqdxhos .gt_heading {
+  background-color: #FFFFFF;
+  text-align: left;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uyteqdxhos .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#uyteqdxhos .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#uyteqdxhos .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uyteqdxhos .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: white;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: black;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uyteqdxhos .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#uyteqdxhos .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#uyteqdxhos .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#uyteqdxhos .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#uyteqdxhos .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: black;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#uyteqdxhos .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#uyteqdxhos .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#uyteqdxhos .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#uyteqdxhos .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#uyteqdxhos .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: white;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: white;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: white;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#uyteqdxhos .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#uyteqdxhos .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uyteqdxhos .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#uyteqdxhos .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uyteqdxhos .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#uyteqdxhos .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#uyteqdxhos .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: black;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uyteqdxhos .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uyteqdxhos .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#uyteqdxhos .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uyteqdxhos .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#uyteqdxhos .gt_left {
+  text-align: left;
+}
+
+#uyteqdxhos .gt_center {
+  text-align: center;
+}
+
+#uyteqdxhos .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#uyteqdxhos .gt_font_normal {
+  font-weight: normal;
+}
+
+#uyteqdxhos .gt_font_bold {
+  font-weight: bold;
+}
+
+#uyteqdxhos .gt_font_italic {
+  font-style: italic;
+}
+
+#uyteqdxhos .gt_super {
+  font-size: 65%;
+}
+
+#uyteqdxhos .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="uyteqdxhos" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="4" class="gt_heading gt_title gt_font_normal" style><strong>Direct vs party list mandates of the political Parties</strong></th>
+    </tr>
+    <tr>
+      <th colspan="4" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style><em>Cumulative seats over all 19 elective periods</em></th>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="font-family: Inconsolata;">Direktwahl</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="font-family: Inconsolata;">Landesliste</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="font-family: Inconsolata;">Volkskammer<sup class="gt_footnote_marks">1</sup></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left gt_stub">GRUENE</td>
+      <td class="gt_row gt_right" style="font-family: Inconsolata;">5</td>
+      <td class="gt_row gt_right" style="font-family: Inconsolata;">524</td>
+      <td class="gt_row gt_right" style="font-family: Inconsolata;">7</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">FDP</td>
+      <td class="gt_row gt_right" style="font-family: Inconsolata;">21</td>
+      <td class="gt_row gt_right" style="font-family: Inconsolata;">1006</td>
+      <td class="gt_row gt_right" style="font-family: Inconsolata;">9</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">AfD</td>
+      <td class="gt_row gt_right" style="font-family: Inconsolata;">4</td>
+      <td class="gt_row gt_right" style="font-family: Inconsolata;">86</td>
+      <td class="gt_row gt_right" style="font-family: Inconsolata;">0</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">LINKE</td>
+      <td class="gt_row gt_right" style="font-family: Inconsolata;">39</td>
+      <td class="gt_row gt_right" style="font-family: Inconsolata;">325</td>
+      <td class="gt_row gt_right" style="font-family: Inconsolata;">24</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">Other</td>
+      <td class="gt_row gt_right" style="font-family: Inconsolata;">43</td>
+      <td class="gt_row gt_right" style="font-family: Inconsolata;">127</td>
+      <td class="gt_row gt_right" style="font-family: Inconsolata;">5</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">SPD</td>
+      <td class="gt_row gt_right" style="font-family: Inconsolata;">1941</td>
+      <td class="gt_row gt_right" style="font-family: Inconsolata;">2278</td>
+      <td class="gt_row gt_right" style="font-family: Inconsolata;">33</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">CDU</td>
+      <td class="gt_row gt_right" style="font-family: Inconsolata;">2370</td>
+      <td class="gt_row gt_right" style="font-family: Inconsolata;">1715</td>
+      <td class="gt_row gt_right" style="font-family: Inconsolata;">66</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left gt_stub">CSU</td>
+      <td class="gt_row gt_right" style="font-family: Inconsolata;">779</td>
+      <td class="gt_row gt_right" style="font-family: Inconsolata;">218</td>
+      <td class="gt_row gt_right" style="font-family: Inconsolata;">1</td>
+    </tr>
+  </tbody>
+  <tfoot class="gt_sourcenotes">
+    <tr>
+      <td class="gt_sourcenote" colspan="4">@jollydata_blog using data from:
+www.bundestag.de/services/opendata</td>
+    </tr>
+  </tfoot>
+  <tfoot>
+    <tr class="gt_footnotes">
+      <td colspan="4">
+        <p class="gt_footnote">
+          <sup class="gt_footnote_marks">
+            <em>1</em>
+          </sup>
+           
+          Members of the last <em>Volkskammer</em> of Eastern Germany that were incorporated into the 11th Bundestag.
+          <br />
+        </p>
+      </td>
+    </tr>
+  </tfoot>
+</table></div>
+</div>
+<p>As you can see above, most parties have more party list seats than direct mandates. Only the Christian Democratic/Social Unions have more direct mandates.</p>
+<h3 id="number-of-mandates-per-representative">Number of mandates per representative</h3>
+<p>As a bridge to the next section, where I will take a closer look at the biographical data of the representatives, I’ll take a closer look at how long representatives served in the Bundestag.</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>mdb_mandate_count</span> <span class='op'>&lt;-</span> <span class='va'>mdb_compact</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>count</span><span class='op'>(</span><span class='va'>ID</span>, sort <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span> 
+
+<span class='va'>mdb_mandate_count</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>summarise</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>n</span>, na.rm <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/stats/median.html'>median</a></span><span class='op'>(</span><span class='va'>n</span>, na.rm <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<pre><code># A tibble: 1 x 2
+  `mean(n, na.rm = T)` `median(n, na.rm = T)`
+                 &lt;dbl&gt;                  &lt;int&gt;
+1                 2.84                      2</code></pre>
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>mdb_mandate_count</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>geom_histogram</span><span class='op'>(</span>bins <span class='op'>=</span> <span class='fl'>13</span>, alpha <span class='op'>=</span> <span class='fl'>0.8</span>, fill <span class='op'>=</span> <span class='st'>"#384048"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>geom_vline</span><span class='op'>(</span>xintercept <span class='op'>=</span> <span class='fl'>2</span>, color <span class='op'>=</span> <span class='st'>"#e66f53"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>geom_vline</span><span class='op'>(</span>xintercept <span class='op'>=</span> <span class='fl'>2.84</span>, color <span class='op'>=</span> <span class='st'>"#e66f53"</span>, linetype <span class='op'>=</span> <span class='st'>"dashed"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>annotate</span><span class='op'>(</span>
+      geom <span class='op'>=</span> <span class='st'>"text"</span>,
+      x <span class='op'>=</span> <span class='fl'>3.2</span>, y <span class='op'>=</span> <span class='fl'>1250</span>,
+      label <span class='op'>=</span> <span class='st'>"Median: 2 (continuous line)\nMean: 2.84 (dashed line)"</span>,
+      hjust <span class='op'>=</span> <span class='fl'>0</span>,
+      color <span class='op'>=</span> <span class='st'>"#9f3857"</span>
+    <span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>geom_curve</span><span class='op'>(</span>
+      <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>11</span>, y <span class='op'>=</span> <span class='fl'>400</span>, xend <span class='op'>=</span> <span class='fl'>13</span>, yend <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>,
+      data <span class='op'>=</span> <span class='va'>mdb_mandate_count</span>,
+      curvature <span class='op'>=</span> <span class='op'>-</span><span class='fl'>0.3</span>,
+      arrow <span class='op'>=</span> <span class='fu'>arrow</span><span class='op'>(</span>length <span class='op'>=</span> <span class='fu'>unit</span><span class='op'>(</span><span class='fl'>0.03</span>, <span class='st'>"npc"</span><span class='op'>)</span><span class='op'>)</span>,
+      color <span class='op'>=</span> <span class='st'>"#e66f53"</span>
+    <span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>annotate</span><span class='op'>(</span>geom <span class='op'>=</span> <span class='st'>"text"</span>,
+             x <span class='op'>=</span> <span class='fl'>10.5</span>, y <span class='op'>=</span> <span class='fl'>400</span>,
+             label<span class='op'>=</span><span class='st'>"Wolfgang Schäuble:\n13 electorial periods\n(continuously since 1972)"</span>,
+             hjust<span class='op'>=</span><span class='fl'>1</span>,
+             color <span class='op'>=</span> <span class='st'>"#e66f53"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>labs</span><span class='op'>(</span>
+      title <span class='op'>=</span> <span class='st'>"How long did representatives stay in office?"</span>,
+      subtitle <span class='op'>=</span> <span class='st'>"Number of representatives vs. number of electorial periods served"</span>,
+      x <span class='op'>=</span> <span class='st'>"Number of electorial periods"</span>,
+      y <span class='op'>=</span> <span class='st'>"Number of representatives"</span>,
+      caption <span class='op'>=</span> <span class='st'>"@jollydata_blog using data from:\nwww.bundestag.de/services/opendata"</span>
+    <span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>theme</span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>theme</span><span class='op'>(</span>text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+        family <span class='op'>=</span> <span class='st'>"Bitter"</span><span class='op'>)</span>,
+      plot.title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+        face <span class='op'>=</span> <span class='st'>"bold"</span>,
+        hjust <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>,
+      axis.title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+        <span class='co'># color = rgb(105, 105, 105, maxColorValue = 255),</span>
+        face <span class='op'>=</span> <span class='st'>"bold"</span>,
+        size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>,
+      axis.text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+        <span class='co'># color = rgb(105, 105, 105, maxColorValue = 255),</span>
+        face <span class='op'>=</span> <span class='st'>"bold"</span>,
+        size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.85</span><span class='op'>)</span><span class='op'>)</span>,
+      legend.position <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<p><img src="composition-of-the-german-parliament-since-1949_files/figure-html5/unnamed-chunk-6-1.png" width="576" /></p>
+</div>
+<p>The average number of periods served is almost 3 (around 2.84). However the distribution is exponentially falling, so about half of the representatives have only served one or two periods (median 2). The leading politician in terms of this is Wolfgang Schäuble, who currently is also <a href="https://en.wikipedia.org/wiki/President_of_the_Bundestag">president of the Bundestag</a>.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> He was continuously elected since 1972 for 13 electorial periods and always had a seat via a direct mandate:</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>mdb_compact</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>ID</span><span class='op'>==</span><span class='st'>"11001938"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>count</span><span class='op'>(</span><span class='va'>MANDATSART</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<pre><code># A tibble: 1 x 2
+  MANDATSART     n
+* &lt;chr&gt;      &lt;int&gt;
+1 Direktwahl    13</code></pre>
+</div>
+<h2 id="distribution-of-age-and-gender">Distribution of age and gender</h2>
+<p>As I want to compare the ages of the representatives with the population data I have to load the Destatis-Data. There are several other steps necessary to reshape the data and to join the population-data with the parliament-data. So this section starts code-heavy, but we’ll see nice results towards the end.</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># source: https://de.wikipedia.org/wiki/Deutscher_Bundestag</span>
+<span class='va'>wp_tbl</span> <span class='op'>&lt;-</span> <span class='fu'>tibble</span><span class='op'>(</span>
+  WP <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>19</span>,
+  year <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1949</span>, <span class='fl'>1953</span>, <span class='fl'>1957</span>, <span class='fl'>1961</span>, <span class='fl'>1965</span>, <span class='fl'>1969</span>, <span class='fl'>1972</span>, <span class='fl'>1976</span>, <span class='fl'>1980</span>, <span class='fl'>1983</span>, <span class='fl'>1987</span>, <span class='fl'>1990</span>, <span class='fl'>1994</span>, <span class='fl'>1998</span>, <span class='fl'>2002</span>, <span class='fl'>2005</span>, <span class='fl'>2009</span>, <span class='fl'>2013</span>, <span class='fl'>2017</span><span class='op'>)</span>
+<span class='op'>)</span>
+
+<span class='va'>pop_untidy</span> <span class='op'>&lt;-</span> <span class='fu'>read_csv2</span><span class='op'>(</span><span class='st'>"../../../data_sources/2021_bundestag/destatis/14_bevoelkerungsvorausberechnung_daten"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>Variante</span>, <span class='va'>Bev</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Simulationsjahr</span> <span class='op'>&lt;=</span> <span class='fl'>2019</span><span class='op'>)</span> <span class='co'># data after that is predictions and not of relevance for the analysis.</span>
+
+<span class='va'>pop_tidy</span> <span class='op'>&lt;-</span> <span class='va'>pop_untidy</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>pivot_longer</span><span class='op'>(</span><span class='op'>-</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>Simulationsjahr</span>, <span class='va'>mw</span><span class='op'>)</span>, names_to <span class='op'>=</span> <span class='st'>"age_group"</span>, values_to <span class='op'>=</span> <span class='st'>"pop"</span><span class='op'>)</span>
+
+
+<span class='co'># to facilitate plotting and analysis the age-variable needs to be</span>
+<span class='co'># converted to an integer. The 1 or 2 digits of the age are taken of the</span>
+<span class='co'># first occurrence of the regular expression. In this case this extracts </span>
+<span class='co'># the lower end of the age-group (e.g. 5 from the age group "5 to 6")</span>
+<span class='va'>pop_tidy_age</span> <span class='op'>&lt;-</span> <span class='va'>pop_tidy</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>mutate</span><span class='op'>(</span>age <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'>str_extract</span><span class='op'>(</span><span class='va'>age_group</span>, <span class='st'>"\\d{1,2}"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>rename</span><span class='op'>(</span>year <span class='op'>=</span> <span class='va'>Simulationsjahr</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='va'>age_group</span><span class='op'>)</span>
+
+<span class='va'>wp_age</span> <span class='op'>&lt;-</span> <span class='va'>pop_tidy_age</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>inner_join</span><span class='op'>(</span><span class='va'>wp_tbl</span>, by <span class='op'>=</span> <span class='st'>"year"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+</div>
+<p>In order to visualize an age-pyramid, the male population data is converted to “negative”, so it can be plottet in the opposite direction of the female population data:</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>wp_age_pop_mw</span> <span class='op'>&lt;-</span> <span class='va'>wp_age</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>mutate</span><span class='op'>(</span>
+    pop_mw <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>mw</span> <span class='op'>==</span> <span class='st'>"m"</span>, <span class='op'>-</span><span class='va'>pop</span>, <span class='va'>pop</span><span class='op'>)</span>
+  <span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+</div>
+<h3 id="age-and-gender-distribution-in-the-current-bundestag">Age and Gender distribution in the current Bundestag</h3>
+<p>How old were the representatives and of which gender at the time of election? There are two “cohorts”: those initially elected into office and those that succeded early leaving representatives. In the initial group there were 218 women and 491 men out of 709 representatives (according to the official publication of the “Federal Returning Officer” aka “Bundeswahlleiter”)<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
+<p>The data supplied by the Bundestag returns the following for the initial representatives:</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>mdb_compact</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>MDBWP_VON</span> <span class='op'>==</span> <span class='st'>"2017-10-24"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>count</span><span class='op'>(</span><span class='va'>GESCHLECHT</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<pre><code># A tibble: 2 x 2
+  GESCHLECHT     n
+* &lt;chr&gt;      &lt;int&gt;
+1 männlich     490
+2 weiblich     219</code></pre>
+</div>
+<p>So there are contradicting numbers. I might have to go through the whole list of all representatives to find the difference. While this discrepancy bothers me, I decided to continue relying on the Bundestag-data, as the difference is considerably small, the overall number is the same and also the number of seats for each party is correct, which makes the possible error acceptable in the scope of this blog post. But for the sake of transparency this shall be mentioned here for the reader as a possible limtation of my analysis.</p>
+<p>As mentioned in the beginning, whenever I’m not explicitly working on seats in the Bundestag, I will always use the complete cohort in each electoral period including the succeeding candidates.</p>
+<p>As next steps I calculate the age (in years) of each rep. at the day of election, and inner_join the population data into the representatives data.</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>mdb_ages</span> <span class='op'>&lt;-</span> <span class='va'>mdb_compact</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>mutate</span><span class='op'>(</span>
+    age_at_election <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>floor</a></span><span class='op'>(</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/time_length.html'>time_length</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/difftime.html'>difftime</a></span><span class='op'>(</span><span class='va'>MDBWP_VON</span>, <span class='va'>GEBURTSDATUM</span><span class='op'>)</span>, <span class='st'>"years"</span><span class='op'>)</span><span class='op'>)</span>,
+    mw <span class='op'>=</span> <span class='fu'>str_trunc</span><span class='op'>(</span><span class='va'>GESCHLECHT</span>, <span class='fl'>1</span>, ellipsis <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span>
+         <span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>WP</span>, <span class='va'>mw</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>count</span><span class='op'>(</span><span class='va'>age_at_election</span><span class='op'>)</span>
+
+<span class='va'>mdb_pop</span> <span class='op'>&lt;-</span> <span class='va'>wp_age_pop_mw</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>left_join</span><span class='op'>(</span><span class='va'>mdb_ages</span>, by <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"WP"</span> <span class='op'>=</span> <span class='st'>"WP"</span>, <span class='st'>"mw"</span> <span class='op'>=</span> <span class='st'>"mw"</span>, <span class='st'>"age"</span> <span class='op'>=</span> <span class='st'>"age_at_election"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>mutate</span><span class='op'>(</span>n_mdb <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>mw</span> <span class='op'>==</span> <span class='st'>"m"</span>, <span class='op'>-</span><span class='va'>n</span>, <span class='va'>n</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>mdb_compact</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>WP</span> <span class='op'>==</span> <span class='st'>"19"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>count</span><span class='op'>(</span><span class='va'>GESCHLECHT</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<pre><code># A tibble: 2 x 2
+  GESCHLECHT     n
+* &lt;chr&gt;      &lt;int&gt;
+1 männlich     503
+2 weiblich     234</code></pre>
+</div>
+<p>Next the three single plots are being created for the male/female side of age pyramid as well as the center part with the age distribution of the representatives:</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>p_pop_w</span> <span class='op'>&lt;-</span> <span class='va'>mdb_pop</span> <span class='op'>%&gt;%</span> 
+<span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>year</span> <span class='op'>==</span> <span class='fl'>2017</span>, <span class='va'>mw</span> <span class='op'>==</span> <span class='st'>"w"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span><span class='va'>age</span>, <span class='va'>pop_mw</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>geom_col</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"#CF9BAB"</span>, color <span class='op'>=</span> <span class='st'>"#CF9BAB"</span><span class='op'>)</span> <span class='op'>+</span> 
+    <span class='fu'>scale_y_continuous</span><span class='op'>(</span>breaks <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>200</span>, <span class='fl'>400</span>, <span class='fl'>600</span><span class='op'>)</span>, labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"0"</span>, <span class='st'>"200"</span>, <span class='st'>"400"</span>, <span class='st'>"600"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>coord_flip</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>labs</span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"Women (in 1000)\nin the German Population"</span><span class='op'>)</span> <span class='op'>+</span> 
+    <span class='fu'>annotate</span><span class='op'>(</span>
+      geom <span class='op'>=</span> <span class='st'>"text"</span>,
+      x <span class='op'>=</span> <span class='fl'>60</span>,
+      y <span class='op'>=</span> <span class='fl'>50</span>,
+      hjust <span class='op'>=</span> <span class='fl'>0</span>,
+      label <span class='op'>=</span> <span class='st'>"50.7%\nof the\npopulation"</span>,
+      size <span class='op'>=</span> <span class='fl'>6</span>,
+      fontface <span class='op'>=</span> <span class='st'>"bold"</span>,
+      fontfamily <span class='op'>=</span> <span class='st'>"Cabin"</span>,
+      color <span class='op'>=</span> <span class='st'>"#9f3857"</span>
+             <span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>theme</span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"none"</span>,
+          axis.text.y <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>,
+          axis.ticks.y <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>,
+          axis.title.y <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>
+          <span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>theme</span><span class='op'>(</span>text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+        family <span class='op'>=</span> <span class='st'>"Cabin"</span><span class='op'>)</span>,
+      plot.title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+        face <span class='op'>=</span> <span class='st'>"bold"</span>,
+        hjust <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>,
+      axis.title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+        <span class='co'># color = rgb(105, 105, 105, maxColorValue = 255),</span>
+        face <span class='op'>=</span> <span class='st'>"bold"</span>,
+        size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>,
+      axis.text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+        <span class='co'># color = rgb(105, 105, 105, maxColorValue = 255),</span>
+        face <span class='op'>=</span> <span class='st'>"bold"</span>,
+        size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.85</span><span class='op'>)</span><span class='op'>)</span>,
+      legend.position <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
+
+<span class='va'>p_pop_m</span> <span class='op'>&lt;-</span> <span class='va'>mdb_pop</span> <span class='op'>%&gt;%</span> 
+<span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>year</span> <span class='op'>==</span> <span class='fl'>2017</span>, <span class='va'>mw</span> <span class='op'>==</span> <span class='st'>"m"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span><span class='va'>age</span>, <span class='va'>pop_mw</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>geom_col</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"#72769a"</span>, color <span class='op'>=</span> <span class='st'>"#72769a"</span><span class='op'>)</span> <span class='op'>+</span> 
+    <span class='fu'>scale_y_continuous</span><span class='op'>(</span>breaks <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>600</span>, <span class='op'>-</span><span class='fl'>400</span>, <span class='op'>-</span><span class='fl'>200</span>, <span class='fl'>0</span>, <span class='fl'>200</span>, <span class='fl'>400</span>, <span class='fl'>600</span><span class='op'>)</span>, labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"600"</span>, <span class='st'>"400"</span>, <span class='st'>"200"</span>, <span class='st'>"0"</span>, <span class='st'>"200"</span>, <span class='st'>"400"</span>, <span class='st'>"600"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>coord_flip</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>labs</span><span class='op'>(</span>
+      y <span class='op'>=</span> <span class='st'>"Men (in 1000)\nin the German Population"</span>,
+      x <span class='op'>=</span> <span class='st'>"Age group (in years)"</span>
+      <span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>annotate</span><span class='op'>(</span>
+      geom <span class='op'>=</span> <span class='st'>"text"</span>,
+      x <span class='op'>=</span> <span class='fl'>60</span>,
+      y <span class='op'>=</span> <span class='op'>-</span><span class='fl'>50</span>,
+      hjust <span class='op'>=</span> <span class='fl'>1</span>,
+      label <span class='op'>=</span> <span class='st'>"49.3%\nof the\npopulation"</span>,
+      size <span class='op'>=</span> <span class='fl'>6</span>,
+      fontface <span class='op'>=</span> <span class='st'>"bold"</span>,
+      fontfamily <span class='op'>=</span> <span class='st'>"Cabin"</span>,
+      color <span class='op'>=</span> <span class='st'>"#1D203C"</span>
+             <span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>theme</span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>theme</span><span class='op'>(</span>text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+        family <span class='op'>=</span> <span class='st'>"Cabin"</span><span class='op'>)</span>,
+      plot.title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+        face <span class='op'>=</span> <span class='st'>"bold"</span>,
+        hjust <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>,
+      axis.title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+        <span class='co'># color = rgb(105, 105, 105, maxColorValue = 255),</span>
+        face <span class='op'>=</span> <span class='st'>"bold"</span>,
+        size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>,
+      axis.text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+        <span class='co'># color = rgb(105, 105, 105, maxColorValue = 255),</span>
+        face <span class='op'>=</span> <span class='st'>"bold"</span>,
+        size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.85</span><span class='op'>)</span><span class='op'>)</span>,
+      legend.position <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
+
+<span class='va'>p_mdb</span> <span class='op'>&lt;-</span> <span class='va'>mdb_pop</span> <span class='op'>%&gt;%</span> 
+<span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>year</span> <span class='op'>==</span> <span class='fl'>2017</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span><span class='va'>age</span>, <span class='va'>n_mdb</span>, fill<span class='op'>=</span><span class='va'>mw</span>, color <span class='op'>=</span> <span class='va'>mw</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>geom_col</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> 
+    <span class='fu'>scale_fill_manual</span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#363c70"</span>, <span class='st'>"#9f3857"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>scale_color_manual</span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#363c70"</span>, <span class='st'>"#9f3857"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>scale_y_continuous</span><span class='op'>(</span>breaks <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>20</span>, <span class='op'>-</span><span class='fl'>10</span>, <span class='fl'>0</span>, <span class='fl'>10</span>, <span class='fl'>20</span><span class='op'>)</span>, labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"20"</span>, <span class='st'>"10"</span>, <span class='st'>"0"</span>, <span class='st'>"10"</span>, <span class='st'>"20"</span><span class='op'>)</span>, limits <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>30</span>, <span class='fl'>30</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>scale_x_continuous</span><span class='op'>(</span>limits <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>100</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>coord_flip</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>labs</span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"MdB (mandates)\n"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>annotate</span><span class='op'>(</span>
+      geom <span class='op'>=</span> <span class='st'>"text"</span>,
+      x <span class='op'>=</span> <span class='fl'>90</span>,
+      y <span class='op'>=</span> <span class='fl'>0</span>,
+      hjust <span class='op'>=</span> <span class='fl'>0.5</span>,
+      label <span class='op'>=</span> <span class='st'>"68.2% vs 31.8%\nof the mandates"</span>,
+      size <span class='op'>=</span> <span class='fl'>6</span>,
+      fontface <span class='op'>=</span> <span class='st'>"bold"</span>,
+      fontfamily <span class='op'>=</span> <span class='st'>"Cabin"</span>
+    <span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>theme</span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"none"</span>,
+          axis.text.y <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>,
+          axis.ticks.y <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>,
+          axis.title.y <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>
+          <span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>theme</span><span class='op'>(</span>text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+        family <span class='op'>=</span> <span class='st'>"Cabin"</span><span class='op'>)</span>,
+      plot.title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+        face <span class='op'>=</span> <span class='st'>"bold"</span>,
+        hjust <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>,
+      axis.title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+        <span class='co'># color = rgb(105, 105, 105, maxColorValue = 255),</span>
+        face <span class='op'>=</span> <span class='st'>"bold"</span>,
+        size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>,
+      axis.text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+        <span class='co'># color = rgb(105, 105, 105, maxColorValue = 255),</span>
+        face <span class='op'>=</span> <span class='st'>"bold"</span>,
+        size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.85</span><span class='op'>)</span><span class='op'>)</span>,
+      legend.position <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+</div>
+<p>As final part of this section the three plots are combined into the aggregated plot:</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://wilkelab.org/cowplot/reference/ggdraw.html'>ggdraw</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://wilkelab.org/cowplot/reference/draw_plot.html'>draw_plot</a></span><span class='op'>(</span><span class='va'>p_pop_m</span>, x<span class='op'>=</span><span class='fl'>0</span>, y<span class='op'>=</span><span class='fl'>0.1</span>, width <span class='op'>=</span> <span class='fl'>0.33</span>, height <span class='op'>=</span> <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://wilkelab.org/cowplot/reference/draw_plot.html'>draw_plot</a></span><span class='op'>(</span><span class='va'>p_mdb</span>, x<span class='op'>=</span><span class='fl'>0.34</span>, y<span class='op'>=</span><span class='fl'>0.1</span>, width <span class='op'>=</span> <span class='fl'>0.33</span>, height <span class='op'>=</span> <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://wilkelab.org/cowplot/reference/draw_plot.html'>draw_plot</a></span><span class='op'>(</span><span class='va'>p_pop_w</span>, x<span class='op'>=</span><span class='fl'>0.67</span>, y<span class='op'>=</span><span class='fl'>0.1</span>, width <span class='op'>=</span> <span class='fl'>0.33</span>, height <span class='op'>=</span> <span class='fl'>0.8</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://wilkelab.org/cowplot/reference/draw_label.html'>draw_label</a></span><span class='op'>(</span><span class='st'>"Age and Gender of representatives in the German Bundestag\nduring the electorial period 2017 - 2021"</span>,
+             x <span class='op'>=</span> <span class='fl'>0.5</span>,
+             y <span class='op'>=</span> <span class='fl'>0.95</span>,
+             hjust <span class='op'>=</span> <span class='fl'>0.5</span>,
+             fontfamily <span class='op'>=</span> <span class='st'>"Cabin"</span>,
+             fontface <span class='op'>=</span> <span class='st'>"bold"</span>,
+             size <span class='op'>=</span> <span class='fl'>18</span><span class='op'>)</span><span class='op'>+</span>
+  <span class='fu'><a href='https://wilkelab.org/cowplot/reference/draw_label.html'>draw_label</a></span><span class='op'>(</span><span class='st'>"@jollydata_blog: using data from:\nwww.bundestag.de/services/opendata and\nFederal Statistical Office of Germany, Genesis-Online, https://destatis.de/, Data license by-2-0"</span>,
+             x <span class='op'>=</span> <span class='fl'>0.98</span>,
+             y <span class='op'>=</span> <span class='fl'>0.05</span>,
+             hjust <span class='op'>=</span> <span class='fl'>1</span>,
+             fontfamily <span class='op'>=</span> <span class='st'>"Cabin"</span>,
+             size <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<p><img src="composition-of-the-german-parliament-since-1949_files/figure-html5/unnamed-chunk-14-1.png" width="768" /></p>
+</div>
+<p>The visual impression here is clear as the numbers are: women make up slightly more than half of the population, but only take less than a third of the seats in the Bundestag. There seems to be a particular drop in women below 50 years of age. Additionally, while the outline of the representative-distribution roughly follows the curve of the population between ages 40 to 60, the convex curve of the population from 18 to 35 years is not reflected by the elected representatives.</p>
+<h3 id="age-and-gender-distributions-within-the-parties-in-2017">Age and Gender Distributions within the parties in 2017</h3>
+<p>The next aspect I’ll look into, is the hypothesis, that more conservative parties tend to have older representatives. Below are visual and statistical analyses of this hypothesis.</p>
+<div class="panelset">
+<div class="panel">
+<p><span class="panel-name">Plot</span></p>
+<p>For the visualization, I chose to split the data by Party and by gender as well. As the numbers are acceptably small, I used a scatterplot to visualize every single representative and, by this, make the female fraction in each party visible.</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>mdb_compact</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>WP</span> <span class='op'>==</span> <span class='st'>"19"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>mutate</span><span class='op'>(</span>
+    age_at_election <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>floor</a></span><span class='op'>(</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/time_length.html'>time_length</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/difftime.html'>difftime</a></span><span class='op'>(</span><span class='va'>MDBWP_VON</span>, <span class='va'>GEBURTSDATUM</span><span class='op'>)</span>, <span class='st'>"years"</span><span class='op'>)</span><span class='op'>)</span>,
+    mw <span class='op'>=</span> <span class='fu'>str_trunc</span><span class='op'>(</span><span class='va'>GESCHLECHT</span>, <span class='fl'>1</span>, ellipsis <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span>
+         <span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>mutate</span><span class='op'>(</span>Party <span class='op'>=</span> <span class='fu'>fct_relevel</span><span class='op'>(</span><span class='va'>Party</span>, 
+            <span class='st'>"SPD"</span>, <span class='st'>"CDU"</span>, <span class='st'>"CSU"</span>, 
+            <span class='st'>"GRUENE"</span>, <span class='st'>"FDP"</span>, <span class='st'>"LINKE"</span>, 
+            <span class='st'>"AfD"</span>, <span class='st'>"Other"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span><span class='va'>Party</span>, <span class='va'>age_at_election</span>, color <span class='op'>=</span> <span class='va'>mw</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>geom_point</span><span class='op'>(</span>position <span class='op'>=</span> <span class='fu'>position_jitterdodge</span><span class='op'>(</span>dodge.width <span class='op'>=</span> <span class='fl'>0.7</span>, jitter.width <span class='op'>=</span> <span class='fl'>0.25</span><span class='op'>)</span>, alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>stat_summary</span><span class='op'>(</span>fun <span class='op'>=</span> <span class='st'>"median"</span>, geom <span class='op'>=</span> <span class='st'>"point"</span>, size <span class='op'>=</span> <span class='fl'>4</span>, position <span class='op'>=</span> <span class='fu'>position_dodge</span><span class='op'>(</span>width <span class='op'>=</span> <span class='fl'>0.75</span><span class='op'>)</span><span class='op'>)</span><span class='op'>+</span>
+      <span class='fu'>scale_color_manual</span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#363c70"</span>, <span class='st'>"#9f3857"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>scale_y_continuous</span><span class='op'>(</span>limits <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>15</span>, <span class='fl'>80</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>
+      title <span class='op'>=</span> <span class='st'>"Age and Gender Differences between the Partys in WP19 (2017-2021)"</span>,
+      subtitle <span class='op'>=</span> <span class='st'>"Small dots represent parlamentarians, larger dots indicate age median (women: red, men: blue)"</span>,
+      x <span class='op'>=</span> <span class='st'>"Party"</span>,
+      y <span class='op'>=</span> <span class='st'>"Age of representatives (years)"</span>,
+      caption <span class='op'>=</span> <span class='st'>"@jollydata_blog using data from:\nwww.bundestag.de/services/opendata"</span>
+    <span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>annotate</span><span class='op'>(</span><span class='st'>"rect"</span>, <span class='co'># SPD</span>
+             xmin <span class='op'>=</span> <span class='fl'>0.6</span>, xmax <span class='op'>=</span> <span class='fl'>1.4</span>,
+             ymin <span class='op'>=</span> <span class='fl'>16</span>, ymax <span class='op'>=</span> <span class='fl'>20</span>, alpha <span class='op'>=</span> <span class='fl'>0.9</span>, fill <span class='op'>=</span> <span class='st'>"#e2382a"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>annotate</span><span class='op'>(</span><span class='st'>"rect"</span>, <span class='co'># CDU</span>
+             xmin <span class='op'>=</span> <span class='fl'>1.6</span>, xmax <span class='op'>=</span> <span class='fl'>2.4</span>,
+             ymin <span class='op'>=</span> <span class='fl'>16</span>, ymax <span class='op'>=</span> <span class='fl'>20</span>, alpha <span class='op'>=</span> <span class='fl'>0.9</span>, fill <span class='op'>=</span> <span class='st'>"#000000"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>annotate</span><span class='op'>(</span><span class='st'>"rect"</span>, <span class='co'># CSU</span>
+             xmin <span class='op'>=</span> <span class='fl'>2.6</span>, xmax <span class='op'>=</span> <span class='fl'>3.4</span>,
+             ymin <span class='op'>=</span> <span class='fl'>16</span>, ymax <span class='op'>=</span> <span class='fl'>20</span>, alpha <span class='op'>=</span> <span class='fl'>0.9</span>, fill <span class='op'>=</span> <span class='st'>"#323232"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>annotate</span><span class='op'>(</span><span class='st'>"rect"</span>, <span class='co'># GRUENE</span>
+             xmin <span class='op'>=</span> <span class='fl'>3.6</span>, xmax <span class='op'>=</span> <span class='fl'>4.4</span>,
+             ymin <span class='op'>=</span> <span class='fl'>16</span>, ymax <span class='op'>=</span> <span class='fl'>20</span>, alpha <span class='op'>=</span> <span class='fl'>0.9</span>, fill <span class='op'>=</span> <span class='st'>"#3a9c00"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>annotate</span><span class='op'>(</span><span class='st'>"rect"</span>, <span class='co'># FDP</span>
+             xmin <span class='op'>=</span> <span class='fl'>4.6</span>, xmax <span class='op'>=</span> <span class='fl'>5.4</span>,
+             ymin <span class='op'>=</span> <span class='fl'>16</span>, ymax <span class='op'>=</span> <span class='fl'>20</span>, alpha <span class='op'>=</span> <span class='fl'>0.9</span>, fill <span class='op'>=</span> <span class='st'>"yellow"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>annotate</span><span class='op'>(</span><span class='st'>"rect"</span>, <span class='co'># LINKE</span>
+             xmin <span class='op'>=</span> <span class='fl'>5.6</span>, xmax <span class='op'>=</span> <span class='fl'>6.4</span>,
+             ymin <span class='op'>=</span> <span class='fl'>16</span>, ymax <span class='op'>=</span> <span class='fl'>20</span>, alpha <span class='op'>=</span> <span class='fl'>0.9</span>, fill <span class='op'>=</span> <span class='st'>"#cc1f2f"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>annotate</span><span class='op'>(</span><span class='st'>"rect"</span>, <span class='co'># AfD</span>
+             xmin <span class='op'>=</span> <span class='fl'>6.6</span>, xmax <span class='op'>=</span> <span class='fl'>7.4</span>,
+             ymin <span class='op'>=</span> <span class='fl'>16</span>, ymax <span class='op'>=</span> <span class='fl'>20</span>, alpha <span class='op'>=</span> <span class='fl'>0.9</span>, fill <span class='op'>=</span> <span class='st'>"#0080FF"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>annotate</span><span class='op'>(</span><span class='st'>"rect"</span>, <span class='co'># Other</span>
+             xmin <span class='op'>=</span> <span class='fl'>7.6</span>, xmax <span class='op'>=</span> <span class='fl'>8.4</span>,
+             ymin <span class='op'>=</span> <span class='fl'>16</span>, ymax <span class='op'>=</span> <span class='fl'>20</span>, alpha <span class='op'>=</span> <span class='fl'>0.9</span>, fill <span class='op'>=</span> <span class='st'>"#a9a9a9"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>theme</span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>theme</span><span class='op'>(</span>text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+        family <span class='op'>=</span> <span class='st'>"Cabin"</span><span class='op'>)</span>,
+      plot.title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+        face <span class='op'>=</span> <span class='st'>"bold"</span>,
+        hjust <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>,
+      axis.title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+        <span class='co'># color = rgb(105, 105, 105, maxColorValue = 255),</span>
+        face <span class='op'>=</span> <span class='st'>"bold"</span>,
+        size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>,
+      axis.text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+        <span class='co'># color = rgb(105, 105, 105, maxColorValue = 255),</span>
+        face <span class='op'>=</span> <span class='st'>"bold"</span>,
+        size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.85</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<p><img src="composition-of-the-german-parliament-since-1949_files/figure-html5/unnamed-chunk-15-1.png" width="768" /></p>
+</div>
+</div>
+<div class="panel">
+<p><span class="panel-name">Statistics</span></p>
+<p>To list the number of gender vs party in 2017 we’ll look at a simple crosstable:</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>wp19</span> <span class='op'>&lt;-</span> <span class='va'>mdb_compact</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>WP</span> <span class='op'>==</span> <span class='st'>"19"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>mutate</span><span class='op'>(</span>
+    age_at_election <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>floor</a></span><span class='op'>(</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/time_length.html'>time_length</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/difftime.html'>difftime</a></span><span class='op'>(</span><span class='va'>MDBWP_VON</span>, <span class='va'>GEBURTSDATUM</span><span class='op'>)</span>, <span class='st'>"years"</span><span class='op'>)</span><span class='op'>)</span>,
+    mw <span class='op'>=</span> <span class='fu'>str_trunc</span><span class='op'>(</span><span class='va'>GESCHLECHT</span>, <span class='fl'>1</span>, ellipsis <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span>
+         <span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>mutate</span><span class='op'>(</span>Party <span class='op'>=</span> <span class='fu'>fct_relevel</span><span class='op'>(</span><span class='va'>Party</span>, 
+            <span class='st'>"SPD"</span>, <span class='st'>"CDU"</span>, <span class='st'>"CSU"</span>, 
+            <span class='st'>"GRUENE"</span>, <span class='st'>"FDP"</span>, <span class='st'>"LINKE"</span>, 
+            <span class='st'>"AfD"</span>, <span class='st'>"Other"</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>wp19</span><span class='op'>$</span><span class='va'>Party</span>, <span class='va'>wp19</span><span class='op'>$</span><span class='va'>mw</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<pre><code>        
+           m   w
+  SPD     92  73
+  CDU    161  44
+  CSU     39   9
+  GRUENE  31  40
+  FDP     64  20
+  LINKE   32  36
+  AfD     79   9
+  Other    5   3</code></pre>
+</div>
+<p>Looking at the above distributions I don’t assume normality of the distributions. I’ll therefor use a Kruskal-Wallis test to compare the age across all parties and if there’s significant differences, I’ll do follow-up pairwise Wilcoxon tests with correction for multiplicity.</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/kruskal.test.html'>kruskal.test</a></span><span class='op'>(</span><span class='va'>age_at_election</span> <span class='op'>~</span> <span class='va'>Party</span>, data <span class='op'>=</span> <span class='va'>wp19</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<pre><code>
+    Kruskal-Wallis rank sum test
+
+data:  age_at_election by Party
+Kruskal-Wallis chi-squared = 23.992, df = 7, p-value =
+0.001143</code></pre>
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/pairwise.wilcox.test.html'>pairwise.wilcox.test</a></span><span class='op'>(</span><span class='va'>wp19</span><span class='op'>$</span><span class='va'>age_at_election</span>, <span class='va'>wp19</span><span class='op'>$</span><span class='va'>Party</span>, p.adjust.method <span class='op'>=</span> <span class='st'>"holm"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>broom</span><span class='fu'>::</span><span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>arrange</span><span class='op'>(</span><span class='va'>`p.value`</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/pkg/rmarkdown/man/paged_table.html'>paged_table</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["group1"],"name":[1],"type":["chr"],"align":["left"]},{"label":["group2"],"name":[2],"type":["chr"],"align":["left"]},{"label":["p.value"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"FDP","2":"CDU","3":"0.003904641"},{"1":"FDP","2":"SPD","3":"0.009017136"},{"1":"AfD","2":"FDP","3":"0.187855220"},{"1":"LINKE","2":"FDP","3":"0.201650903"},{"1":"GRUENE","2":"CDU","3":"0.307966594"},{"1":"GRUENE","2":"SPD","3":"0.440702437"},{"1":"CSU","2":"SPD","3":"0.510619586"},{"1":"CSU","2":"CDU","3":"0.552026696"},{"1":"CDU","2":"SPD","3":"1.000000000"},{"1":"GRUENE","2":"CSU","3":"1.000000000"},{"1":"FDP","2":"CSU","3":"1.000000000"},{"1":"FDP","2":"GRUENE","3":"1.000000000"},{"1":"LINKE","2":"SPD","3":"1.000000000"},{"1":"LINKE","2":"CDU","3":"1.000000000"},{"1":"LINKE","2":"CSU","3":"1.000000000"},{"1":"LINKE","2":"GRUENE","3":"1.000000000"},{"1":"AfD","2":"SPD","3":"1.000000000"},{"1":"AfD","2":"CDU","3":"1.000000000"},{"1":"AfD","2":"CSU","3":"1.000000000"},{"1":"AfD","2":"GRUENE","3":"1.000000000"},{"1":"AfD","2":"LINKE","3":"1.000000000"},{"1":"Other","2":"SPD","3":"1.000000000"},{"1":"Other","2":"CDU","3":"1.000000000"},{"1":"Other","2":"CSU","3":"1.000000000"},{"1":"Other","2":"GRUENE","3":"1.000000000"},{"1":"Other","2":"FDP","3":"1.000000000"},{"1":"Other","2":"LINKE","3":"1.000000000"},{"1":"Other","2":"AfD","3":"1.000000000"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p>As the pairwise comparisons show, the liberal democratic party (FDP) has significantly younger representatives compared to the two largest parties CDU (Christian Democratic Union, “conservative center”) and SPD (Social Democratic Party, “center-left”). So with this, I cannot truly accept the above mentioned hypothesis: There seems to be no significant age gradient along the “consvervative-progressive” axis.</p>
+</div>
+</div>
+<p>The gender gap is widest in the parties CSU and AfD, while both GRUENE and LINKE have more women serving in the parliament than men.</p>
+<h3 id="age-and-gender-across-the-history-of-the-bundestag">Age and Gender across the history of the Bundestag</h3>
+<p>Are representatives younger or older now compared to the early days? What was the fraction of female representatives over time? This is what this section is about. To keep the visualization clean, I omitted the labels on the y-Axis, as the relation between men / women is more important, than the absolute numbers.</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>age_medians</span> <span class='op'>&lt;-</span> <span class='va'>mdb_compact</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>mutate</span><span class='op'>(</span>
+    age_at_election <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>floor</a></span><span class='op'>(</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/time_length.html'>time_length</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/difftime.html'>difftime</a></span><span class='op'>(</span><span class='va'>MDBWP_VON</span>, <span class='va'>GEBURTSDATUM</span><span class='op'>)</span>, <span class='st'>"years"</span><span class='op'>)</span><span class='op'>)</span>,
+    mw <span class='op'>=</span> <span class='fu'>str_trunc</span><span class='op'>(</span><span class='va'>GESCHLECHT</span>, <span class='fl'>1</span>, ellipsis <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span>
+         <span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>WP</span>, <span class='va'>mw</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>summarise</span><span class='op'>(</span>age_med <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/median.html'>median</a></span><span class='op'>(</span><span class='va'>age_at_election</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='va'>mdb_ages</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>left_join</span><span class='op'>(</span><span class='va'>age_medians</span>, by <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"mw"</span>, <span class='st'>"WP"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>left_join</span><span class='op'>(</span><span class='va'>wp_tbl</span>, by <span class='op'>=</span> <span class='st'>"WP"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span><span class='va'>age_at_election</span>, <span class='va'>n</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>geom_col</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='va'>mw</span>, color <span class='op'>=</span> <span class='va'>mw</span><span class='op'>)</span>, alpha <span class='op'>=</span> <span class='fl'>0.3</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>geom_vline</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>xintercept <span class='op'>=</span> <span class='va'>age_med</span>, color <span class='op'>=</span> <span class='va'>mw</span><span class='op'>)</span>, size <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>scale_fill_manual</span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#363c70"</span>, <span class='st'>"#9f3857"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>scale_color_manual</span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#363c70"</span>, <span class='st'>"#9f3857"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>scale_y_continuous</span><span class='op'>(</span>breaks <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>20</span>, <span class='fl'>40</span><span class='op'>)</span>, labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"0"</span>, <span class='st'>"20"</span>, <span class='st'>"40"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>facet_grid</span><span class='op'>(</span>rows <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/vars.html'>vars</a></span><span class='op'>(</span><span class='va'>year</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>labs</span><span class='op'>(</span>
+      title <span class='op'>=</span> <span class='st'>"Age and Gender distribution of the German Bundestag"</span>,
+      subtitle <span class='op'>=</span> <span class='st'>"Across all 19 electorial periods. (Men: blue, women (red), vertical lines: age medians.)"</span>,
+      x <span class='op'>=</span> <span class='st'>"Age of representative (in years)"</span>,
+      y <span class='op'>=</span> <span class='st'>"Number of representatives"</span>,
+      caption <span class='op'>=</span> <span class='st'>"@jollydata_blog using data from:\nwww.bundestag.de/services/opendata"</span>
+    <span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>theme</span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"none"</span>,
+          axis.text.y <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>theme</span><span class='op'>(</span>text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+        family <span class='op'>=</span> <span class='st'>"Cabin"</span><span class='op'>)</span>,
+      plot.title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+        face <span class='op'>=</span> <span class='st'>"bold"</span>,
+        hjust <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>,
+      axis.title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+        <span class='co'># color = rgb(105, 105, 105, maxColorValue = 255),</span>
+        face <span class='op'>=</span> <span class='st'>"bold"</span>,
+        size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>,
+      axis.text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>
+        <span class='co'># color = rgb(105, 105, 105, maxColorValue = 255),</span>
+        face <span class='op'>=</span> <span class='st'>"bold"</span>,
+        size <span class='op'>=</span> <span class='fu'>rel</span><span class='op'>(</span><span class='fl'>0.85</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<p><img src="composition-of-the-german-parliament-since-1949_files/figure-html5/unnamed-chunk-18-1.png" width="672" /></p>
+</div>
+<h2 id="conclusions">Conclusions</h2>
+<p>This concludes the first part of this series on the Bundestag. If you’ve read up to here, thanks for your interest and I hope you will also enjoy the next parts.</p>
+<p>Main takeaways from this article are:</p>
+<ul>
+<li>More seats are assigned by Party Lists, compared to direct mandates and the overall number of representatives is growing.</li>
+<li>Overall, women are largely underrepresented in the parliament (and up to now always have been in previous electoral periods). The discrepancy is currently the strongest in the two parties CSU and AfD, while both GRUENE and LINKE do have more female representatives than male.</li>
+<li>The median age of the parliamentarians sunk to the lowest values in the 70s and 80s, and gradually increased again since then. This variation is most apparent in female parlamentarians.</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>For non-german readers: “MdB” stands for “Mitglied des Bundestages”, which means “member of the parliament”<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>For reference I used the Wikipedia Article on the <a href="https://de.wikipedia.org/wiki/Fraktion_(Bundestag)">fractions</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p><a href="https://www.bundestag.de/resource/blob/195644/0681378d7dc91d13888a0a77f7add0f7/24_personenindex-data.pdf">“Verzeichnis der Mitglieder des Deutschen Bundestages und Personenverzeichnis”</a>, state 2021-03-03, accessed on 2021-03-04<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>For a good visual representation of the actual proportional seats, including the government forming groups the government see <a href="https://commons.wikimedia.org/wiki/File:German_parliamentary_elections_diagram_de.svg">this graphic</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p>This sytem in recent elections caused more and more transitional mandates resulting in an ever larger parliament, as seen in the plot below.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6" role="doc-endnote"><p>According to the <em>Order of precedence</em> the president of the Bundestag comes second, after the President of Germany, and before the Chancellor<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7" role="doc-endnote"><p><a href="https://www.bundeswahlleiter.de/dam/jcr/56147bb4-c149-4faa-a9b0-9a3d98e8bf7b/btw17_heft5-1.pdf">“Wahl zum 19. Deutschen Bundestag am 24. September 2017”, Heft 5, Teil 1, p. 61</a><a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>

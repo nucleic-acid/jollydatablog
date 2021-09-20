@@ -1,0 +1,322 @@
+---
+title: "Bundestag Part II.1 - Go back to start..."
+description: |
+ After further research I found a way to get more data and with better quality. 
+author:
+  - name: Christian A. Gebhard
+    url: {https://jollydata.blog/about.html}
+date: 03-22-2021
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: true
+    toc-floating: true
+draft: false
+categories:
+  - R
+  - germany
+  - politics
+  - RegEx
+  - record linkage
+preview: preview_BTII1.jpg
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      collapse = TRUE,
+                      comment = "#>",
+                      fig.retina = 2, # Control using dpi
+                      fig.width = 6,  # generated images
+                      fig.align = "center",
+                      dpi = 72, 
+                      out.width = "100%",
+                      dev = "svg",
+                      dev.args = list(png = list(type = "cairo-png")),
+                      optipng = "-o1 -quiet")
+
+xaringanExtra::use_panelset()
+
+source("../../resources/jolly_theme.R", local = knitr::knit_global())
+library("reticulate")
+use_condaenv(condaenv = "r-reticulate")
+library("r2symbols")
+```
+
+## ...do not pass Go.
+
+::::: {.panelset}
+
+::: {.panel}
+[Introduction]{.panel-name}
+
+I should have known better. When I couldn't find a proper API to the access the Bundestag-Data, I immediately went for what looked like the second best option: scraping the xls files that are hosted on the website.^[Actually I hadn't tried web scraping before, so it also intrigued me as a possibility to learn this.]
+I started scraping the website right away, setup selenium and wrote a script to automatically click through the dynamic website and download all available xls files.
+
+The result wasn't too bad, actually: I obtained around 480 datasets, including exact dates of the polls, all individual votes, names of representatives  and party/parliamentary groups. 
+Yet, I couldn't get the script to finish correctly. I had hoped to scrape all ~700 available polls, not only ~480.
+
+Had I stepped back for a second and done some further research first, I would have found a comfortable way to access all polling data via an easily iterable URL pattern to obtain the same data for all ~700 polls. And better yet, someone has been doing the work of web scraping the bundestag-data in a quite professional way: The project behind [https://www.democracy-deutschland.de/](https://www.democracy-deutschland.de/) provide several tools around scraping several parliamentary websites in Germany (e.g. national and federal parliaments). Some of the data scraped with these tools are regularly updated and hosted at the repository [https://github.com/bundestag](https://github.com/bundestag). 
+
+As I still learned a lot during my own scraping process, I decided to keep the [now obsolete post](https://jollydata.blog/posts/2021-03-14-bundestag-part-ii-web-scraping-the-roll-call-votes/) and make this update a separate post.
+
+*Preview Image: `r symbol("copyright")` `r format(Sys.time(), "%Y")` Christian A. Gebhard*
+
+:::
+
+::: {.panel}
+[The data]{.panel-name}
+
+The Bundestag [provides polling data](https://www.bundestag.de/parlament/plenum/abstimmung/liste) for quite a long time going back as PDF reports, but only since around 2012 in machine readable tables. Roll call data since 2009 is available as lists that can be scraped from the website. Unfortunately there is no specific license mentioned for the open data, but the data is offered to "interested users" for "further machine processing". Sounds good enough for my use.
+
+I'll be using the data hosted in a [github repo](https://github.com/bundestag), which was generated scraping the www.bundestag.de website. Among the different datasets, there are json files with the individual votes linked to the ID number of the ballot and in others there is the meta-data on the ballots including title, date, etc.
+Both are unofficial data, but I probably couldn't scrape it in a better quality, so I will continue to use this data.
+
+Both datasources ([NamedPolls](https://github.com/bundestag/NamedPolls) and [NamedPollDeputies](https://github.com/bundestag/NamedPollDeputies)) are published under "The Unlicense" with no conditions whatsoever.  
+**I still want to give credit to the [contributors](https://github.com/orgs/bundestag/people) of this repo and thank them for their great and helpful work!**
+
+
+
+:::
+
+:::::
+
+## Processing the data
+
+I want to get a single dataset containing the names and dates of the ballots, the names and votes of the representatives and their party membership. Unfortunately the data is separated in two "folders": one for the poll meta data and one with the actual votes. Additionally in each folder each poll has its own file.
+
+<aside>At the time of writing the most recent poll id was 720</aside>
+
+In this post I will 
+
+1. read the json files,
+2. reshape them into a rectangularized form,
+3. concatenate all separate poll files to a single dataframe,
+4. do additional cleaning / completion steps,
+3. and join the voting and the meta data.
+
+So let's get started with loading the required packages:
+
+```{r libraries, include=TRUE, echo=TRUE}
+library("tidyverse")
+library("jsonlite")
+library("reclin")
+library("rmarkdown")
+```
+
+
+### Reading the meta data of the polls
+
+I cloned the above mentioned repositories "NamedPolls" and "NamedPollDeputies" to `my data_sources/2021_bundestag` folder.
+Using Sys.glob I obtain the file_paths for all data files, loop over these and `rbind` them to create the desired metadata tibble.
+
+```{r read metadata, include=TRUE, echo=TRUE}
+# obtain a vector with all relevant file paths
+poll_files <- Sys.glob(file.path("../../../data_sources/2021_bundestag/NamedPolls/data/*.json"))
+
+# instantiate an empty tibble
+poll_meta <- tibble()
+
+# loop over the file paths, read each file, extract information of interest and append to the tibble
+for (file in poll_files) {
+  json_temp <- read_json(file)
+  p_id <- as.numeric(json_temp$data$id)
+  p_title <- json_temp$data$title
+  p_date <- as.Date(json_temp$data$date)
+  poll_meta <- rbind(poll_meta, tibble(p_id, p_date, p_title))
+}
+```
+
+Let's get the dimensions and a summary of the metadata.
+
+```{r}
+print("Dimensions:")
+dim(poll_meta)
+print("Summary of Metadata:")
+poll_meta %>% summary()
+```
+
+- There are 656 polls included.
+- The first poll is recorded on Dec. 3, 2009, the most recent one in March 26, 2021.
+
+### Reading the voting data
+
+In this snippet I use `jsonlite::fromJSON()`, as it can simplify the data to a dataframe automatically. The dataframe with the votes of each deputy is nested within the resulting list, as there is other data "surrounding" the actual voting data:
+
+```{r read voting data, include=TRUE, echo=TRUE}
+# obtain a vector with all relevant file paths
+vote_files <- Sys.glob(file.path("../../../data_sources/2021_bundestag/NamedPollDeputies//data/*.json"))
+
+# instantiate an empty tibble
+voting_data_raw <- tibble()
+
+# loop over the files, extract the poll id and the list item with the 
+# nested data frame. Then append the dataframe to the rest of the data.
+for (file in vote_files) {
+  votes_temp <- fromJSON(file, simplifyVector = TRUE, simplifyDataFrame = TRUE)
+  temp_id <- votes_temp$data$id
+  df_temp <- as_tibble(votes_temp$data$votes$deputies) %>% 
+    mutate(p_id = as.numeric(temp_id))
+  voting_data_raw <- rbind(voting_data_raw, df_temp)
+}
+
+print("Dimensions of the dataset:")
+dim(voting_data_raw)
+```
+
+
+## Cleaning and Quality Checks
+
+For the further analysis in this series I want to make sure, that each deputy is identified by a unique identifier, and not listed under e.g. slightly different names. The scraped data isn't perfect in this regard:
+
+- some deputies have unique IDs, but get a new ID in each electorial period
+- some have unique URLs to their profiles, some have two different URLs for the current and former electorial periods (linking to the web archive of the *Bundestag*.)
+- some lack both ID or URL.
+
+...so I cannot use either the ID nor the URL.
+
+My first idea was to use the official basic deputy data provided by the *Bundestag*^[I used this dataset in the [first part of this series](https://jollydata.blog/posts/2021-03-07-bundestag-part-i/)], because there are all name variants, name changes, academic titles or titles of nobility listed and linked to a constant deputy ID number. However in the votes dataset above has 427039 entries and the deputy dataset also of that magnitude. As the order of first/last name etc. is still different in the current voting data and the "reference" dataset, I wanted to use record linkage / fuzzy string matching. Unfortunately my midrange 2013 notebook ran out of memory comparing all possible pairings and I had to take a different approach.
+
+### Removing titles
+In the end I decided to use the name as identifier. To avoid interference of titles causing different names for the same person, I simply removed all variants of academic titles, that I could find or think of from the names:
+
+
+```{r cleaning, include=TRUE, echo=TRUE}
+voting_data_no_titles <- voting_data_raw %>% 
+  mutate(name_clean = str_replace_all(name, "Prof\\.", ""),
+         name_clean = str_replace_all(name_clean, "Dr\\.", ""),
+         name_clean = str_replace_all(name_clean, "h\\.\\s?c\\.", ""),
+         name_clean = str_replace_all(name_clean, "rer\\.\\s?nat\\.", ""),
+         name_clean = str_replace_all(name_clean, "rer\\.\\s?pol\\.", ""),
+         name_clean = str_replace_all(name_clean, "iur\\.", ""),
+         name_clean = str_replace_all(name_clean, ",\\s*", ", ") # replace excessive spaces with a single space as this is missing in some cases causing name-duplicates 
+         )
+
+```
+
+This resulted in quite a reduction of unique names from `r nrow(distinct(voting_data_no_titles, name))` to `r nrow(distinct(voting_data_no_titles, name_clean))`.
+
+As quality checks I answered the following questions (written in the code comments):
+
+```{r collapse=FALSE, include=TRUE, echo=TRUE}
+
+# Q1: Are there rare name variations, e.g. caused by typos (occurring 
+# once or twice), missed by the above cleaning?
+
+voting_data_no_titles %>% 
+  count(name_clean) %>% 
+  arrange(n) %>% 
+  head(10) %>% 
+  paged_table()
+
+# Q2: Did the above process cause "name collision" for two deputies,
+# resulting in >1 vote in a poll for the same name?
+
+voting_data_no_titles %>% 
+  group_by(p_id) %>% 
+  count(name_clean, sort = TRUE) %>% 
+  head(10) %>% 
+  paged_table()
+
+# Q3: Are there different names for the same biography-URL?
+
+voting_data_no_titles %>% 
+  distinct(URL, name_clean) %>% 
+  count(URL, sort = TRUE) %>% 
+  head(10) %>% 
+  paged_table()
+
+# Q4: Are there different names for the same id number?
+
+voting_data_no_titles %>% 
+  distinct(id, name_clean) %>% 
+  count(id, sort = TRUE) %>% 
+  head(10) %>% 
+  paged_table()
+
+```
+
+I can answer all four questions with "no":
+
+- Regarding Q1: I manually checked all deputies with <20 registered votes. Most served for a short time each, so the numbers are plausible, as they have left the Bundestag short after the election or joined later, so they only voted a few times. Others have their name written differently, which will be attended in the next section.
+- Regarding Q2: No name appears twice within the same p_id (poll id), so at least within each poll there's no collision.
+- Regarding Q3 and 4: Obviously the entries with missing URL or id are grouped, but otherwise only two duplications are found. They will be fixed in the next section anyways.
+
+<aside>Apparently each deputy got a new ID for each electoral period. (max. 3 IDs per person, matching the active electoral periods in a manually checked random sample)</aside>
+
+### Record linkage
+To check for systematic spelling differences that do not appear as "single exceptions" above, I went back to record linkage and in fact identified a few names, mostly due to accents or non-standard characters.^[The differences might be caused by different systems/encodings when collecting/publishing or scraping the data.]
+
+
+```{r include=TRUE, echo=TRUE}
+
+unique_names <- voting_data_no_titles %>% 
+  distinct(name_clean)
+
+pair_blocking(unique_names, unique_names) %>% 
+  compare_pairs(by = "name_clean", default_comparator = lcs()) %>% 
+  score_problink() %>%
+  select_threshold(threshold = 0.6) %>% 
+  link() %>% 
+  filter(name_clean.x != name_clean.y) %>% 
+  arrange(name_clean.x)
+```
+
+Above I chose a quite permissive threshold of 0.6. I wouldn't normally do this, but as some names are quite short, even a few changed characters might have a strong impact on the string distance. Many of the pairings above are in fact different deputies, but some names have to be corrected:
+
+- "Brugger, Agnes" ~ "Brugger, Agnieszka"
+- "Dagdelen, Sevim" ~ "Dağdelen, Sevim"
+- "Özoguz, Aydan" ~ "Özoğuz, Aydan"
+- "Neskovic, Wolfgang" ~ "Nešković, Wolfgang",
+- "Jantz, Christina" ~ "Jantz-Herrmann, Christina", # name changed due to marriage?
+- "Aken, Jan" ~ "Aken, Jan van", # van forgotten in some records
+- "Lerchenfeld, Philipp" ~ "Lerchenfeld, Philipp Graf", # title of nobility forgotten in some records
+- "Korkmaz, Elvan" ~ "Korkmaz-Emre, Elvan", # name changed due to marriage?
+- "Wadephul, Johann" ~ "Wadephul, Johann David", # 'David' forgotten in some records
+
+```{r include=TRUE, echo=TRUE}
+voting_data_cleaned <- voting_data_no_titles %>% 
+  mutate(name_clean = case_when(
+            name_clean == "Brugger, Agnieszka" ~ "Brugger, Agnes", # http://webarchiv.bundestag.de/archive/2013/1212/bundestag/abgeordnete17/biografien/B/brugger_agnes.html
+            name_clean == "Dagdelen, Sevim" ~ "Dağdelen, Sevim",
+            name_clean == "Özoguz, Aydan" ~ "Özoğuz, Aydan",
+            name_clean == "Jantz, Christina" ~ "Jantz-Herrmann, Christina", # name changed due to marriage?
+            name_clean == "Aken, Jan" ~ "Aken, Jan van", # van forgotten in some records
+            name_clean == "Lerchenfeld, Philipp" ~ "Lerchenfeld, Philipp Graf", # title forgotten in some records
+            name_clean == "Neskovic, Wolfgang" ~ "Nešković, Wolfgang", # wrong spelling in some polls
+            name_clean == "Korkmaz, Elvan" ~ "Korkmaz-Emre, Elvan", # name changed due to marriage?
+            name_clean == "Wadephul, Johann" ~ "Wadephul, Johann David", # David forgotten in some records
+            TRUE ~ name_clean
+          ))
+
+voting_data_cleaned %>% 
+  distinct(name_clean) %>% 
+  nrow()
+```
+
+As expected this reduces the unique names by another 9 to 1198 distinct deputy names.
+
+### Where does this stop?
+One factor I'll be missing is, if due to marriage or divorce deputies completely changed their last name. I would have to check against the reference basic deputy data mentioned above.
+
+But I decided to keep the rest of the data as it is. Since I'm not planning on doing any world-shaking inferences, the effort of manually checking every record against the official deputy data with all official name changes, earned or lost titles etc. seemed disproportionate. I'm going for an *exploratory* analysis.
+
+## Joining the datasets and Conclusion
+After reading and cleaning the data, it's time to save it and head on to the next questions to be answerd!
+
+```{r join and save, include=TRUE, echo=TRUE}
+poll_meta %>% 
+  write_csv("../../../data_sources/2021_bundestag/parsed/poll_meta.csv")
+
+voting_data_cleaned %>% 
+  write_csv("../../../data_sources/2021_bundestag/parsed/voting_data_cleaned.csv")
+
+voting_data_complete <- voting_data_cleaned %>% 
+  left_join(poll_meta, by = "p_id") %>% 
+  select(-c(imgURL, URL, id))
+
+voting_data_complete %>% 
+  write_csv("../../../data_sources/2021_bundestag/parsed/polls_voting_complete.csv")
+```
+
+This concludes this blog post. I didn't do any "analysis" on the data or visualization. I still hope it was an interesting read and am looking forward to the next post, as there - finally - I can do some actual analyis.

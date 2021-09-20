@@ -1,0 +1,160 @@
+---
+title: "With flying colours"
+description: |
+  After three months of sailing, it is time to adjust the rigging. A refreshed look with a custom color palette, a custom ggplot2 theme and an updated logo and new typography.
+author:
+  - name: Christian A. Gebhard
+date: 03-09-2021
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: TRUE
+    toc_float: TRUE
+categories:
+  - meta
+  - typography
+  - ggplot2
+preview: images/Zeichnung.png
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+source("../../resources/jolly_theme.R", local = knitr::knit_global())
+library("r2symbols")
+
+```
+
+*updated: 2021-06-15: tweaked dark_slate color for website, logo and ggplot-theme*  
+*updated: 2021-04-02: added custom fonts to ggplot-theme*
+
+## How the blog left the docks
+
+Back, when I started, I made some initial design decisions (fonts, a few colours, logo). Other things were deliberately left in their default setting, in order to get the blog finally started without loosing myself in constant optimising before launch. 
+The important steps before launch were setting up the web hosting and understanding how the distill blogging tool works.
+
+## A new rigging
+
+Now after three posts I have some ideas on how to improve the overall appearance of the blog and to streamline the writing of the posts.
+In this section I will describe how I adjusted the fonts, the colour palette of the blog and for plotting and how I set up a custom basic ggplot2 theme, that I can simply apply to all plots.
+
+### Typography
+My initial choices for the fonts were some of my favorite font families: Cabin (sans serif) for body text and plots, Crimson Pro (serif) for headings and Inconsolata (mono) for code chunks.
+
+While this had a classy look^[This is obviously a matter of taste. This is my view on this font pairing.], after some time now I felt it was a bit "too classy", as in old-fashioned. I want the blog to have a serious yet modern look and feel. One of the most direct ways to achieve this is a set of fonts that play well together and represents the idea of the post.
+
+After some playing around I settled on
+
+- "[Bitter](https://fonts.google.com/specimen/Bitter?preview.text_type=custom#about)", a serif font. I really like the sharper edges, the clean lines and the almost "slab-like" serifs. Besides the headings, I tweaked the CSS to use this family in the nav-bar, the block quotes and used the light cut in the updated extended logo.
+- "[Open Sans](https://fonts.google.com/specimen/Open+Sans?preview.text_type=custom#about)", a sans-serif font for the body text. This one is widely used and a neutral and very legible font - just what I need. I use these in the plots as well.
+- I stayed with "[Inconsolata](https://fonts.google.com/specimen/Inconsolata?preview.text_type=custom#about)" for code-chunks. It's an unagitated, elegant mono spaced font and I think it blends well into the overall look.^[A runner up was "Fira Mono", but that had too much of a character on its own and all in all it disturbed the harmony.]
+
+### Colors and an updated logo
+
+The **blog** basically needs only two colors: the dark color for the nav-bar / the footer and an accent color that will (for now) be used in the logo and might later be used for some stylistic accents in the text.
+
+![The logo of the jolly data blog, after the update in June 2021. New are the colors, the font and a sharper look to the jolly. `r symbol("copyright")` `r format(Sys.time(), "%Y")` Christian A. Gebhard](../../resources/logo_w_name.png)
+
+As you can see in the image above, the dark color was changed from a dark blue to a dark slate with only a decent hue of blue (I called it *dark_slate*). The accent color changed from a darker, crimson-ish red to a brighter tone that is more a salmon-like orange (I called it *humble_salmon*).^[The reason I bothered coming up with names will be explained in the next section.]
+
+For **plotting** I needed more colors. I built a palette that has components in all major color "directions" (red: *jolly_red*, blue: *jolly_petrol* & *jolly_blue*, green: *jolly_green* and yellow: *jolly_yellow*) to allow for all plotting needs. For now I only defined a few base colors and will use variations on them if I need them in special plots.
+
+These are the colors in action:
+
+```{r fig.height=5, fig.width=8, layout="l-body-outset"}
+data("mtcars")
+
+ggplot(mtcars, aes(disp, mpg, color = as.factor(cyl))) +
+  geom_point(size = 5, alpha = 0.8) +
+  scale_color_manual(values = c(jolly_red, jolly_petrol, jolly_blue)) +
+  labs(
+    title = "The first three colors applied to mtcars",
+    subtitle = "jolly_red, jolly_petrol and jolly_blue",
+    caption = "by jollydata.blog") +
+  jolly_theme()
+
+ggplot(mtcars, aes(hp, wt, color = as.factor(cyl))) +
+  geom_point(size = 5, alpha = 0.8) +
+  scale_color_manual(values = c(dark_slate, jolly_green, jolly_yellow)) +
+  labs(
+    title = "The other three colors applied to mtcars",
+    subtitle = "dark_slate, jolly_green and jolly_yellow",
+    caption = "by jollydata.blog") +
+  jolly_theme()
+```
+
+## The ggplot2 theme
+
+In the [first post](https://jollydata.blog/posts/2021-01-01-olympic-history/) I used a `color_brewer` palette and didn't change the `theme_minimal()` much. After that I developed a look, that I liked and used it in the [second post](https://jollydata.blog/posts/2021-01-24-world-of-waste/). But [since then](https://jollydata.blog/posts/2021-03-07-bundestag-part-i/) I always had to manually copy the custom theme, which was quite error prone and I probably never was completely consistent. 
+
+This is why I wanted to streamline the process of writing by creating a custom theme. I used two blog posts as inspiration for how to achieve this: [https://www.r-bloggers.com/2018/09/custom-themes-in-ggplot2/](https://www.r-bloggers.com/2018/09/custom-themes-in-ggplot2/) and [https://themockup.blog/posts/2020-12-26-creating-and-using-custom-ggplot2-themes/](https://themockup.blog/posts/2020-12-26-creating-and-using-custom-ggplot2-themes/).
+
+I now wrote a custom theme-function called "jolly_theme()" based on `theme_minimal()`, that I can conveniently call when needed (as I did in the two plots above) and still tweak it to the specific plot, if needed.
+
+```{r echo=TRUE, eval=FALSE}
+library("ggplot2")
+library("showtext")
+font_add_google("Bitter")
+font_add_google("Open Sans")
+showtext_auto()
+
+jolly_theme <- function(
+  base_size = 12,
+  base_family = "Open Sans"
+){
+  theme_minimal(base_size = base_size, 
+                base_family = base_family) %+replace%
+  theme(
+    plot.title = element_text(
+      family = "Bitter",
+      face = "bold",
+      size = rel(1.8),
+      hjust = 0,
+      vjust = 10),
+    plot.subtitle = element_text(
+      face = "italic",
+      size = rel(1.8),
+      hjust = 0,
+      vjust = 8
+    ),
+    plot.caption = element_text(
+      size = rel(1.2),
+      face = "italic",
+      hjust = 1
+    ),
+    plot.margin = margin(1.5, 0.4, 0.4, 0.4, unit = "cm"),
+    axis.title = element_text(
+      face = "bold",
+      size = rel(1.4)),
+    axis.title.x = element_text(margin = margin(t = 15, r = 0, b = 0, l = 0)),
+    axis.title.y = element_text(margin = margin(t = 0, r = 15, b = 0, l = 0), angle = 90),
+    axis.text = element_text(
+      size = rel(1.4)),
+    legend.position = "bottom",
+    legend.title = element_text(
+      face = "bold",
+      size = rel(1.4)
+    ),
+
+    complete = TRUE
+  )
+}
+
+# store colours for comfortable plotting
+
+humble_salmon <- "#EC836D"
+dark_slate <- "#394755"
+jolly_red <- "#E86B72"
+jolly_petrol <- "#2D7F89"
+jolly_blue <- "#1BC7DC"
+jolly_green <- "#56BB83"
+jolly_yellow <- "#F39F5C"
+```
+
+In the same R-script I defined my new color palette. Whenever I write a new post, I include the following line in the setup chunk and can then call the colors and the custom theme by their names.
+
+```{r echo=TRUE,eval=FALSE}
+source("../../resources/jolly_theme.R", local = knitr::knit_global())
+```
+
+## Conclusions
+The blog got an update in the visual appearance. I will come back to this post and add sections, as soon as I find time to apply the theme and color palette to a python template. If I define a nice palette on one of the main colors, I might add this here as well. If you're into typography as well and want to have a chat about font pairings, feel free to contact me via [twitter](https://twitter.com/JollydataB) or [mastodon](https://scicomm.xyz/@basepair).
