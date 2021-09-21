@@ -45,6 +45,15 @@ xaringanExtra::use_panelset()
 library("r2symbols")
 ```
 
+<details>
+  <summary>Updates</summary>
+  
+  > **Updated 2021-09-21:** Added paragraph about the actual .htaccess file.
+  
+</details>
+
+## Introduction
+
 The three changes include a new look for the landing page, a comments functionality and a custom 404 error page. Read on to see how all of this is implemented.
 
 ## A clean landing page
@@ -191,6 +200,13 @@ Overall, setting it up was much easier than I expected!
 
 ## Custom 404 error page
 In theory this one is pretty straight forward: make a nice HTML file, put it somewhere in the root directory of your website and tell the webserver to use that file instead of the rather boring default "404 not found" error.
+
+In my case this was as easy as putting the following line into a file called `.htaccess` in the site's root directory:
+
+```
+ErrorDocument 404 /404.html
+```
+I suppose this should be valid for all Apache Webservers. Many webhosters might offer a frontend to manage this, but if you're using github pages or Netlify I suppose you'd have to create the file manually.^[I haven't tried this myself on these services-]
 
 Now let's get to the part(s) where this got tricky. Most importantly, there are three players to consider: you (as in your HTML/CSS skills), the blogging framework you use (distill in this case) and the webserver (which is often operated by a web-hosting service).
 

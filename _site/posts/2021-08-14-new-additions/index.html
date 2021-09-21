@@ -2701,6 +2701,7 @@ cookieconsent.run({
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
+<li><a href="#introduction">Introduction</a></li>
 <li><a href="#a-clean-landing-page">A clean landing page</a>
 <ul>
 <li><a href="#the-idea-parallax-scrolling">The Idea: parallax scrolling</a></li>
@@ -2717,6 +2718,15 @@ cookieconsent.run({
 </ul>
 </nav>
 </div>
+<details>
+<summary>
+Updates
+</summary>
+<blockquote>
+<p><strong>Updated 2021-09-21:</strong> Added paragraph about the actual .htaccess file.</p>
+</blockquote>
+</details>
+<h2 id="introduction">Introduction</h2>
 <p>The three changes include a new look for the landing page, a comments functionality and a custom 404 error page. Read on to see how all of this is implemented.</p>
 <h2 id="a-clean-landing-page">A clean landing page</h2>
 <p>I always considered the default landing-on-a-posts-listing a bit awkward. It might be practical to regular users<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> but it was not really welcoming or eye-pleasing. On the other hand, I also didn’t want to have a separate landing page with a link to the posts listing. I still want to have the listing on the starting page, as this blog is mainly about the content, not to showcase my CV or other content.</p>
@@ -2846,6 +2856,9 @@ To achieve this, I use the utterances widget. The creators of the widget describ
 <p>Overall, setting it up was much easier than I expected!</p>
 <h2 id="custom-404-error-page">Custom 404 error page</h2>
 <p>In theory this one is pretty straight forward: make a nice HTML file, put it somewhere in the root directory of your website and tell the webserver to use that file instead of the rather boring default “404 not found” error.</p>
+<p>In my case this was as easy as putting the following line into a file called <code>.htaccess</code> in the site’s root directory:</p>
+<pre><code>ErrorDocument 404 /404.html</code></pre>
+<p>I suppose this should be valid for all Apache Webservers. Many webhosters might offer a frontend to manage this, but if you’re using github pages or Netlify I suppose you’d have to create the file manually.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
 <p>Now let’s get to the part(s) where this got tricky. Most importantly, there are three players to consider: you (as in your HTML/CSS skills), the blogging framework you use (distill in this case) and the webserver (which is often operated by a web-hosting service).</p>
 <h3 id="first-attempt">First attempt</h3>
 <p>If you’re not experienced in web development, I suggest using some sort of static website building tool, as did I. Within the R/Rmarkdown universe there’s the great <code>{postcards}</code> package, that converts simple markdown into nice static pages using beautiful templates. An example is the <a href="https://jollydata.blog/about.html">about page</a>, but there are many more possibilities.</p>
@@ -2874,7 +2887,7 @@ Figure 1: The first attempt to build a custom 404 error page.
 <p>Sadly, I didn’t find a solution in the webhoster’s server settings that did the trick. This is why I went back to the start and tried again.</p>
 <h3 id="second-attempt">Second attempt</h3>
 <p>I really liked the postcards-version of my custom 404 error page. But I had to avoid loading the nav-bar, the footer and any layout-related scripts/frameworks built into <code>{distill}</code>.</p>
-<p>Basically I opted for copying the layout with plain HTML/CSS and use that as a self-contained page without the bells-and whistles of the <code>{distill}</code> framework. This meant building it almost from scratch<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. The only thing I import is my customized “main”-CSS file to keep the font styles consistent with the rest of the blog.</p>
+<p>Basically I opted for copying the layout with plain HTML/CSS and use that as a self-contained page without the bells-and whistles of the <code>{distill}</code> framework. This meant building it almost from scratch<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>. The only thing I import is my customized “main”-CSS file to keep the font styles consistent with the rest of the blog.</p>
 <p>The resulting page looks quite similar:</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
@@ -2896,7 +2909,7 @@ Figure 2: The second attempt to build a custom 404 error page.
 <p>In this manually created page I only use absolute URLs so independently of what the webserver “does” the reader will always end up on the right page. If you want to check it out, feel free to mess up the URL and enjoy the view. For convenience click <a href="https://jollydata.blog/donotgohere.html">here</a>. If you’re interested into my 404.html, it is accessible <a href="https://github.com/nucleic-acid/jolly-data-resources/blob/main/code/HTML_CSS/custom_404.html">here</a>.</p>
 <h2 id="comments">Comments</h2>
 <p>I really enjoyed tweaking the jollydata.blog! However I sometimes reached the limits of my web development skills and maybe found sub-optimal solutions. Are you aware of easier ways to achieve the above extensions? Are you missing vital details to apply any of the above to your blog? Please leave a comment here:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <section class="footnotes" role="doc-endnotes">
 <hr />
 <ol>
@@ -2905,7 +2918,8 @@ Figure 2: The second attempt to build a custom 404 error page.
 <li id="fn3" role="doc-endnote"><p>I’m so sorry for this cheap transition, it just overcame me.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4" role="doc-endnote"><p>For each blog post, a new issue is created, thereby allowing for separate comment feeds for each blog post.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5" role="doc-endnote"><p>You can still send me an E-Mail if you want!<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6" role="doc-endnote"><p>As mentioned above already, I’m not experienced with web development and the resulting website is a patchwork of snippets mostly from stackoverflow answers and w3schools examples, glued together by trial and error.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6" role="doc-endnote"><p>I haven’t tried this myself on these services-<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7" role="doc-endnote"><p>As mentioned above already, I’m not experienced with web development and the resulting website is a patchwork of snippets mostly from stackoverflow answers and w3schools examples, glued together by trial and error.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 <!--radix_placeholder_article_footer-->
