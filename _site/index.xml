@@ -12,17 +12,16 @@
       <link>https://jollydata.blog</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Mon, 01 Nov 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 02 Nov 2021 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Secret Santa</title>
       <dc:creator>Christian A. Gebhard</dc:creator>
       <link>https://jollydata.blog/posts/2021-11-02-secret-santa</link>
-      <description>With "Spooky Season" coming to an end, Holiday Season is up next. Time for a little themed article!
-If you have done Secret Santa rounds before, you might have run into the issue that that someone drew his or her own name from the lots. How often will you have to repeat the drawing until no one draws her or his own name?</description>
+      <description>With "Spooky Season" coming to an end, Holiday Season is up next. If you have done Secret Santa rounds before, you might have run into the issue that that someone drew his or her own name from the lots. How often will you have to repeat the drawing until no one draws her or his own name?</description>
       <category>python</category>
       <category>simulation</category>
       <guid>https://jollydata.blog/posts/2021-11-02-secret-santa</guid>
-      <pubDate>Mon, 01 Nov 2021 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 02 Nov 2021 00:00:00 +0000</pubDate>
       <media:content url="https://jollydata.blog/posts/2021-11-02-secret-santa/secret-santa_files/figure-html5/unnamed-chunk-6-1.png" medium="image" type="image/png" width="1152" height="720"/>
     </item>
     <item>
