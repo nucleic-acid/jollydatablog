@@ -31,3 +31,4 @@ cookie_consent:
 rss:
   full_content: false
 favicon: resources/logo_favicon.png
+repository_url: https://github.com/nucleic-acid/jollydatablog
