@@ -1,0 +1,47 @@
+---
+title: "Projects and Collections"
+description: |
+  A collection of ongoing and concluded projects.
+date: "`r Sys.Date()`"
+output: 
+  distill::distill_article:
+    toc: false
+    css: "strapless.css"
+base_url: https://jollydata.blog
+preview: resources/logo_w_name.png
+twitter:
+  site: "@JollydataB"
+  creator: "@c_gebhard"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+
+```{r}
+library(tidyverse)
+# Read in projects csv file 
+projects <- readr::read_csv(here::here("resources", "projects.csv"))
+```
+
+```{r projects, echo=FALSE}
+projects %>% 
+  bs4cards::cards(
+    title = title,
+    text = description,
+    link = url,
+    image = src,
+    # footer = tags,
+    layout = "label-right",
+    label_colour = "#f3dfcf",
+    tags = paste("All;", tags),
+    border_radius = 1,
+    border_width = 0,
+    width = 4,
+    # label_colour = "#f3ba8d"
+  )
+```
+
+
