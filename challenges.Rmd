@@ -1,0 +1,9 @@
+---
+title: "data viz challenges"
+base_url: https://jollydata.blog
+preview: resources/logo_w_name.png
+listing: challenges
+twitter:
+  site: "@JollydataB"
+  creator: "@c_gebhard"
+---
