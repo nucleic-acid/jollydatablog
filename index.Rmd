@@ -1,78 +1,62 @@
 ---
-title: "Posts"
+title: ""
+image: "resources/logo_dynamic_hero.png"
 site: distill::distill_website
-listing: posts
+links:
+  - label: Blog
+    url: "blog.html"
+  - label: Challenges
+    url: "challenges.html"
+  - label: Projects
+    url: "projects.html"
+output:
+  postcards::jolla
 ---
 
-<style>
-    
-.parallax { 
 
-  /* The image used */
-  background-image: url("resources/sailplot.png");
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=F, message=F, warning=F)
+```
 
-  /* Set a specific height */
-  height: 100vh; 
-  
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+```{css echo=FALSE}
+.rounded-circle {
+    border-radius: 25%!important;
 }
 
-.welcome {
-  position: absolute;
-  left: 0;
-  top: 25vh;
-  width: 100vw;
-  text-align: center;
-  color: #000;
-}
+```
 
-.welcome span.title {
-  font-family: 'Bitter', serif;
-  color: #000;
-  font-size: 48px;
-  letter-spacing: 10px;
-  line-height: 1.6;
-}
+```{r load_packages, message=FALSE, warning=FALSE, include=FALSE}
+library("fontawesome")
 
-.welcome span.surrounding {
-  font-family: 'Bitter', serif;
-  color: #000;
-  font-size: 24px;
-  letter-spacing: 5px;
-}
+library(metathis)
+meta() %>%
+  meta_description(
+    "The personal website of Christian A. Gebhard"
+  ) %>%
+  meta_name("github-repo" = "nucleic-acid/jollydatablog") %>%
+  meta_viewport() %>%
+  meta_social(
+    title = "jollydata.blog",
+    url = "https://jollydata.blog/",
+    image = "https://jollydata.blog/resource/logo_w_name.png",
+    image_alt = "The jolly data jolly in an ocean of data.",
+    og_type = "website",
+    og_author = c("Christian A. Gebhard"),
+    twitter_card_type = "summary",
+    twitter_creator = "@c_gebhard"
+  )
 
-.welcome span.downarrow {
-  font-size: 42px;
-}
+```
 
 
-.downbutton {
-  background: rgba(0,0,0,0);
-  border: none;
-  outline: none;
-  color: #1BC7DC;
-  text-align: center;
-  font-size: 42px;
-}
-
-</style>
+```{r, eval=FALSE}
+# htmltools::img(
+#   style = "max-width: 200px",
+#   src = "resources/logo_w_name.png"
+# )
+```
 
 
+# Welcome aboard!
 
-<div class="parallax l-screen">
-<div class="welcome">
-  <span class="surrounding">Welcome to the</span><br><br><br> 
-  <span class="title">jolly data blog</span><br><br><br> 
-  <span class="downarrow"> 
-    <button class="downbutton" onclick="window.scroll({ top: window.innerHeight+50,  left: 0,  behavior: 'smooth' });"> 
-      <img src="resources/chevron.png" width="100px"> 
-    </button> 
-  </span>
-</div>
-</div>
-
-
+This blog is all about the exploration of open datasets, data visualization and other personal projects using R or Python.
