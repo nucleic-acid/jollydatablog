@@ -1,7 +1,7 @@
 ---
 title: "data viz challenges"
 description: |
-  A collection data visualization from challenges such as #TidyTuesday.
+  This is a collection of contributions I made for challenges within the DataViz community such as #TidyTuesday. The preview images link to the corresponding articles.
 output: 
   distill::distill_article:
     toc: false
@@ -37,6 +37,6 @@ projects %>%
     border_width = 1,
     border_colour = "#394755",
     spacing = 5,
-    width = 4,
+    width = 3,
   )
 ```
