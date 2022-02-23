@@ -2,10 +2,14 @@
 title: "Christian A. Gebhard"
 image: "resources/pixelart2.png"
 links:
-  - label: Mastodon
+  - label: '<i class="fab fa-mastodon fa-lg"></i>'
     url: "https://scicomm.xyz/\\@basepair"
-  - label: Twitter
+  - label: '<i class="fab fa-twitter fa-lg"></i>'
     url: "https://twitter.com/c_gebhard"
+  - label: '<i class="fab fa-github fa-lg"></i>'
+    url: "https://github.com/nucleic-acid"
+  - label: '<i class="fa fa-rss"></i>'
+    url: blog.xml
 output:
   postcards::trestles
 ---
