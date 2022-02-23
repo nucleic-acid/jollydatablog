@@ -33,14 +33,12 @@ projects %>%
     text = description,
     link = url,
     image = src,
-    # footer = tags,
     layout = "label-right",
     label_colour = "#f3dfcf",
     tags = paste("All;", tags),
     border_radius = 1,
     border_width = 0,
     width = 4,
-    # label_colour = "#f3ba8d"
   )
 ```
 
