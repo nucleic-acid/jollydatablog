@@ -71,10 +71,11 @@ d-title.d-title {
 }
 
 .greeting {
-  min-height: 70vh;
-  padding-top: 10vh;
+  min-height: 50vh;
+  padding-top: 25vh;
   font-size: 20px;
   text-align: center;
+  line-height: 1.25;
 }
 
 </style>
@@ -87,7 +88,7 @@ d-title.d-title {
   <span class="title">jolly data blog</span><br><br><br> 
   <span class="downarrow"> 
     <button class="downbutton" onclick="window.scroll({ top: window.innerHeight+50,  left: 0,  behavior: 'smooth' });"> 
-      <img src="resources/logo_dynamic.png" width="120px"> 
+      <img src="resources/logo_dynamic.png" width="130px"> 
     </button> 
   </span>
 </div>
@@ -119,7 +120,7 @@ meta() %>%
   meta_social(
     title = "jollydata.blog",
     url = "https://jollydata.blog/",
-    image = "https://jollydata.blog/resource/logo_w_name.png",
+    image = "https://jollydata.blog/resource/logo_dynamic.png",
     image_alt = "The jolly data jolly in an ocean of data.",
     og_type = "website",
     og_author = c("Christian A. Gebhard"),
@@ -139,7 +140,8 @@ This is my personal website, where I write about the exploration of open dataset
 
 <br>
 
-I want to share what I learn, while I sail across the vast oceans of data. Check out the [**blog**](blog.html) for the latest posts!
+I want to share what I learn, while I sail across the vast oceans of data.  
+Check out the [**blog**](blog.html) for the latest posts!
 
 <br>
 
