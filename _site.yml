@@ -5,16 +5,22 @@ description: |
 base_url: https://jollydata.blog
 output_dir: "_site"
 navbar:
-  logo: resources/logo_favicon.png
+  logo: resources/favicon.png
   right:
     - text: "Home"
       href: index.html
     - text: "About"
       href: about.html
-    - text: "Privacy"
-      href: datenschutz.html
-    - text: "Impressum"
-      href: impressum.html
+    - text: "Blog"
+      href: blog.html
+    - text: "DataViz"
+      href: challenges.html
+    - text: "Projects"
+      href: projects.html
+    - icon: fa fa-github
+      href: https://github.com/nucleic-acid/jollydatablog
+    - icon: fa fa-twitter
+      href: https://twitter.com/c_gebhard
     - icon: fa fa-rss
       href: index.xml
 output:
@@ -31,4 +37,9 @@ cookie_consent:
 rss:
   full_content: false
 favicon: resources/logo_favicon.png
-repository_url: https://github.com/nucleic-acid/jollydatablog
+collections:
+  posts:
+    categories: true
+    categories_metadata: true
+    authors_metadata: false
+    feed_items_max: 20 # default
