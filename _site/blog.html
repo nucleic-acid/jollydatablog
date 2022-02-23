@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
   <meta name="generator" content="distill" />
+  <link rel="alternate" type="application/rss+xml" href="https://jollydata.blog/blog.xml" />
 
   <style type="text/css">
   /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
@@ -87,27 +88,35 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>jolly data: Impressum</title>
+  <title>jolly data: blog</title>
 
 
   <link rel="icon" type="image/png" href="resources/logo_favicon.png"/>
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="jolly data: Impressum"/>
+  <meta property="og:title" content="jolly data: blog"/>
   <meta property="og:type" content="article"/>
+  <meta property="og:image" content="https://jollydata.blog/./resources/logo_w_name.png"/>
+  <meta property="og:image:width" content="3774"/>
+  <meta property="og:image:height" content="825"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="jolly data"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
-  <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="jolly data: Impressum"/>
+  <meta property="twitter:card" content="summary_large_image"/>
+  <meta property="twitter:title" content="jolly data: blog"/>
+  <meta property="twitter:image" content="https://jollydata.blog/./resources/logo_w_name.png"/>
+  <meta property="twitter:image:width" content="3774"/>
+  <meta property="twitter:image:height" content="825"/>
+  <meta property="twitter:site" content="@JollydataB"/>
+  <meta property="twitter:creator" content="@c_gebhard"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output"]}},"value":[{"type":"character","attributes":{},"value":["Impressum"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","base_url","preview","listing","twitter"]}},"value":[{"type":"character","attributes":{},"value":["blog"]},{"type":"character","attributes":{},"value":["https://jollydata.blog"]},{"type":"character","attributes":{},"value":["resources/logo_w_name.png"]},{"type":"character","attributes":{},"value":["posts"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["site","creator"]}},"value":[{"type":"character","attributes":{},"value":["@JollydataB"]},{"type":"character","attributes":{},"value":["@c_gebhard"]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2616,12 +2625,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 </head>
 
-<body>
+<body class="layout-listing">
 
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Impressum","authors":[]}
+{"title":"blog","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2657,9 +2666,458 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_navigation_before_body-->
 <!--radix_placeholder_site_before_body-->
 <!--/radix_placeholder_site_before_body-->
+<!--radix_placeholder_article_listing-->
+
+
+<script type="application/javascript">
+
+function init_posts_list() {
+
+  function load_image(img) {
+    var src = $(img).attr('data-src');
+    if (src) {
+      $(img).attr('src', src);
+      $(img).on("load", function() {
+        img.removeAttribute('data-src');
+      });
+    }
+  }
+
+  function set_posts_visible(posts, visible) {
+    if (visible) {
+
+      // show bottom border by default
+      $(posts).removeClass('post-preview-last');
+
+      // apply limits if need be
+      var max_posts = 25;
+      var apply_limits = $('.posts-container').hasClass('posts-apply-limit');
+      if (apply_limits && posts.length > max_posts) {
+        posts = $(posts).slice(0, max_posts);
+      } else {
+        $('.posts-more a').addClass('hidden');
+      }
+
+      // apply last style
+      $(posts.slice(-1)[0]).addClass('post-preview-last');
+
+      $(posts).removeClass('hidden');
+      $(posts).find('img[data-src]').each(function(i, img) {
+        load_image(img);
+      });
+    } else {
+      $(posts).addClass('hidden');
+    }
+  }
+
+  function apply_hash_filter() {
+
+    // clear active state
+    $('.categories .active').removeClass('active');
+
+    // mark all posts invisible to start
+    set_posts_visible($('.posts-list').children('a'), false);
+
+    // if we have a hash filter
+    if (window.location.hash && window.location.hash.startsWith("#category:")) {
+
+      // mark posts that match the category visible
+      var page_category = window.location.hash.replace(/^#category:/, "");
+      page_category = decodeURIComponent(page_category)
+      var posts = $('.post-metadata').map(function(idx, script) {
+        var metadata = $.parseJSON($(script).html());
+        var post = null;
+        $.each(metadata.categories, function(idx, category) {
+          category = category.replace(/ /g,"_");
+          if ((page_category || '').toLowerCase() === "articles" || category === page_category) {
+            post = $(script).parent().get();
+            return false;
+          }
+        });
+        return post;
+      });
+      set_posts_visible(posts, true);
+
+      // mark the hash active
+      $('.categories li>a[href="' + decodeURIComponent(window.location.hash) + '"]').addClass('active');
+
+      // update the list_caption
+      var list_caption = $('.posts-list-caption');
+      var caption = (page_category || '').toLowerCase() === "articles"
+        ? list_caption.attr('data-caption')
+        : ('Category: ' + page_category.replace(/_/g," "));
+      list_caption.text(caption);
+
+    } else {
+
+      // no hash filter, make all posts visible (subject to max display)
+      set_posts_visible($('.posts-list').children(), true);
+
+      // reset list caption
+      var list_caption = $('.posts-list-caption');
+      list_caption.text(list_caption.attr('data-caption'));
+
+
+    }
+  }
+
+  // more articles
+  function apply_post_limits(apply) {
+    if (apply) {
+      $('.posts-container').addClass('posts-apply-limit');
+      $('.posts-more a').removeClass('hidden');
+    } else {
+      $('.posts-container').removeClass('posts-apply-limit');
+      $('.posts-more a').addClass('hidden');
+    }
+  }
+
+  // click handling for tags
+  $('.dt-tag').click(function(ev) {
+    window.location.hash = '#category:' + $(this).text().replace(/ /g, "_");
+    return false;
+  })
+
+  // hash filter handling
+  apply_hash_filter();
+  $(window).on('hashchange',function() {
+    apply_post_limits(true);
+    apply_hash_filter();
+  });
+
+  // more articles link
+  $('.posts-more a').click(function(e) {
+    e.preventDefault();
+    apply_post_limits(false);
+    apply_hash_filter();
+    return false;
+  });
+
+}
+
+</script>
+
+
+
+<div class="posts-container posts-with-sidebar posts-apply-limit l-screen-inset">
+<div class="posts-list">
+<h1 class="posts-list-caption" data-caption="blog">blog</h1>
+<a href="posts/2021-11-02-secret-santa/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["python","simulation"]}</script>
+<div class="metadata">
+<div class="publishedDate">Nov. 4, 2021</div>
+</div>
+<div class="thumbnail">
+<img src="posts/2021-11-02-secret-santa/images/gift.png"/>
+</div>
+<div class="description">
+<h2>Santa. Secret Santa.</h2>
+<div class="dt-tags">
+<div class="dt-tag">python</div>
+<div class="dt-tag">simulation</div>
+</div>
+<p>With "Spooky Season" coming to an end, Holiday Season is up next. If you have done Secret Santa rounds before, you might have wondered, what the odds are that someone draws his or her own name from the lots.</p>
+</div>
+</a>
+<a href="posts/2021-08-22-tea-earl-grey-hot-tidytuesday-2021-week-34/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["tidy tuesday","R","RegEx"]}</script>
+<div class="metadata">
+<div class="publishedDate">Aug. 26, 2021</div>
+</div>
+<div class="thumbnail">
+<img src="posts/2021-08-22-tea-earl-grey-hot-tidytuesday-2021-week-34/res/preview.png"/>
+</div>
+<div class="description">
+<h2>Tea, Earl Grey, Hot</h2>
+<div class="dt-tags">
+<div class="dt-tag">tidy tuesday</div>
+<div class="dt-tag">R</div>
+<div class="dt-tag">RegEx</div>
+</div>
+<p>My submission for #TidyTuesday 2021 week 34. A look at StarTrek TNG voice interactions with the Enterprise's computer. In this submission I focus on the 'locate' command to find someone on the ship.</p>
+</div>
+</a>
+<a href="posts/2021-08-14-new-additions/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["meta","html","css"]}</script>
+<div class="metadata">
+<div class="publishedDate">Aug. 21, 2021</div>
+</div>
+<div class="thumbnail">
+<img src="posts/2021-08-14-new-additions/images/windrose_black.png"/>
+</div>
+<div class="description">
+<h2>Leaving known waters</h2>
+<div class="dt-tags">
+<div class="dt-tag">meta</div>
+<div class="dt-tag">html</div>
+<div class="dt-tag">css</div>
+</div>
+<p>Over the last weeks and months I have collected three features for the blog itself that I want to implement. Covers: A custom parallax scrolling landing page, Utterances comments and a custom 404 error page. None are built into the {distill} package, so there's some manual work needed. I'll go through the changes here.</p>
+</div>
+</a>
+<a href="posts/2021-06-12-tt-fishing/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["R","tidy tuesday","experimental","environment"]}</script>
+<div class="metadata">
+<div class="publishedDate">June 14, 2021</div>
+</div>
+<div class="thumbnail">
+<img src="posts/2021-06-12-tt-fishing/images/preview_fish.png"/>
+</div>
+<div class="description">
+<h2>TidyTuesday 2021 week 24: Great Lakes Commercial Fishing</h2>
+<div class="dt-tags">
+<div class="dt-tag">R</div>
+<div class="dt-tag">tidy tuesday</div>
+<div class="dt-tag">experimental</div>
+<div class="dt-tag">environment</div>
+</div>
+<p>An analysis of the commercial fish production in the Great Lakes 1867 - 2015. Using beeswarm plots to produce schools of fish. My very first submission for #TidyTuesday!</p>
+</div>
+</a>
+<a href="posts/2021-03-14-bundestag-part-iii/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["R","network analysis","germany","politics"]}</script>
+<div class="metadata">
+<div class="publishedDate">May 6, 2021</div>
+</div>
+<div class="thumbnail">
+<img src="posts/2021-03-14-bundestag-part-iii/images/ptIII_preview.png"/>
+</div>
+<div class="description">
+<h2>Bundestag Part III: Voting on the edge</h2>
+<div class="dt-tags">
+<div class="dt-tag">R</div>
+<div class="dt-tag">network analysis</div>
+<div class="dt-tag">germany</div>
+<div class="dt-tag">politics</div>
+</div>
+<p>Leveraging network analysis tools, the voting behaviour of the deputies in the Bundestag shows similarity-clusters across three legislative periods. A visual analysis.</p>
+</div>
+</a>
+<a href="posts/2021-03-22-bundestag-part-ii1/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["R","germany","politics","RegEx","record linkage"]}</script>
+<div class="metadata">
+<div class="publishedDate">March 22, 2021</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2021-03-22-bundestag-part-ii1/preview_BTII1.jpg"/>
+</div>
+<div class="description">
+<h2>Bundestag Part II.1 - Go back to start...</h2>
+<div class="dt-tags">
+<div class="dt-tag">R</div>
+<div class="dt-tag">germany</div>
+<div class="dt-tag">politics</div>
+<div class="dt-tag">RegEx</div>
+<div class="dt-tag">record linkage</div>
+</div>
+<p>After further research I found a way to get more data and with better quality.</p>
+</div>
+</a>
+<a href="posts/2021-03-14-bundestag-part-ii-web-scraping-the-roll-call-votes/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["python","germany","politics","web scraping","RegEx"]}</script>
+<div class="metadata">
+<div class="publishedDate">March 14, 2021</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2021-03-14-bundestag-part-ii-web-scraping-the-roll-call-votes/images/harvest.jpg"/>
+</div>
+<div class="description">
+<h2>Bundestag Part II - Web scraping parliamentary votes</h2>
+<div class="dt-tags">
+<div class="dt-tag">python</div>
+<div class="dt-tag">germany</div>
+<div class="dt-tag">politics</div>
+<div class="dt-tag">web scraping</div>
+<div class="dt-tag">RegEx</div>
+</div>
+<p>The data on roll-call votes is accessible for the public on the bundestag.de website, but not via an API. Web Scraping to the rescue! In this part I will collect the available data and compose a single, full dataset as preparation for the following posts.</p>
+</div>
+</a>
+<a href="posts/2021-03-09-with-flying-colours/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["meta","typography","ggplot2"]}</script>
+<div class="metadata">
+<div class="publishedDate">March 9, 2021</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2021-03-09-with-flying-colours/images/Zeichnung.png"/>
+</div>
+<div class="description">
+<h2>With flying colours</h2>
+<div class="dt-tags">
+<div class="dt-tag">meta</div>
+<div class="dt-tag">typography</div>
+<div class="dt-tag">ggplot2</div>
+</div>
+<p>After three months of sailing, it is time to adjust the rigging. A refreshed look with a custom color palette, a custom ggplot2 theme and an updated logo and new typography.</p>
+</div>
+</a>
+<a href="posts/2021-03-07-bundestag-part-i/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["R","politics","germany"]}</script>
+<div class="metadata">
+<div class="publishedDate">March 7, 2021</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2021-03-07-bundestag-part-i/images/Bundestag_2017.svg"/>
+</div>
+<div class="description">
+<h2>German Bundestag - Part I: members of the parliament</h2>
+<div class="dt-tags">
+<div class="dt-tag">R</div>
+<div class="dt-tag">politics</div>
+<div class="dt-tag">germany</div>
+</div>
+<p>An analysis of the german national parliament ("Bundestag"). This first part focuses on biographical data of the elected representatives and the composition of the parliament over time.</p>
+</div>
+</a>
+<a href="posts/2021-01-24-world-of-waste/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["R","environment","international"]}</script>
+<div class="metadata">
+<div class="publishedDate">Feb. 7, 2021</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2021-01-24-world-of-waste/images/Sigle-recyclage.jpg"/>
+</div>
+<div class="description">
+<h2>World Of Waste</h2>
+<div class="dt-tags">
+<div class="dt-tag">R</div>
+<div class="dt-tag">environment</div>
+<div class="dt-tag">international</div>
+</div>
+<p>The amount of waste produced every year across the globe is frightening. But there's a glimmer of hope on the horizon.</p>
+</div>
+</a>
+<a href="posts/2021-01-01-olympic-history/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["R","sports","international","tidy tuesday"]}</script>
+<div class="metadata">
+<div class="publishedDate">Jan. 1, 2021</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2021-01-01-olympic-history/olympic-history_files/figure-html5/unnamed-chunk-28-1.png"/>
+</div>
+<div class="description">
+<h2>Olympic history</h2>
+<div class="dt-tags">
+<div class="dt-tag">R</div>
+<div class="dt-tag">sports</div>
+<div class="dt-tag">international</div>
+<div class="dt-tag">tidy tuesday</div>
+</div>
+<p>Participating athletes and medal count in the Modern Olympic Games over 120 years. Analysis of athletes and national teams from 1896 until 2016 and the influence of population and GDP per capita on the medal count of the nations in 2016.</p>
+</div>
+</a>
+<a href="posts/2020-12-27-setting-sail/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["meta"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 27, 2020</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2020-12-27-setting-sail/../../resources/logo_favicon.png"/>
+</div>
+<div class="description">
+<h2>Setting Sail</h2>
+<div class="dt-tags">
+<div class="dt-tag">meta</div>
+</div>
+<p>Make ready for departure, I'm going on a journey.</p>
+</div>
+</a>
+</div>
+<div class="posts-sidebar">
+<div class="sidebar-section categories">
+<h3>Categories</h3>
+<ul>
+<li>
+<a href="#category:Articles">Articles</a>
+<span class="category-count">(12)</span>
+</li>
+<li>
+<a href="#category:css">css</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:environment">environment</a>
+<span class="category-count">(2)</span>
+</li>
+<li>
+<a href="#category:experimental">experimental</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:germany">germany</a>
+<span class="category-count">(4)</span>
+</li>
+<li>
+<a href="#category:ggplot2">ggplot2</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:html">html</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:international">international</a>
+<span class="category-count">(2)</span>
+</li>
+<li>
+<a href="#category:meta">meta</a>
+<span class="category-count">(3)</span>
+</li>
+<li>
+<a href="#category:network_analysis">network analysis</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:politics">politics</a>
+<span class="category-count">(4)</span>
+</li>
+<li>
+<a href="#category:python">python</a>
+<span class="category-count">(2)</span>
+</li>
+<li>
+<a href="#category:R">R</a>
+<span class="category-count">(7)</span>
+</li>
+<li>
+<a href="#category:record_linkage">record linkage</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:RegEx">RegEx</a>
+<span class="category-count">(3)</span>
+</li>
+<li>
+<a href="#category:simulation">simulation</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:sports">sports</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:tidy_tuesday">tidy tuesday</a>
+<span class="category-count">(3)</span>
+</li>
+<li>
+<a href="#category:typography">typography</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:web_scraping">web scraping</a>
+<span class="category-count">(1)</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="posts-more">
+<a href="#">More articles &raquo;</a>
+</div>
+</div>
+<!--/radix_placeholder_article_listing-->
 
 <div class="d-title">
-<h1>Impressum</h1>
+<h1>blog</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
 
@@ -2667,39 +3125,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
 <div class="d-article">
-<h2 id="verantwortlicher-nach-5-tmg">Verantwortlicher nach §5 TMG</h2>
-<p>Christian Alexander Gebhard<br />
-Welfenstraße 16 B<br />
-81541 München</p>
-<h2 id="kontakt">Kontakt</h2>
-<p>Telefon: +49 (0) 1522 3084545<br />
-E-Mail: <a href="mailto:cg_hosting@posteo.de" class="email">cg_hosting@posteo.de</a></p>
-<h2 id="verantwortlicher-im-sinne-von-18-abs.-2-mstv">Verantwortlicher im Sinne von § 18 Abs. 2 MStV</h2>
-<p>Christian Alexander Gebhard<br />
-Welfenstraße 16 B<br />
-81541 München</p>
-<h3 id="haftung-für-inhalte">Haftung für Inhalte</h3>
-<p>Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
-<p>Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
-<h3 id="haftung-für-links">Haftung für Links</h3>
-<p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar.</p>
-<p>Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p>
-<h3 id="urheberrecht">Urheberrecht</h3>
-<p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.</p>
-<p>Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p>
-<p>Quelle: <a href="https://www.e-recht24.de">eRecht24</a></p>
-<h2 id="kammerzugehörigkeit-und-berufsspezifische-informationen">Kammerzugehörigkeit und berufsspezifische Informationen</h2>
-<p>Christian Alexander Gebhard führt die Berufsbezeichnung Arzt, verliehen in der Bundesrepublik Deutschland. Er ist Mitglieder der Bayerischen Landesärztekammer und untersteht für Gesundheitsdienstleistungen somit deren Aufsicht.</p>
-<h3 id="bayerischen-landesärztekammer">Bayerischen Landesärztekammer</h3>
-<p>Mühlbaurstraße 16<br />
-81677 München<br />
-E-Mail: <a href="mailto:info@blaek.de" class="email">info@blaek.de</a><br />
-<a href="http://www.blaek.de">www.blaek.de</a></p>
-<h3 id="berufsrechtliche-regelungen">Berufsrechtliche Regelungen</h3>
-<p>Das Berufsrecht und das Heilberufe-Kammergesetz ist über die <a href="https://www.blaek.de/arzt-und-recht/rechtliche-grundlagen">Homepage der Bayerischen Landesärztekammer &gt; Arzt und Recht &gt; Rechtliche Grundlagen</a> erreichbar. Dort findet sich auch die Berufsordnung der Landesärztekammer Bayern.</p>
-<h2 id="wichtig">Wichtig</h2>
-<p>Im Rahmen dieses Blogs werden explizit keine Gesundheitsdienstleistungen (bspw. Diagnosestellungen, Therapieempfehlungen, etc.) erbracht. Sollten blog-Artikel medizinische Angaben enthalten, so sind diese rein akademischer Natur und als allgemeine Information zu verstehen. Sie ersetzen in keiner Weise die klinsiche Einschätzung durch einen Arztbesuch und gelten explizit nicht als konkrete Therapieempfehlung des Autors.<br />
-Für medizinische Fragen unter anderem zu gesundheitlichen Beschwerden oder Symptomen sowie deren Behandlung wird auf die betreuende Hausärztin / den betreuenden Hausarzt oder die lokalen medizinischen Notdienste der kassenärztlichen Vereingungen verwiesen, in akuten Notfällen ist der Rettungsdienst unter Telefon 112 zu informieren.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

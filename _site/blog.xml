@@ -3,7 +3,7 @@
   <channel>
     <title>jolly data</title>
     <link>https://jollydata.blog</link>
-    <atom:link href="https://jollydata.blog/index.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://jollydata.blog/blog.xml" rel="self" type="application/rss+xml"/>
     <description>A blog on my personal exploration of open datasets, rstats, python and some more.
 </description>
     <image>
@@ -159,7 +159,7 @@
       <category>meta</category>
       <guid>https://jollydata.blog/posts/2020-12-27-setting-sail</guid>
       <pubDate>Sun, 27 Dec 2020 00:00:00 +0000</pubDate>
-      <media:content url="https://jollydata.blog/posts/2020-12-27-setting-sail/../../resources/logo_favicon.png" medium="image" type="image/png" width="242" height="242"/>
+      <media:content url="https://jollydata.blog/posts/2020-12-27-setting-sail/../../resources/logo_favicon.png" medium="image" type="image/png" width="822" height="822"/>
     </item>
   </channel>
 </rss>

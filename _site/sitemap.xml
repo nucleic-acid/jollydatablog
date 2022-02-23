@@ -2,7 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" version="1.0">
   <url>
     <loc>https://jollydata.blog/about.html</loc>
-    <lastmod>2021-09-20T21:57:16+02:00</lastmod>
+    <lastmod>2022-02-23T23:57:31+01:00</lastmod>
+  </url>
+  <url>
+    <loc>https://jollydata.blog/blog.html</loc>
+    <lastmod>2022-02-16T20:52:24+01:00</lastmod>
+  </url>
+  <url>
+    <loc>https://jollydata.blog/challenges.html</loc>
+    <lastmod>2022-02-24T00:12:34+01:00</lastmod>
   </url>
   <url>
     <loc>https://jollydata.blog/cookies.html</loc>
@@ -14,7 +22,7 @@
   </url>
   <url>
     <loc>https://jollydata.blog/disclaimer.html</loc>
-    <lastmod>2021-09-20T21:57:16+02:00</lastmod>
+    <lastmod>2022-02-24T00:33:04+01:00</lastmod>
   </url>
   <url>
     <loc>https://jollydata.blog/impressum.html</loc>
@@ -22,7 +30,11 @@
   </url>
   <url>
     <loc>https://jollydata.blog/</loc>
-    <lastmod>2021-09-20T21:57:16+02:00</lastmod>
+    <lastmod>2022-02-24T00:28:05+01:00</lastmod>
+  </url>
+  <url>
+    <loc>https://jollydata.blog/projects.html</loc>
+    <lastmod>2022-02-23T22:04:26+01:00</lastmod>
   </url>
   <url>
     <loc>https://jollydata.blog/posts/2021-11-02-secret-santa/</loc>
