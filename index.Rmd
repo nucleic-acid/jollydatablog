@@ -5,7 +5,7 @@ site: distill::distill_website
 links:
   - label: Blog
     url: "blog.html"
-  - label: Challenges
+  - label: DataViz
     url: "challenges.html"
   - label: Projects
     url: "projects.html"
@@ -20,7 +20,7 @@ knitr::opts_chunk$set(echo=F, message=F, warning=F)
 
 ```{css echo=FALSE}
 .rounded-circle {
-    border-radius: 25%!important;
+    border-radius: 30%!important;
 }
 
 ```
@@ -49,14 +49,12 @@ meta() %>%
 ```
 
 
-```{r, eval=FALSE}
-# htmltools::img(
-#   style = "max-width: 200px",
-#   src = "resources/logo_w_name.png"
-# )
-```
 
 
-# Welcome aboard!
+# Welcome aboard the jolly data blog!
 
-This blog is all about the exploration of open datasets, data visualization and other personal projects using R or Python.
+My name is Chris and I write about the exploration of open datasets, data visualization and other topics concerning `r fa(name = "r-project")` or `r fa(name = "python")`.
+
+I want to share, what I learn, while I sail across the vast oceans of data. Check out the **blog** for the latest posts!
+
+There are also collections of contributions to DataViz challenges and of other **projects** that might interest you.
