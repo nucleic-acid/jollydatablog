@@ -5,18 +5,18 @@ description: |
 base_url: https://jollydata.blog
 output_dir: "_site"
 navbar:
-  logo: resources/favicon.png
+  logo: resources/logo_favicon.png
   right:
     - text: "Home"
       href: index.html
-    - text: "About"
-      href: about.html
     - text: "Blog"
       href: blog.html
     - text: "DataViz"
       href: challenges.html
     - text: "Projects"
       href: projects.html
+    - text: "About"
+      href: about.html
     - icon: fa fa-github
       href: https://github.com/nucleic-acid/jollydatablog
     - icon: fa fa-twitter
