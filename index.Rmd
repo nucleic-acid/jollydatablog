@@ -9,9 +9,90 @@ links:
     url: "challenges.html"
   - label: Projects
     url: "projects.html"
-output:
-  postcards::jolla
 ---
+
+<style>
+    
+.parallax { 
+
+  /* The image used */
+  background-image: url("resources/sailplot.png");
+
+  /* Set a specific height */
+  height: 100vh; 
+  
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.welcome {
+  position: absolute;
+  left: 0;
+  top: 25vh;
+  width: 100vw;
+  text-align: center;
+  color: #000;
+}
+
+.welcome span.title {
+  font-family: 'Bitter', serif;
+  color: #000;
+  font-size: 48px;
+  letter-spacing: 10px;
+  line-height: 1.6;
+}
+
+.welcome span.surrounding {
+  font-family: 'Bitter', serif;
+  color: #000;
+  font-size: 24px;
+  letter-spacing: 5px;
+}
+
+.welcome span.downarrow {
+  font-size: 42px;
+}
+
+
+.downbutton {
+  background: rgba(0,0,0,0);
+  border: none;
+  outline: none;
+  color: #1BC7DC;
+  text-align: center;
+  font-size: 42px;
+}
+
+d-title.d-title {
+  display: none;
+}
+
+.greeting {
+  min-height: 70vh;
+  padding-top: 10vh;
+  font-size: 20px;
+  text-align: center;
+}
+
+</style>
+
+
+
+<div class="parallax l-screen">
+<div class="welcome">
+  <span class="surrounding">Welcome to the</span><br><br><br> 
+  <span class="title">jolly data blog</span><br><br><br> 
+  <span class="downarrow"> 
+    <button class="downbutton" onclick="window.scroll({ top: window.innerHeight+50,  left: 0,  behavior: 'smooth' });"> 
+      <img src="resources/logo_dynamic.png" width="120px"> 
+    </button> 
+  </span>
+</div>
+</div>
+
 
 
 ```{r setup, include=FALSE}
@@ -51,10 +132,16 @@ meta() %>%
 
 
 
-# Welcome aboard the jolly data blog!
 
-My name is Chris and I write about the exploration of open datasets, data visualization and other topics concerning `r fa(name = "r-project")` or `r fa(name = "python")`.
+<div class="greeting">
 
-I want to share, what I learn, while I sail across the vast oceans of data. Check out the **blog** for the latest posts!
+This is my personal website, where I write about the exploration of open datasets, data visualization and other topics concerning `r fa(name = "r-project")` or `r fa(name = "python")`.
 
-There are also collections of contributions to DataViz challenges and of other **projects** that might interest you.
+<br>
+
+I want to share what I learn, while I sail across the vast oceans of data. Check out the [**blog**](blog.html) for the latest posts!
+
+<br>
+
+You can find a [**gallery**](challenges.html) of my contributions to DataViz challenges and a collection of my ongoing [**projects**](projects.html) that might interest you.
+</div>
