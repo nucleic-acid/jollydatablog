@@ -8,7 +8,7 @@ output:
     toc: false
     css: "strapless.css"
 base_url: https://jollydata.blog
-preview: resources/logo_w_name.png
+preview: resources/logo_dynamic.png
 twitter:
   site: "@JollydataB"
   creator: "@c_gebhard"
