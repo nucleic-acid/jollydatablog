@@ -1,0 +1,9 @@
+---
+title: "blog"
+base_url: https://jollydata.blog
+preview: resources/logo_w_name.png
+listing: posts
+twitter:
+  site: "@JollydataB"
+  creator: "@c_gebhard"
+---
