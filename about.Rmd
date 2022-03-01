@@ -10,12 +10,15 @@ links:
     url: "https://github.com/nucleic-acid"
   - label: '<i class="fa fa-rss"></i>'
     url: blog.xml
+  - label: '`r fontawesome::fa("fab fa-orcid")`'
+    url: "https://orcid.org/0000-0002-8792-565X"
 output:
   postcards::trestles
 ---
 
 ```{r load_packages, message=FALSE, warning=FALSE, include=FALSE}
 library("fontawesome")
+library("distilltools")
 ```
 
 ## `r fa("book")`  About
