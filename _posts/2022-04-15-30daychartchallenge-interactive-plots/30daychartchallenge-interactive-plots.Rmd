@@ -1,0 +1,67 @@
+---
+title: "#30DayChartChallenge - interactive plots"
+description: |
+  This post hosts the interactive plots from the 30 day chart challenge. This will be updated throughout the 2022 challenge.
+author:
+  - name: Christian A. Gebhard 
+    url: https://twitter.com/c_gebhard
+    affiliation: jolly data blog
+    affiliation_url: https://jollydata.blog/about.html
+    orcid_id: 0000-0002-8792-565X
+date: "`r Sys.Date()`"
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: true
+    toc-floating: true
+    code_folding: true
+creative_commons: CC BY
+categories:
+  - 30DayChartChallenge
+  - R
+base_url: https://jollydata.blog/posts/2022-04-15-30daychartchallenge-interactive-plots
+preview: assets/preview.png
+twitter:
+  creator: "@c_gebhard"
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+The preview image is part of my [Day 02 plot](https://twitter.com/c_gebhard/status/1510146260052766724?s=20&t=_5g9S5bydnE4iZ6uysfDZw) on gender inequality among Nobel Prize laureates.
+
+## Day 14: motto "3 dimensional"
+
+For this day I used [ECharts](https://echarts.apache.org/en/index.html) via the [echarts4R package](https://echarts4r.john-coene.com/index.html).
+The application / usability of 3D plots in dataviz is highly debated. And yes, a static image of a 3D plot can make interpretation and especially comparing exact values difficult.
+
+But where 3D shines is **interactive visualizations**. You can move the data around, zoom in, filter etc.
+This can make data more *palpable* and by this in my opinion more accessible in the end. So go ahead and explore the palmer penguin data in 3 dimensions:
+
+```{r, echo=FALSE}
+
+library(echarts4r)
+library(tidyverse)
+library(palmerpenguins)
+
+trans <- list(opacity = 0.6) # transparency
+
+penguins |>
+  group_by(species) |> 
+  e_charts(bill_length_mm) |> 
+  e_scatter_3d(flipper_length_mm, body_mass_g, itemStyle = trans, legend = TRUE) |> 
+  e_theme("macarons") |> 
+  e_x_axis_3d(min = 25, max = 65, name = "Bill Length [mm]") |> 
+  e_y_axis_3d(min = 150, max = 250, name = "Flipper Length [mm]") |> 
+  e_z_axis_3d(name = "Body Mass [g]") |> 
+  e_title(text = "Palmer Penguins", subtext = "The three penguin species Adelie, Chinstrap and Gentoo are different in body mass and several body measurements.\nThe species' clusters are easier to differentiate, when a third dimension is added.\nDataViz by @c_gebhard | #30DayChartChallenge, Day 14 | Data: Horst AM, Hill AP, Gorman KB (2020).\npalmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0. doi: 10.5281/zenodo.3960218") |> 
+  e_legend(show = TRUE, top = "18%")
+
+
+```
+
+
+If you have an opinion on 3D in DataViz, please let me know and leave a comment below!
+
