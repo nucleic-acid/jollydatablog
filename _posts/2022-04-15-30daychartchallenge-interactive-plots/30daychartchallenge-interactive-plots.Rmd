@@ -1,7 +1,7 @@
 ---
-title: "#30DayChartChallenge - interactive plots"
+title: "30 Day Chart Challenge - interactive plots"
 description: |
-  This post hosts the interactive plots from the 30 day chart challenge. This will be updated throughout the 2022 challenge.
+  This post hosts the interactive plots from the #30DayChartChallenge. This will be updated throughout the 2022 challenge.
 author:
   - name: Christian A. Gebhard 
     url: https://twitter.com/c_gebhard
@@ -30,12 +30,16 @@ twitter:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+<details>
+ <summary>*on the preview image*</summary>
 The preview image is part of my [Day 02 plot](https://twitter.com/c_gebhard/status/1510146260052766724?s=20&t=_5g9S5bydnE4iZ6uysfDZw) on gender inequality among Nobel Prize laureates.
+</details>
 
-## Day 14: motto "3 dimensional"
+
+## Day 14: "relationship | 3 dimensional"
 
 For this day I used [ECharts](https://echarts.apache.org/en/index.html) via the [echarts4R package](https://echarts4r.john-coene.com/index.html).
-The application / usability of 3D plots in dataviz is highly debated. And yes, a static image of a 3D plot can make interpretation and especially comparing exact values difficult.
+The application / usability of 3D plots in dataviz is highly debated. And yes, a static image of a 3D plot can make interpretation and especially comparing exact values difficult. If you have an opinion on 3D in DataViz, please let me know and leave a comment below!
 
 But where 3D shines is **interactive visualizations**. You can move the data around, zoom in, filter etc.
 This can make data more *palpable* and by this in my opinion more accessible in the end. So go ahead and explore the palmer penguin data in 3 dimensions:
@@ -49,19 +53,221 @@ library(palmerpenguins)
 trans <- list(opacity = 0.6) # transparency
 
 penguins |>
-  group_by(species) |> 
-  e_charts(bill_length_mm) |> 
-  e_scatter_3d(flipper_length_mm, body_mass_g, itemStyle = trans, legend = TRUE) |> 
-  e_theme("macarons") |> 
-  e_x_axis_3d(min = 25, max = 65, name = "Bill Length [mm]") |> 
-  e_y_axis_3d(min = 150, max = 250, name = "Flipper Length [mm]") |> 
-  e_z_axis_3d(name = "Body Mass [g]") |> 
-  e_title(text = "Palmer Penguins", subtext = "The three penguin species Adelie, Chinstrap and Gentoo are different in body mass and several body measurements.\nThe species' clusters are easier to differentiate, when a third dimension is added.\nDataViz by @c_gebhard | #30DayChartChallenge, Day 14 | Data: Horst AM, Hill AP, Gorman KB (2020).\npalmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0. doi: 10.5281/zenodo.3960218") |> 
+  group_by(species) |>
+  e_charts(bill_length_mm) |>
+  e_scatter_3d(flipper_length_mm, body_mass_g, itemStyle = trans, legend = TRUE) |>
+  e_theme("macarons") |>
+  e_x_axis_3d(min = 25, max = 65, name = "Bill Length [mm]") |>
+  e_y_axis_3d(min = 150, max = 250, name = "Flipper Length [mm]") |>
+  e_z_axis_3d(name = "Body Mass [g]") |>
+  e_title(text = "Palmer Penguins", subtext = "The three penguin species Adelie, Chinstrap and Gentoo are different in body mass and several body measurements.\nThe species' clusters are easier to differentiate, when a third dimension is added.\nDataViz by @c_gebhard | #30DayChartChallenge, Day 14 | Data: Horst AM, Hill AP, Gorman KB (2020).\npalmerpenguins: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0. doi: 10.5281/zenodo.3960218") |>
   e_legend(show = TRUE, top = "18%")
+```
+
+## Day 16: "relationship | environment"
+
+What a great coincidence, that [this week's #tidytuesday](https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-04-12) is about indoor pollution and economics. This is a great dataset to show how the environment is related to other factors.
+
+```{r, collapse=TRUE, echo=FALSE, message=FALSE}
+# load packages
+# library(tidyverse)
+library(echarts4r)
+
+trans <- list(opacity = 0.5) # transparency
+
+# load and clean data
+# tuesdata <- tidytuesdayR::tt_load('2022-04-12')
+pollution <- readr::read_csv("../../../data_sources/OWID/indoor_pollution.csv") |>
+  janitor::clean_names() |>
+  rename(
+    deaths = deaths_cause_all_causes_risk_household_air_pollution_from_solid_fuels_sex_both_age_age_standardized_percent
+  ) |>
+  filter(str_detect(code, "^OWID", negate = TRUE))
+
+fuel_gdp <- readr::read_csv("../../../data_sources/OWID/fuel_gdp.csv") |>
+  janitor::clean_names() |>
+  rename(
+    access_to_fuels = access_to_clean_fuels_and_technologies_for_cooking_percent_of_population,
+    gdp_pc = gdp_per_capita_ppp_constant_2017_international,
+    population_est = population_historical_estimates
+  ) |>
+  filter(str_detect(code, "^OWID", negate = TRUE))
 
 
+# combine/join datasets
+poll_gdp <- pollution |>
+  inner_join(fuel_gdp, by = c("year", "code", "entity")) |>
+  # filter relevant years
+  filter(year >= 2000 & year < 2017) |>
+  # add missing continent data to all years (only given for 2015)
+  group_by(code) |>
+  fill(continent, .direction = "downup") |>
+  ungroup() |>
+  # caculate several values
+  mutate(
+    gdp_pc_log = round(log10(gdp_pc), 2),
+    death_rate = round(deaths / (population_est / 100000), 2),
+    death_scaled = scales::rescale(death_rate, to = c(2, 20)),
+    not_access = 100 - access_to_fuels,
+    opacity = 0.4
+  ) |>
+  # add color value depending on death rate
+  e_color_range(death_rate, color, colors = MetBrewer::met.brewer("OKeeffe1", 11)[c(11, 2)])
+
+# define custom scaling function for the bubble size in the plot
+my_scale <- function(x) 2 * sqrt(x) + 1
+```
+
+```{r, fig.width=5, fig.height=6}
+
+poll_gdp |>
+  group_by(year) |>
+  e_charts(gdp_pc_log, timeline = TRUE) |>
+  e_scatter(access_to_fuels, symbol_size = 5, bind = entity, size = death_rate, scale = my_scale, legend = FALSE) |>
+  e_add_nested("itemStyle", opacity, color) |> # add the extra columns to "itemStyle"
+  e_legend(FALSE) |> # hide legend
+  e_x_axis(max = 6) |> # set fixed x-Axis range
+  e_tooltip(
+    formatter = htmlwidgets::JS("
+      function(params){
+        return('<strong>' + params.name +
+          '</strong><br />GDP per capita: 10 E' + params.value[0] + '$' +
+          '<br />Clean Fuel access: ' + params.value[1] + '%' +
+          '<br />Death rate: ' + params.value[2] + '/100,000 inhabitants')
+                }
+    ")
+  ) |>
+  e_x_axis(name = "log10(GDP p.c.)") |>
+  e_y_axis(name = "Access to clean fuels\nand technologies\nfor cooking\n(% of population)") |>
+  e_title(
+    text = "Access to clean fuels for cooking",
+    subtext = "Solid fuels for cooking result in indoor air pollution, which is a risk factor for premature death. Higher income countries tend\nto have more access to clean fuels. The global situation is improving, as the countries generally 'move up' over time.\nThe size of the bubbles indicates the death rate accountable to indoor pollution. (Hover with your mouse to get more info).\n\nDataViz by @c_gebhard | #30DayChartChallenge, Day 16 | Data: Hannah Ritchie and Max Roser (2013), \nOurWorldInData.org/indoor-air-pollution\n",
+    sublink = "https://OurWorldInData.org/indoor-air-pollution"
+  ) |>
+  e_theme("roma") |>
+  e_grid(bottom = "15%", top = "35%", left = "10%", right = "15%") |>
+  e_timeline_opts(playInterval = 1000, loop = FALSE)
+```
+
+## Day 17: "relationship | connection"
+
+Today's dataviz is about historical connections between countries. In particular I visualized the `#tidytuesday` data of week 28 (2021) on independence days. The data was scraped by `#tidytuesday` from [Wikipedia](https://en.wikipedia.org/wiki/List_of_national_independence_days) back in 2021.
+
+**Note:** This globe might have a few data problems, as the original data was scraped and I *know* that a few countries were lost during preparation for this plot, due to inconsistent naming and therefore conversion errors. I just didn't have the time to manually curate everything. So in summary: this is by no means complete nor a historically or politically solid representation, but rather a demo of an interesting interactive DataViz. Enjoy, hovering the data points, and dragging/zooming the globe to see more details!
+
+```{r}
+library(tidyverse)
+library(echarts4r)
+library(echarts4r.assets)
+library(echarts4r.maps)
+library(CoordinateCleaner)
+library(countrycode)
 ```
 
 
-If you have an opinion on 3D in DataViz, please let me know and leave a comment below!
+```{r}
+only_countries <- countryref |>
+  filter(type == "country") |>
+  drop_na(capital) |>
+  distinct(iso3, .keep_all = TRUE)
+```
 
+```{r}
+holidays <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-07-06/holidays.csv")
+
+
+holidays$from_iso3 <- countrycode(
+  holidays$independence_from,
+  origin = "country.name",
+  destination = "iso3c",
+  custom_match = c(
+    "Spanish Empire" = "ESP",
+    "Spanish Empire[72]" = "ESP",
+    "United Kingdom of Great Britain and Ireland" = "GBR"
+  )
+)
+
+holidays$indep_iso3 <- countrycode(
+  holidays$country,
+  origin = "country.name",
+  destination = "iso3c",
+  custom_match = c(
+    "Spanish Empire" = "ESP",
+    "Spanish Empire[72]" = "ESP",
+    "United Kingdom of Great Britain and Ireland" = "GBR"
+  )
+)
+
+independences <- holidays |>
+  filter(!(is.na(from_iso3) | is.na(indep_iso3))) |>
+  pivot_longer(cols = c(indep_iso3, from_iso3), names_to = "direction", values_to = "iso3c") |>
+  left_join(only_countries, by = c("iso3c" = "iso3")) |>
+  select(country, direction, capital.lon, capital.lat, year) |>
+  rename(lon = capital.lon, lat = capital.lat) |>
+  pivot_wider(id_cols = c(country, year), names_from = direction, values_from = c(lat, lon)) |>
+  filter(!is.na(lon_indep_iso3)) |>
+  rename(
+    start_lat = lat_from_iso3,
+    start_lon = lon_from_iso3,
+    end_lat = lat_indep_iso3,
+    end_lon = lon_indep_iso3
+  ) |>
+  mutate(label_col = paste0(country, " (", year, ")"))
+```
+
+```{r, layout="l-screen-inset"}
+independences |>
+  e_charts() |>
+  e_globe(
+    environment = ea_asset("starfield"),
+    base_texture = ea_asset("world topo"),
+    height_texture = ea_asset("world topo"),
+    displacementScale = 0.01,
+    light = list(
+      ambient = list(
+        intensity = 1.2
+      )
+    ),
+    viewControl = list(
+      autoRotateSpeed = 3,
+      autoRotateAfterStill = 12,
+      distance = 200
+    )
+  ) |>
+  e_lines_3d(
+    start_lon,
+    start_lat,
+    end_lon,
+    end_lat,
+    name = "independence_from",
+    effect = list(
+      show = TRUE,
+      trailColor = "#fff99a"
+    )
+  ) |>
+  e_scatter_3d(end_lon, end_lat, coord_system = "globe", blendMode = "lighter", bind = label_col) |>
+  e_legend(FALSE) |>
+  e_title(
+    text = "Independece: Connected by History",
+    textStyle = list(
+      color = "#FFFFFF",
+      fontWeight = "bold",
+      fontSize = 20
+    ),
+    subtext = "Many countries commemorate the anniversary of their independence\nor statehood usually after ceasing to be a part of another nation\nor state, after the end of a military occupation or independence from\na colonial empire.\nThis globe visualizes the country names with their independence years\n(hover the points) and the countries, from which they became\nindependent of (follow the tracing lines).\nDataViz by @c_gebhard | #30DayChartChallenge, Day 17\nData: Wikipedia.org, via #TidyTuesday @R4DScommunity",
+    subtextStyle = list(
+      color = "#EEEEEE",
+      fontWeight = "bold",
+      fontSize = 12
+    ),
+  ) |>
+  e_tooltip(
+    formatter = htmlwidgets::JS("
+      function(params){
+        return('<strong>' + params.name + '</strong>')
+                }
+    ")
+  )
+```
+
+## Comments
