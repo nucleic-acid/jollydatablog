@@ -248,7 +248,7 @@ independences |>
   e_scatter_3d(end_lon, end_lat, coord_system = "globe", blendMode = "lighter", bind = label_col) |>
   e_legend(FALSE) |>
   e_title(
-    text = "Independece: Connected by History",
+    text = "Independence: Connected by History",
     textStyle = list(
       color = "#FFFFFF",
       fontWeight = "bold",
