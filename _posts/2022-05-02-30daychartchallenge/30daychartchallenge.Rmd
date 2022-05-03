@@ -1,0 +1,71 @@
+---
+title: "#30DayChartChallenge - wrap up"
+description: |
+  An intense 30 days in April 2022, each day a new dataviz challenge with a distinct motto. This is a collection of my submissions and what I learned in participating. 
+author:
+  - name: Christian A. Gebhard 
+    url: https://twitter.com/c_gebhard
+    affiliation: jolly data blog
+    affiliation_url: https://jollydata.blog/about.html
+    orcid_id: 0000-0002-8792-565X
+date: "`r Sys.Date()`"
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: true
+    toc-floating: true
+    code_folding: true
+creative_commons: CC BY
+categories:
+  - 30DayChartChallenge
+  - R
+base_url: https://jollydata.blog/posts/2022-05-02-30daychartchallenge
+preview: assets/banner.png
+twitter:
+  creator: "@c_gebhard"
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      collapse = FALSE,
+                      comment = "#>",
+                      fig.retina = 2, # Control using dpi
+                      fig.width = 6,  # generated images
+                      fig.align = "center",
+                      dpi = 72, 
+                      out.width = "100%",
+                      dev = "png",
+                      dev.args = list(png = list(type = "cairo-png")),
+                      optipng = "-o1 -quiet")
+
+xaringanExtra::use_panelset()
+
+```
+
+```{r xaringanExtra-clipboard, include=FALSE}
+htmltools::tagList(
+  xaringanExtra::use_clipboard(
+    button_text = "<i class=\"fa fa-clipboard\" style=\"color: #394755\"></i>",
+    success_text = "<i class=\"fa fa-check\" style=\"color: #1BC7DC\"></i>",
+  ),
+  rmarkdown::html_dependency_font_awesome()
+)
+```
+
+## The Challenge
+
+The #30DayChartChallenge is a data visualization community project on Twitter, that was first initialized in 2021 and returned for a second instance in April 2022. The idea is simple: each day in April is given a certain motto or prompt. Participants contribute one data visualization for each day, that should somehow incorporate the given motto.
+
+This year's prompts were as follows:
+
+![Figure from: https://github.com/dominicroye/30DayChartChallenge_Edition2022](assets/prompts-full.png)
+
+This year I managed to contribute 21 visualizations that I will post below. The code can be found at my [github repo](https://github.com/nucleic-acid/30DayChartChallenge_2022).
+
+## Comparisons
+
+### Day 01: part-to-whole
+
+![](assets/2022_01_comp_part.png)
+
