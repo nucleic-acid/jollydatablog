@@ -16,6 +16,7 @@ output:
     toc-floating: true
     code_folding: true
 creative_commons: CC BY
+draft: true
 categories:
   - 30DayChartChallenge
   - R
