@@ -12,7 +12,18 @@
       <link>https://jollydata.blog</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Mon, 18 Apr 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 03 May 2022 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>#30DayChartChallenge - wrap up</title>
+      <dc:creator>Christian A. Gebhard</dc:creator>
+      <link>https://jollydata.blog/posts/2022-05-02-30daychartchallenge</link>
+      <description>An intense 30 days in April 2022, each day a new dataviz challenge with a distinct motto. This is a collection of my submissions and what I learned in participating.</description>
+      <category>30DayChartChallenge</category>
+      <category>R</category>
+      <guid>https://jollydata.blog/posts/2022-05-02-30daychartchallenge</guid>
+      <pubDate>Tue, 03 May 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://jollydata.blog/posts/2022-05-02-30daychartchallenge/assets/banner.png" medium="image" type="image/png" width="10200" height="3189"/>
+    </item>
     <item>
       <title>30 Day Chart Challenge - interactive plots</title>
       <dc:creator>Christian A. Gebhard</dc:creator>
