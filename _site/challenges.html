@@ -87,17 +87,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>jolly data: data viz challenges</title>
+  <title>jolly data: data viz gallery</title>
 
-  <meta property="description" itemprop="description" content="This is a collection of contributions I made for challenges within the DataViz community such as #TidyTuesday. The preview images link to the corresponding articles."/>
+  <meta property="description" itemprop="description" content="This is a collection of datavisualizations I created. Many are contributions to challenges within the DataViz community such as #TidyTuesday or the #30DayChartChallenge. Some resulted from personal data exploration projects found on this blog. The code can either be found in blog posts or on my github page."/>
 
   <link rel="icon" type="image/png" href="resources/logo_favicon.png"/>
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="jolly data: data viz challenges"/>
+  <meta property="og:title" content="jolly data: data viz gallery"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="This is a collection of contributions I made for challenges within the DataViz community such as #TidyTuesday. The preview images link to the corresponding articles."/>
+  <meta property="og:description" content="This is a collection of datavisualizations I created. Many are contributions to challenges within the DataViz community such as #TidyTuesday or the #30DayChartChallenge. Some resulted from personal data exploration projects found on this blog. The code can either be found in blog posts or on my github page."/>
   <meta property="og:image" content="https://jollydata.blog/./resources/logo_dynamic.png"/>
   <meta property="og:image:width" content="822"/>
   <meta property="og:image:height" content="822"/>
@@ -106,8 +106,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary_large_image"/>
-  <meta property="twitter:title" content="jolly data: data viz challenges"/>
-  <meta property="twitter:description" content="This is a collection of contributions I made for challenges within the DataViz community such as #TidyTuesday. The preview images link to the corresponding articles."/>
+  <meta property="twitter:title" content="jolly data: data viz gallery"/>
+  <meta property="twitter:description" content="This is a collection of datavisualizations I created. Many are contributions to challenges within the DataViz community such as #TidyTuesday or the #30DayChartChallenge. Some resulted from personal data exploration projects found on this blog. The code can either be found in blog posts or on my github page."/>
   <meta property="twitter:image" content="https://jollydata.blog/./resources/logo_dynamic.png"/>
   <meta property="twitter:image:width" content="822"/>
   <meta property="twitter:image:height" content="822"/>
@@ -118,7 +118,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output","base_url","preview","twitter"]}},"value":[{"type":"character","attributes":{},"value":["data viz challenges"]},{"type":"character","attributes":{},"value":["This is a collection of contributions I made for challenges within the DataViz community such as #TidyTuesday. The preview images link to the corresponding articles.\n"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","css"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["strapless.css"]}]}]},{"type":"character","attributes":{},"value":["https://jollydata.blog"]},{"type":"character","attributes":{},"value":["resources/logo_dynamic.png"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["site","creator"]}},"value":[{"type":"character","attributes":{},"value":["@JollydataB"]},{"type":"character","attributes":{},"value":["@c_gebhard"]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output","base_url","preview","twitter"]}},"value":[{"type":"character","attributes":{},"value":["data viz gallery"]},{"type":"character","attributes":{},"value":["This is a collection of datavisualizations I created. Many are contributions to challenges within the DataViz community such as #TidyTuesday or the #30DayChartChallenge. Some resulted from personal data exploration projects found on this blog. The code can either be found in blog posts or on my github page.\n"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["https://jollydata.blog"]},{"type":"character","attributes":{},"value":["resources/logo_dynamic.png"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["site","creator"]}},"value":[{"type":"character","attributes":{},"value":["@JollydataB"]},{"type":"character","attributes":{},"value":["@c_gebhard"]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2573,6 +2573,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   }</style>
   <!--/radix_placeholder_distill-->
   <script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+  <script src="site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+  <link href="site_libs/simplelightbox-0/css/simplelightbox.css" rel="stylesheet" />
+  <script src="site_libs/simplelightbox-0/js/simplelightbox.js"></script>
+  <link href="site_libs/pixgallery-0/css/pixgallery.css" rel="stylesheet" />
+  <script src="site_libs/pixgallery-binding-0.0.2.2000/pixgallery.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2624,7 +2629,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   });});</script>
   <!--/radix_placeholder_site_in_header-->
 
-  <link rel="stylesheet" href="strapless.css" type="text/css"/>
 
 </head>
 
@@ -2633,7 +2637,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"data viz challenges","description":"This is a collection of contributions I made for challenges within the DataViz community such as #TidyTuesday. The preview images link to the corresponding articles.","authors":[]}
+{"title":"data viz gallery","description":"This is a collection of datavisualizations I created. Many are contributions to challenges within the DataViz community such as #TidyTuesday or the #30DayChartChallenge. Some resulted from personal data exploration projects found on this blog. The code can either be found in blog posts or on my github page.","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2671,58 +2675,21 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>data viz challenges</h1>
+<h1>data viz gallery</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>This is a collection of contributions I made for challenges within
-the DataViz community such as #TidyTuesday. The preview images link to
-the corresponding articles.</p></p>
+<p><p>This is a collection of datavisualizations I created. Many are
+contributions to challenges within the DataViz community such as
+#TidyTuesday or the #30DayChartChallenge. Some resulted from personal
+data exploration projects found on this blog. The code can either be
+found in blog posts or on my github page.</p></p>
 </div>
 
 
 <div class="d-article">
-<div class="layout-chunk" data-layout="l-body">
-
-</div>
-<div class="layout-chunk" data-layout="l-page">
-<div>
-<p>
-<button class="btn btn-primary" type="button" onClick="$(&#39;.bs4cards-blahblahblah&#39;).hide(400, &#39;swing&#39;);setTimeout(function() {$(&#39;.bs4cards-All&#39;).show(400, &#39;swing&#39;)}, 400);">All</button>
-<button class="btn btn-primary" type="button" onClick="$(&#39;.bs4cards-blahblahblah&#39;).hide(400, &#39;swing&#39;);setTimeout(function() {$(&#39;.bs4cards-NA&#39;).show(400, &#39;swing&#39;)}, 400);">NA</button>
-<button class="btn btn-primary" type="button" onClick="$(&#39;.bs4cards-blahblahblah&#39;).hide(400, &#39;swing&#39;);setTimeout(function() {$(&#39;.bs4cards-R&#39;).show(400, &#39;swing&#39;)}, 400);">R</button>
-<button class="btn btn-primary" type="button" onClick="$(&#39;.bs4cards-blahblahblah&#39;).hide(400, &#39;swing&#39;);setTimeout(function() {$(&#39;.bs4cards-TidyTuesday&#39;).show(400, &#39;swing&#39;)}, 400);">TidyTuesday</button>
-<button class="btn btn-primary" type="button" onClick="$(&#39;.bs4cards-blahblahblah&#39;).hide(400, &#39;swing&#39;);setTimeout(function() {$(&#39;.bs4cards-network&#39;).show(400, &#39;swing&#39;)}, 400);">network</button>
-</p>
-<div class="row p-0 row-cols-1 row-cols-md-2 row-cols-lg-3" style="margin-left: -1rem; margin-right: -1rem; margin-top: 1rem; margin-bottom: 1rem; ">
-<div class="card bg-transparent m-0 border-0 collapse.show bs4cards-blahblahblah bs4cards-All bs4cards-NA" style="padding: 1rem ; border-width: 0; border-radius: .4rem .4rem .4rem .4rem ;"></div>
-<div class="card bg-transparent m-0 border-0 collapse.show bs4cards-blahblahblah bs4cards-All bs4cards-NA" style="padding: 1rem ; border-width: 0; border-radius: .4rem .4rem .4rem .4rem ;"></div>
-<div class="card bg-transparent m-0 border-0 collapse.show bs4cards-blahblahblah bs4cards-All bs4cards-NA" style="padding: 1rem ; border-width: 0; border-radius: .4rem .4rem .4rem .4rem ;"></div>
-<div class="card bg-transparent m-0 border-0 collapse.show bs4cards-blahblahblah bs4cards-All bs4cards-NA" style="padding: 1rem ; border-width: 0; border-radius: .4rem .4rem .4rem .4rem ;"></div>
-<div class="card bg-transparent m-0 border-0 collapse.show bs4cards-blahblahblah bs4cards-All bs4cards-NA" style="padding: 1rem ; border-width: 0; border-radius: .4rem .4rem .4rem .4rem ;">
-<a href="posts/2022-05-02-30daychartchallenge/index.html" style="color: inherit;"></a>
-</div>
-<div class="card bg-transparent m-0 border-0 collapse.show bs4cards-blahblahblah bs4cards-All bs4cards-R bs4cards-TidyTuesday" style="padding: 1rem ; border-width: 0; border-radius: .4rem .4rem .4rem .4rem ;">
-<a href="posts/2021-01-01-olympic-history/index.html" style="color: inherit;">
-<img src="resources/challenges_images/rio2016.png" class="card-img" style="border-style:solid; border-color:#394755FF; border-width:1px; border-radius: .4rem .4rem .4rem .4rem ;"/>
-</a>
-</div>
-<div class="card bg-transparent m-0 border-0 collapse.show bs4cards-blahblahblah bs4cards-All bs4cards-R bs4cards-TidyTuesday" style="padding: 1rem ; border-width: 0; border-radius: .4rem .4rem .4rem .4rem ;">
-<a href="posts/2021-08-22-tea-earl-grey-hot-tidytuesday-2021-week-34/index.html" style="color: inherit;">
-<img src="resources/challenges_images/tt21-34_picard.png" class="card-img" style="border-style:solid; border-color:#394755FF; border-width:1px; border-radius: .4rem .4rem .4rem .4rem ;"/>
-</a>
-</div>
-<div class="card bg-transparent m-0 border-0 collapse.show bs4cards-blahblahblah bs4cards-All bs4cards-TidyTuesday bs4cards-R" style="padding: 1rem ; border-width: 0; border-radius: .4rem .4rem .4rem .4rem ;">
-<a href="posts/2021-06-12-tt-fishing/index.html" style="color: inherit;">
-<img src="resources/challenges_images/commercial_fishing.png" class="card-img" style="border-style:solid; border-color:#394755FF; border-width:1px; border-radius: .4rem .4rem .4rem .4rem ;"/>
-</a>
-</div>
-<div class="card bg-transparent m-0 border-0 collapse.show bs4cards-blahblahblah bs4cards-All bs4cards-R bs4cards-network" style="padding: 1rem ; border-width: 0; border-radius: .4rem .4rem .4rem .4rem ;">
-<a href="posts/2021-03-14-bundestag-part-iii/index.html" style="color: inherit;">
-<img src="resources/challenges_images/voting_bt3.png" class="card-img" style="border-style:solid; border-color:#394755FF; border-width:1px; border-radius: .4rem .4rem .4rem .4rem ;"/>
-</a>
-</div>
-</div>
-</div>
+<div class="layout-chunk" data-layout="l-screen-inset">
+<div id="htmlwidget-b8323f5c4207d08e918d" style="width:100%;height:100%;" class="pixgallery html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b8323f5c4207d08e918d">{"x":{"path":["resources/challenges_images//2022_01_01.png","resources/challenges_images//2022_01_02.png","resources/challenges_images//2022_01_03.png","resources/challenges_images//2022_01_04.png","resources/challenges_images//2022_01_08.png","resources/challenges_images//2022_01_09.gif","resources/challenges_images//2022_01_10.png","resources/challenges_images//2022_01_11.png","resources/challenges_images//2022_01_12.png","resources/challenges_images//2022_02_01.png","resources/challenges_images//2022_02_03.png","resources/challenges_images//2022_04_comp_flora.png","resources/challenges_images//2022_05_comp_slope.png","resources/challenges_images//2022_09_dist_stat.png","resources/challenges_images//2022_10.png","resources/challenges_images//2022_11_dist_circ.png","resources/challenges_images//2022_13_rel_corr.png","resources/challenges_images//2022_13_rel2.png","resources/challenges_images//2022_99_05.png","resources/challenges_images//30DCC_2022-14_3d.gif","resources/challenges_images//30DCC_2022-16_environment.gif","resources/challenges_images//commercial_fishing.png","resources/challenges_images//voting_bt3.png"],"caption":[],"dim":"350px","gap":"10px","type":"grid"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
