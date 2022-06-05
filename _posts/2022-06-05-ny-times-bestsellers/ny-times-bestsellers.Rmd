@@ -1,0 +1,71 @@
+---
+title: "NY Times Bestsellers"
+description: |
+  Building an interactive and informative table with {reactablefmtr} using data on the top selling fiction books between 1931 and 2020.
+author:
+  - name: Christian A. Gebhard 
+    url: https://twitter.com/c_gebhard
+    affiliation: jolly data blog
+    affiliation_url: https://jollydata.blog/about.html
+    orcid_id: 0000-0002-8792-565X
+date: "`r Sys.Date()`"
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: true
+    toc-floating: true
+    code_folding: true
+creative_commons: CC BY
+draft: true
+categories:
+  - tidy tuesday
+  - R
+  - tables
+  - interactive
+base_url: https://jollydata.blog/posts/2022-06-05-ny-times-bestsellers
+preview: assets/banner.png
+twitter:
+  creator: "@c_gebhard"
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      collapse = FALSE,
+                      comment = "#>",
+                      fig.retina = 2, # Control using dpi
+                      fig.width = 6,  # generated images
+                      fig.align = "center",
+                      dpi = 72, 
+                      out.width = "100%",
+                      dev = "png",
+                      dev.args = list(png = list(type = "cairo-png")),
+                      optipng = "-o1 -quiet")
+
+xaringanExtra::use_panelset()
+```
+
+```{r xaringanExtra-clipboard, include=FALSE}
+htmltools::tagList(
+  xaringanExtra::use_clipboard(
+    button_text = "<i class=\"fa fa-clipboard\" style=\"color: #394755\"></i>",
+    success_text = "<i class=\"fa fa-check\" style=\"color: #1BC7DC\"></i>",
+  ),
+  rmarkdown::html_dependency_font_awesome()
+)
+```
+
+Data visualization is not limited to diagrams, plots or 'info-graphics'. Data can be presented in tabular form as well.
+
+As in plots, a good, informative table contains a complete representation of the data but guides the viewer to the relevant bits. This makes the data more accessible, while inclined readers can still see the complete data. In addition, going beyond default style and aesthetics can improve the visual appearance and interpretability. 
+
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+nyt_titles <- readr::read_tsv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-05-10/nyt_titles.tsv')
+
+```
+
