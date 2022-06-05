@@ -62,10 +62,65 @@ As in plots, a good, informative table contains a complete representation of the
 
 ```{r}
 library(tidyverse)
+library(reactablefmtr)
+library(htmltools)
+library(crosstalk)
 ```
 
 ```{r}
-nyt_titles <- readr::read_tsv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-05-10/nyt_titles.tsv')
+# nyt_titles <- readr::read_tsv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-05-10/nyt_titles.tsv')
+
+# write_csv(nyt_titles, here::here("../", "data_sources", "2022_NYT_bestsellers", "nyt_titles.csv"))
+
+nyt_titles <- read_csv(here::here("../", "data_sources", "2022_NYT_bestsellers", "nyt_titles.csv"))
+  nyt_titles |> 
+  arrange(desc(year))
+```
+
+```{r, layout="l-page"}
+
+### create shared dataset for crosstalk
+crosstalk_data <- SharedData$new(nyt_titles)
+
+### crosstalk AUTHOR filter
+author_filter <- filter_select(
+  id = "author",
+  label = "AUTHOR",
+  sharedData = crosstalk_data,
+  group = ~ author
+)
+
+### crosstalk YEAR filter
+year_filter <- filter_slider(
+  id = "year",
+  label = "YEAR",
+  sharedData = crosstalk_data,
+  column = ~ year,
+  ticks = TRUE,
+  dragRange = FALSE,
+  step = 1,
+  sep = "",
+  width = "99%"
+)
+
+nyt_table <- reactable(
+  crosstalk_data, 
+  theme = nytimes(),
+  showSortIcon = TRUE,
+  searchable = TRUE,
+  ) |> 
+  add_title("New York Times Hardcover Fiction Bestsellers, 1931-2020") |> 
+  add_subtitle("An interactive table for #TidyTuesday week 19 (2022)")
+
+### display crosstalk filters
+div(bscols(
+  widths = c(4, NA),
+    author_filter, year_filter)
+)
+
+### display table
+div(nyt_table)
 
 ```
+
 
