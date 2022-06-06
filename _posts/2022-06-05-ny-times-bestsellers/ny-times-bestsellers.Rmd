@@ -72,8 +72,7 @@ library(crosstalk)
 
 # write_csv(nyt_titles, here::here("../", "data_sources", "2022_NYT_bestsellers", "nyt_titles.csv"))
 
-nyt_titles <- read_csv(here::here("../", "data_sources", "2022_NYT_bestsellers", "nyt_titles.csv"))
-  nyt_titles |> 
+nyt_titles <- read_csv(here::here("../", "data_sources", "2022_NYT_bestsellers", "nyt_titles.csv")) |> 
   arrange(desc(year))
 ```
 
