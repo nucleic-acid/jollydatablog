@@ -108,7 +108,7 @@ year_filter <- filter_slider(
   dragRange = FALSE,
   step = 1,
   sep = "",
-  width = "99%"
+  width = "90%"
 )
 
 nyt_table <- reactable(
@@ -116,10 +116,54 @@ nyt_table <- reactable(
   theme = nytimes(),
   showSortIcon = TRUE,
   searchable = TRUE,
+  columns = list(
+    total_weeks = colDef(
+      name = "Total weeks on best sellers list",
+      cell = data_bars(
+        data = nyt_titles, # needs to be the original data, not the crosstalk data
+        fill_color = MetBrewer::met.brewer("Hokusai2", n = 5),
+        min_value = 1,
+        max_value = 178,
+        text_position = 'inside-end',
+        force_outside = c(0,10)
+      )
+    ),
+    debut_rank = colDef(
+      name = "Debut rank on the list",
+      maxWidth = 75
+    ),
+    best_rank = colDef(
+      name = "Best rank",
+      maxWidth = 75
+    ),
+    author = colDef(
+      name = "Author",
+      maxWidth = 200
+    ),
+    year = colDef(
+      name = "Year",
+      maxWidth = 75
+    )
+  )
+) |> 
+  add_title(
+    "New York Times Hardcover Fiction Bestsellers, 1931-2020",
+    ) |> 
+  add_subtitle(
+    "An interactive table for #TidyTuesday week 19 (2022)",
+    margin = reactablefmtr::margin(t=10,r=0,b=15,l=0)
   ) |> 
-  add_title("New York Times Hardcover Fiction Bestsellers, 1931-2020") |> 
-  add_subtitle("An interactive table for #TidyTuesday week 19 (2022)")
+  add_source(
+    source = 'Data by: Kelly, Nicholas; White, Nicole, Glass, Loren, 03/01/2021, “The Program Era Project,” DOI: https://doi.org/10.18737/CNJV1733p4520210415, Post45 Data Collective, V1.',
+    font_style = 'italic'
+  )
 
+
+```
+
+
+
+```{r, layout="l-page", collapse=TRUE}
 ### display crosstalk filters
 div(bscols(
   widths = c(4, NA),
@@ -128,6 +172,5 @@ div(bscols(
 
 ### display table
 div(nyt_table)
-
 ```
 
