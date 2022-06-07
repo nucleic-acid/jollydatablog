@@ -1,7 +1,7 @@
 ---
 title: "NY Times Bestsellers"
 description: |
-  Building an interactive and informative table with {reactablefmtr} using data on the top selling fiction books between 1931 and 2020.
+  Building an interactive and informative table with {reactablefmtr} and {crosstalk} using data on the top selling fiction books between 1931 and 2020.
 author:
   - name: Christian A. Gebhard 
     url: https://twitter.com/c_gebhard
@@ -14,7 +14,6 @@ output:
     self_contained: false
     toc: true
     toc-floating: true
-    code_folding: true
 creative_commons: CC BY
 draft: true
 categories:
@@ -31,7 +30,7 @@ twitter:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, 
-                      collapse = FALSE,
+                      collapse = TRUE,
                       comment = "#>",
                       fig.retina = 2, # Control using dpi
                       fig.width = 6,  # generated images
@@ -60,37 +59,46 @@ As in plots, an *informative* table not only contains enough data to give a comp
 
 I want to go beyond the default markdown table output and even add interactive capabilities. To achieve this, I worked with the [`{reactablefmtr}`](https://kcuilla.github.io/reactablefmtr/index.html) package by Kyle Cuilla. The extensive [cookbook](https://kcuilla.github.io/reactablefmtr/articles/reactablefmtr_cookbook.html) gives a lot of inspiration and instructions on the vast capabilities.
 
+The combination with the `{crosstalk}` package allows quite impressive interactive capabilities withot the need for e.g. `{shiny}`. That way you can include interactive tables in static web pages.
 
-## loading required packages
 
-```{r}
+## Setup
+
+
+
+```{r, code_folding="Load required packages"}
 library(tidyverse)
 library(reactable)
 library(reactablefmtr)
 library(htmltools)
 library(crosstalk)
+library(viridis)
 ```
 
-## loading the data
-
-
-```{r}
-# nyt_titles <- readr::read_tsv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-05-10/nyt_titles.tsv')
+```{r, code_folding="Load the data"}
+nyt_titles <- readr::read_tsv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-05-10/nyt_titles.tsv') |> 
+  arrange(desc(total_weeks)) |> 
+  select(debut_rank, best_rank, year, title, author, total_weeks)
 
 # write_csv(nyt_titles, here::here("../", "data_sources", "2022_NYT_bestsellers", "nyt_titles.csv"))
 
-nyt_titles <- read_csv(here::here("../", "data_sources", "2022_NYT_bestsellers", "nyt_titles.csv")) |> 
-  arrange(desc(total_weeks)) |> 
-  select(year, title, author, total_weeks, best_rank, debut_rank)
+# nyt_titles <- read_csv(here::here("../", "data_sources", "2022_NYT_bestsellers", "nyt_titles.csv")) |> 
+#   arrange(desc(total_weeks)) |> 
+#   select(debut_rank, best_rank, year, title, author, total_weeks)
   
 ```
 
-```{r, layout="l-page", collapse=TRUE}
+## Composing the table
+
+### The crosstalk part
+The first step is defining the common ground for the filter box / slider and the table: a shared dataset. Second, the filters are defined.
+
+```{r, layout="l-page", code_folding=TRUE}
 
 ### create shared dataset for crosstalk
 crosstalk_data <- SharedData$new(nyt_titles)
 
-### crosstalk AUTHOR filter
+### crosstalk AUTHOR filter, a textbox that allows multiple selections of authors
 author_filter <- filter_select(
   id = "author",
   label = "AUTHOR",
@@ -98,7 +106,7 @@ author_filter <- filter_select(
   group = ~ author
 )
 
-### crosstalk YEAR filter
+### crosstalk YEAR filter, a slider elemtn to select year-ranges
 year_filter <- filter_slider(
   id = "year",
   label = "YEAR",
@@ -111,6 +119,14 @@ year_filter <- filter_slider(
   width = "90%"
 )
 
+
+```
+
+### The reactable part
+
+For the reactable part, I'll add color_tiles() for the ranks and bar charts for the total weeks of presence on the list.
+
+```{r, code_folding=TRUE}
 nyt_table <- reactable(
   crosstalk_data, 
   theme = nytimes(),
@@ -119,22 +135,40 @@ nyt_table <- reactable(
   columns = list(
     total_weeks = colDef(
       name = "Total weeks on best sellers list",
+      maxWidth = 200,
       cell = data_bars(
         data = nyt_titles, # needs to be the original data, not the crosstalk data
-        fill_color = MetBrewer::met.brewer("Hokusai2", n = 5),
+        fill_color = viridis::rocket(n = 5, begin = 1, end = 0.4, direction = 1),#MetBrewer::met.brewer("Hokusai2", n = 5),
+        fill_opacity = 0.6,
         min_value = 1,
         max_value = 178,
         text_position = 'inside-end',
-        force_outside = c(0,10)
+        force_outside = c(0,20),
+        bold_text = TRUE,
+        box_shadow = TRUE
       )
     ),
     debut_rank = colDef(
       name = "Debut rank on the list",
-      maxWidth = 75
+      maxWidth = 75,
+      cell = color_tiles(
+        data = nyt_titles,
+        colors = viridis::mako(n = 17, begin = 0, end = 0.7, direction = -1),#MetBrewer::met.brewer("VanGogh3", n = 5, direction = -1),
+        opacity = 0.5,
+        bold_text = TRUE,
+        box_shadow = TRUE
+      )
     ),
     best_rank = colDef(
       name = "Best rank",
-      maxWidth = 75
+      maxWidth = 75,
+      cell = color_tiles(
+        data = nyt_titles,
+        colors = viridis::mako(n = 17, begin = 0, end = 0.7, direction = -1),#MetBrewer::met.brewer("VanGogh3", n = 5, direction = -1),
+        opacity = 0.5,
+        bold_text = TRUE,
+        box_shadow = TRUE
+      )
     ),
     author = colDef(
       name = "Author",
@@ -143,6 +177,12 @@ nyt_table <- reactable(
     year = colDef(
       name = "Year",
       maxWidth = 75
+    ),
+    title = colDef(
+      name = "Title",
+      style = cell_style(
+        font_weight = "bold"
+      )
     )
   )
 ) |> 
@@ -155,22 +195,35 @@ nyt_table <- reactable(
   ) |> 
   add_source(
     source = 'Data by: Kelly, Nicholas; White, Nicole, Glass, Loren, 03/01/2021, “The Program Era Project,” DOI: https://doi.org/10.18737/CNJV1733p4520210415, Post45 Data Collective, V1.',
-    font_style = 'italic'
+    font_style = 'italic',
+    font_size = 10
   )
-
-
 ```
 
 
+## Final Result: Putting All Together
 
-```{r, layout="l-page", collapse=TRUE}
-### display crosstalk filters
-div(bscols(
-  widths = c(4, NA),
-    author_filter, year_filter)
-)
+The table can be sorted and searched freely.
+With {crosstalk} you can optionally filter the table for several authors or certain years (below the table). Go ahead and try it out:
 
+
+```{r, layout="l-page", code_folding=TRUE}
 ### display table
 div(nyt_table)
+
+### display crosstalk filters
+div(bscols(
+  widths = c(12),
+    list(author_filter, year_filter))
+)
 ```
 
+
+## Closing Notes and Comments
+
+The dataset spans a long time and is quite interesting to browse through...I sure did find some surprising facts. For one: the book longest on the NY Bestsellers list is a childrens' book^[https://en.wikipedia.org/wiki/Oh,_the_Places_You'll_Go!]. And, while many books of J. R. R. Tolkiens can be found, *The Lord of the Rings*^[https://en.wikipedia.org/wiki/The_Lord_of_the_Rings] was not on the best sellers list!
+
+I did find some oddities, too, which might be due to scraping errors. E.g. Tolkiens' Unfinished Tales debuted on rank 1, while the 'best rank' is 3.
+
+Thanks for reading!
+Please leave a comment, if you find something surprising as well or if you have suggestions for improvement of this #TidyTuesday submission.
