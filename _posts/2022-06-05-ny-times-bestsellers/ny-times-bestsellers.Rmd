@@ -55,17 +55,24 @@ htmltools::tagList(
 )
 ```
 
-Data visualization is not limited to diagrams, plots or 'info-graphics'. Data can be presented in tabular form as well.
+Data visualization is not limited to diagrams or plots. Data can be presented in tabular form as well.
+As in plots, an *informative* table not only contains enough data to give a comprehensive understanding, but also guides the viewer to the relevant bits. This makes the data more accessible, while inclined readers can still see the complete data. In addition, going beyond default style and aesthetics can improve the visual appearance and interpretability.
 
-As in plots, a good, informative table contains a complete representation of the data but guides the viewer to the relevant bits. This makes the data more accessible, while inclined readers can still see the complete data. In addition, going beyond default style and aesthetics can improve the visual appearance and interpretability. 
+I want to go beyond the default markdown table output and even add interactive capabilities. To achieve this, I worked with the [`{reactablefmtr}`](https://kcuilla.github.io/reactablefmtr/index.html) package by Kyle Cuilla. The extensive [cookbook](https://kcuilla.github.io/reactablefmtr/articles/reactablefmtr_cookbook.html) gives a lot of inspiration and instructions on the vast capabilities.
 
+
+## loading required packages
 
 ```{r}
 library(tidyverse)
+library(reactable)
 library(reactablefmtr)
 library(htmltools)
 library(crosstalk)
 ```
+
+## loading the data
+
 
 ```{r}
 # nyt_titles <- readr::read_tsv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-05-10/nyt_titles.tsv')
@@ -73,10 +80,12 @@ library(crosstalk)
 # write_csv(nyt_titles, here::here("../", "data_sources", "2022_NYT_bestsellers", "nyt_titles.csv"))
 
 nyt_titles <- read_csv(here::here("../", "data_sources", "2022_NYT_bestsellers", "nyt_titles.csv")) |> 
-  arrange(desc(year))
+  arrange(desc(total_weeks)) |> 
+  select(year, title, author, total_weeks, best_rank, debut_rank)
+  
 ```
 
-```{r, layout="l-page"}
+```{r, layout="l-page", collapse=TRUE}
 
 ### create shared dataset for crosstalk
 crosstalk_data <- SharedData$new(nyt_titles)
@@ -121,5 +130,4 @@ div(bscols(
 div(nyt_table)
 
 ```
-
 
