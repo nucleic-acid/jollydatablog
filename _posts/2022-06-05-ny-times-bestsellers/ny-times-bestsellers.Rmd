@@ -79,12 +79,6 @@ nyt_titles <- readr::read_tsv('https://raw.githubusercontent.com/rfordatascience
   arrange(desc(total_weeks)) |> 
   select(debut_rank, best_rank, year, title, author, total_weeks)
 
-# write_csv(nyt_titles, here::here("../", "data_sources", "2022_NYT_bestsellers", "nyt_titles.csv"))
-
-# nyt_titles <- read_csv(here::here("../", "data_sources", "2022_NYT_bestsellers", "nyt_titles.csv")) |> 
-#   arrange(desc(total_weeks)) |> 
-#   select(debut_rank, best_rank, year, title, author, total_weeks)
-  
 ```
 
 ## Composing the table
