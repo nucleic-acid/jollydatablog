@@ -189,7 +189,7 @@ nyt_table <- reactable(
   add_source(
     source = 'Data by: Kelly, Nicholas; White, Nicole, Glass, Loren, 03/01/2021, “The Program Era Project,” DOI: https://doi.org/10.18737/CNJV1733p4520210415, Post45 Data Collective, V1.',
     font_style = 'italic',
-    font_size = 10
+    font_size = 14
   )
 ```
 
