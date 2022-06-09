@@ -214,9 +214,9 @@ div(bscols(
 
 ## Closing Notes and Comments
 
-The dataset spans a long time and is quite interesting to browse through...I sure did find some surprising facts. For one: the book longest on the NY Bestsellers list is a childrens' book^[https://en.wikipedia.org/wiki/Oh,_the_Places_You'll_Go!]. And, while many books of J. R. R. Tolkiens can be found, *The Lord of the Rings*^[https://en.wikipedia.org/wiki/The_Lord_of_the_Rings] was not on the best sellers list!
+The dataset spans a long time and is quite interesting to browse through...I sure did find some surprising facts. For one: the book longest on the NY Bestsellers list is a childrens' book^[https://en.wikipedia.org/wiki/Oh,_the_Places_You'll_Go!]. And, while many books of J. R. R. Tolkien can be found, *The Lord of the Rings*^[https://en.wikipedia.org/wiki/The_Lord_of_the_Rings] was not on the best sellers list!
 
-I did find some oddities, too, which might be due to scraping errors. E.g. Tolkiens' Unfinished Tales debuted on rank 1, while the 'best rank' is 3.
+I did find some oddities, too, which might be due to scraping errors. E.g. Tolkien's Unfinished Tales debuted on rank 1, while the 'best rank' is 3.
 
 Thanks for reading!
 Please leave a comment, if you find something surprising as well or if you have suggestions for improvement of this #TidyTuesday submission.
