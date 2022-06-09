@@ -15,14 +15,13 @@ output:
     toc: true
     toc-floating: true
 creative_commons: CC BY
-draft: true
 categories:
   - tidy tuesday
   - R
   - tables
   - interactive
 base_url: https://jollydata.blog/posts/2022-06-05-ny-times-bestsellers
-preview: assets/banner.png
+preview: assets/preview.png
 twitter:
   creator: "@c_gebhard"
 ---
